@@ -643,30 +643,44 @@ export default function LandingEdu() {
             </div>
           )}
 
-          <button className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all text-gray-600 hover:text-gray-900">
+          {/* <button className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all text-gray-600 hover:text-gray-900">
             ☰
-          </button>
+          </button> */}
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-between px-12 pt-32 pb-12 relative overflow-hidden bg-white">
+      <section className=" min-h-screen flex items-center justify-between  relative overflow-hidden bg-white ">
+        <div
+          className="absolute top-0 w-full h-full bg-center bg-cover"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80')",
+          }}
+        >
+          <span
+            id="blackOverlay"
+            className="w-full h-full absolute opacity-75 bg-black"
+          ></span>
+        </div>
         <div
           className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-radial from-cyan-400/5 to-transparent top-0 right-0 -translate-y-32 translate-x-32"
-          style={{ animation: "pulse 4s ease-in-out infinite" }}
+          style={{
+            animation: "pulse 4s ease-in-out infinite",
+          }}
         ></div>
 
-        <div className="hero-content z-10 max-w-2xl">
-          <h1 className="text-6xl font-black leading-tight mb-5 text-gray-900">
+        <div className="hero-content z-10 max-w-2xl px-12 pt-32 pb-12">
+          <h1 className="text-6xl font-black leading-tight mb-5 text-amber-50">
             Khám Phá Tương Lai{" "}
             <span style={{ color: accentColor }}>Công Nghệ</span>
           </h1>
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+          <p className="text-xl text-cyan-50 mb-8 leading-relaxed">
             Nền tảng học lập trình, robotics, tài chính cho trẻ em (4-12 tuổi).
             Giúp con phát triển kỹ năng sáng tạo và tư duy logic.
           </p>
           <div className="hero-buttons flex gap-6">
-            <button className="border-2 border-gray-400 text-gray-900 px-10 py-4 rounded-full font-semibold transition-all hover:bg-gray-900 hover:text-white hover:border-gray-900">
+            <button className="border-2 border-gray-400 text-white px-10 py-4 rounded-full font-semibold transition-all hover:bg-gray-900 hover:text-white hover:border-gray-900">
               Bắt đầu miễn phí
             </button>
             <button
@@ -678,7 +692,7 @@ export default function LandingEdu() {
           </div>
         </div>
 
-        <div className="hero-image hidden lg:block relative">
+        <div className="hero-image hidden lg:block relative px-12 pt-32 pb-12">
           <div className="absolute w-72 h-72 rounded-full bg-gradient-to-br from-cyan-300 to-transparent opacity-15 top-16 left-16 circle-1"></div>
           <div className="text-8xl floating-element">🚀</div>
           <div className="absolute w-36 h-36 rounded-full bg-gradient-to-br from-cyan-300 to-transparent opacity-15 bottom-12 left-0 circle-3"></div>
@@ -686,7 +700,7 @@ export default function LandingEdu() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-24 px-12 bg-gray-50 relative">
+      <section id="skills" className="py-24 px-12 bg-white relative">
         <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-radial from-cyan-400/5 to-transparent bottom-0 left-0 -translate-x-32 translate-y-32"></div>
 
         <h2 className="text-5xl font-black text-center mb-5 title-fadeInUp text-gray-900">
@@ -715,7 +729,7 @@ export default function LandingEdu() {
       </section>
 
       {/* Why Section */}
-      <section id="why" className="py-24 px-12 bg-white relative">
+      <section id="why" className="py-24 px-12 bg-blue-200 relative">
         <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-radial from-cyan-400/5 to-transparent top-0 right-0 -translate-y-32 translate-x-32"></div>
 
         <h2 className="text-5xl font-black text-center mb-5 title-fadeInUp text-gray-900">
@@ -1007,8 +1021,75 @@ export default function LandingEdu() {
         </button>
       </section>
 
+      {/* Decorative Background Pattern */}
+      <div className="relative w-full overflow-hidden bg-white py-16">
+        {/* SVG Wave and Dots Pattern */}
+        <svg
+          className="absolute top-0 left-0 w-full h-full opacity-5"
+          viewBox="0 0 1440 400"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          {/* Wave 1 */}
+          <path
+            d="M0,100 Q360,50 720,100 T1440,100 L1440,200 L0,200 Z"
+            fill="#0891b2"
+            opacity="0.08"
+          />
+          {/* Wave 2 */}
+          <path
+            d="M0,130 Q360,80 720,130 T1440,130 L1440,250 L0,250 Z"
+            fill="#0891b2"
+            opacity="0.05"
+          />
+          {/* Wave 3 */}
+          <path
+            d="M0,160 Q360,120 720,160 T1440,160 L1440,300 L0,300 Z"
+            fill="#0891b2"
+            opacity="0.03"
+          />
+
+          {/* Decorative dots */}
+          <circle cx="100" cy="80" r="2" fill="#0891b2" opacity="0.2" />
+          <circle cx="200" cy="120" r="1.5" fill="#0891b2" opacity="0.15" />
+          <circle cx="350" cy="100" r="2" fill="#0891b2" opacity="0.2" />
+          <circle cx="500" cy="150" r="1" fill="#0891b2" opacity="0.1" />
+          <circle cx="700" cy="90" r="2" fill="#0891b2" opacity="0.2" />
+          <circle cx="900" cy="140" r="1.5" fill="#0891b2" opacity="0.15" />
+          <circle cx="1100" cy="110" r="2" fill="#0891b2" opacity="0.2" />
+          <circle cx="1250" cy="160" r="1" fill="#0891b2" opacity="0.1" />
+          <circle cx="1350" cy="100" r="1.5" fill="#0891b2" opacity="0.15" />
+        </svg>
+
+        {/* Floating Blob Shapes */}
+        <div
+          className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-3xl opacity-3"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(8, 145, 178, 0.3) 0%, transparent 70%)",
+            animation: "pulse 8s ease-in-out infinite",
+          }}
+        ></div>
+        <div
+          className="absolute top-20 left-1/4 w-64 h-64 rounded-full blur-3xl opacity-2"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(8, 145, 178, 0.2) 0%, transparent 70%)",
+            animation: "pulse 10s ease-in-out infinite 0.5s",
+          }}
+        ></div>
+        <div
+          className="absolute bottom-1/3 right-1/3 w-96 h-96 rounded-full blur-3xl opacity-2"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(8, 145, 178, 0.15) 0%, transparent 70%)",
+            animation: "pulse 12s ease-in-out infinite 1s",
+          }}
+        ></div>
+      </div>
+
       {/* Footer */}
-      <footer className="bg-white text-gray-900 px-12 py-20 border-t border-gray-200">
+      <footer className="relative bg-white text-gray-900 px-12 py-20 border-t border-gray-200">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {footerLinks.map((section, idx) => (
             <div key={idx}>

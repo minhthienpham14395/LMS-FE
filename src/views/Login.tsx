@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -10,12 +9,12 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({ email: "", password: "" });
 
-  // Form validation
+  const accentColor = "#0891b2";
+
   const validateForm = () => {
     const newErrors = { email: "", password: "" };
     let isValid = true;
 
-    // Email validation
     if (!email) {
       newErrors.email = "Email không được để trống";
       isValid = false;
@@ -24,7 +23,6 @@ export default function Login() {
       isValid = false;
     }
 
-    // Password validation
     if (!password) {
       newErrors.password = "Mật khẩu không được để trống";
       isValid = false;
@@ -37,108 +35,102 @@ export default function Login() {
     return isValid;
   };
 
-  // Handle login submission
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Validate form
     if (!validateForm()) return;
 
-    // Show loading state
     setLoading(true);
-
-    // Simulate API call (1.5 seconds delay)
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setLoading(false);
 
-    // Save login state to localStorage
     localStorage.setItem("brightkids_isLoggedIn", "true");
     localStorage.setItem("brightkids_userEmail", email);
-
-    // Extract name from email (e.g., john from john@example.com)
     const userName = email.split("@")[0];
     localStorage.setItem(
       "brightkids_userName",
       userName.charAt(0).toUpperCase() + userName.slice(1)
     );
 
-    // Redirect to landing page
     window.location.href = "/learn";
   };
 
-  // Handle social login (demo)
   const handleSocialLogin = (provider) => {
     alert(`Đăng nhập qua ${provider} (Demo)`);
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center px-4 py-12 relative overflow-hidden">
+    <div className="min-h-screen bg-white text-gray-900 flex overflow-hidden">
       <style>{`
-        @keyframes slideIn {
+        @keyframes slideInLeft {
           from {
-            transform: translateY(50px);
+            transform: translateX(-100px);
             opacity: 0;
           }
           to {
-            transform: translateY(0);
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+
+        @keyframes slideInRight {
+          from {
+            transform: translateX(100px);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
             opacity: 1;
           }
         }
 
         @keyframes float {
           0%, 100% {
-            transform: translateY(0);
+            transform: translateY(0px) rotate(0deg);
           }
           50% {
-            transform: translateY(-20px);
-          }
-        }
-
-        @keyframes glow {
-          0%, 100% {
-            text-shadow: 0 0 20px rgba(102, 153, 255, 0.5);
-            box-shadow: 0 0 20px rgba(102, 153, 255, 0.3);
-          }
-          50% {
-            text-shadow: 0 0 40px rgba(102, 153, 255, 0.8);
-            box-shadow: 0 0 40px rgba(102, 153, 255, 0.5);
+            transform: translateY(-20px) rotate(2deg);
           }
         }
 
         @keyframes pulse {
           0%, 100% {
+            opacity: 0.5;
             transform: scale(1);
-            opacity: 0.3;
           }
           50% {
-            transform: scale(1.1);
-            opacity: 0.5;
+            opacity: 0.8;
+            transform: scale(1.05);
           }
         }
 
-        @keyframes shimmer {
-          0% {
-            background-position: -1000px 0;
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
           }
-          100% {
-            background-position: 1000px 0;
+          to {
+            opacity: 1;
           }
         }
 
-        .login-container {
-          animation: slideIn 0.8s ease-out;
+        .illustration-side {
+          animation: slideInLeft 0.8s ease-out;
         }
 
-        .glow-border {
-          animation: glow 3s ease-in-out infinite;
+        .form-side {
+          animation: slideInRight 0.8s ease-out;
         }
 
-        .float-circle {
+        .floating-shape {
           animation: float 6s ease-in-out infinite;
         }
 
-        .pulse-circle {
+        .pulse-shape {
           animation: pulse 4s ease-in-out infinite;
+        }
+
+        .form-container {
+          animation: fadeIn 0.8s ease-out 0.2s both;
         }
 
         input:focus {
@@ -150,13 +142,18 @@ export default function Login() {
           background-color: rgba(239, 68, 68, 0.05) !important;
         }
 
+        .input-group {
+          position: relative;
+          animation: fadeIn 0.8s ease-out backwards;
+        }
+
         .loading-spinner {
           display: inline-block;
-          width: 20px;
-          height: 20px;
-          border: 3px solid rgba(102, 153, 255, 0.3);
+          width: 16px;
+          height: 16px;
+          border: 2px solid rgba(8, 145, 178, 0.3);
           border-radius: 50%;
-          border-top-color: #6699FF;
+          border-top-color: #0891b2;
           animation: spin 1s linear infinite;
         }
 
@@ -166,277 +163,304 @@ export default function Login() {
           }
         }
 
-        .glass-effect {
-          background: rgba(255, 255, 255, 0.03);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .input-field {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          transition: all 0.3s ease;
-        }
-
-        .input-field:focus {
-          background: rgba(102, 153, 255, 0.1);
-          border-color: #6699FF;
-          box-shadow: 0 0 15px rgba(102, 153, 255, 0.3);
-        }
-
-        .btn-login {
-          position: relative;
-          overflow: hidden;
-          transition: all 0.3s ease;
-        }
-
-        .btn-login:hover {
-          box-shadow: 0 0 30px rgba(102, 153, 255, 0.6);
-          transform: translateY(-2px);
-        }
-
-        .btn-login:active {
-          transform: translateY(0);
-        }
-
-        .social-btn {
-          transition: all 0.3s ease;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          background: rgba(255, 255, 255, 0.03);
-        }
-
-        .social-btn:hover {
-          border-color: #6699FF;
-          background: rgba(102, 153, 255, 0.1);
-          box-shadow: 0 0 15px rgba(102, 153, 255, 0.3);
-        }
-
-        .link-hover:hover {
-          color: #6699FF;
-        }
-
-        label {
-          font-size: 0.875rem;
-          font-weight: 500;
-          color: #ccc;
-        }
-
         .error-text {
           color: #ef4444;
           font-size: 0.75rem;
-          margin-top: 0.25rem;
+          margin-top: 0.5rem;
+        }
+
+        .gradient-divider {
+          background: linear-gradient(90deg, transparent, #0891b2, transparent);
+          height: 2px;
+        }
+
+        .btn-social {
+          transition: all 0.3s ease;
+          border: 1px solid #e5e7eb;
+          background: #f9fafb;
+        }
+
+        .btn-social:hover {
+          border-color: #0891b2;
+          background: rgba(8, 145, 178, 0.05);
+          transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+          .illustration-side {
+            display: none;
+          }
         }
       `}</style>
 
-      {/* Background Elements */}
-      <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-to-br from-blue-400 to-transparent opacity-20 top-0 right-0 -translate-y-32 translate-x-32 float-circle"></div>
-      <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-to-br from-blue-400 to-transparent opacity-15 bottom-0 left-0 -translate-x-32 translate-y-32 pulse-circle"></div>
-      <div className="absolute w-64 h-64 rounded-full blur-2xl bg-gradient-to-br from-blue-400 to-transparent opacity-10 top-1/2 left-1/4 -translate-y-1/2"></div>
+      {/* Illustration Side */}
+      <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-cyan-50 via-blue-50 to-teal-50 relative overflow-hidden items-center justify-center illustration-side">
+        {/* Background Shapes */}
+        <div className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl bg-gradient-to-br from-cyan-300/20 to-transparent -translate-x-1/2 -translate-y-1/2 floating-shape"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl bg-gradient-to-tl from-teal-300/20 to-transparent translate-x-1/2 translate-y-1/2 pulse-shape"></div>
+        <div className="absolute top-1/2 left-1/2 w-80 h-80 rounded-full blur-2xl bg-gradient-to-r from-blue-300/15 to-cyan-300/15 -translate-x-1/2 -translate-y-1/2"></div>
 
-      {/* Animated Background Grid */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "linear-gradient(0deg, #6699FF 1px, transparent 1px), linear-gradient(90deg, #6699FF 1px, transparent 1px)",
-            backgroundSize: "50px 50px",
-          }}
-        ></div>
-      </div>
-
-      <div className="w-full max-w-md relative z-10">
-        {/* Logo */}
-        <div className="text-center mb-12 login-container">
-          <div
-            className="text-4xl font-black text-blue-400 mb-2 glow-border inline-block px-6 py-2 rounded-xl"
-            style={{ textShadow: "0 0 20px rgba(102, 153, 255, 0.5)" }}
-          >
-            <Link
-              to="/landing"
-              className="text-white hover:text-blue-400 transition-all font-medium px-6 py-2 rounded-lg hover:bg-white/5"
+        {/* Decorative Elements */}
+        <div className="relative z-10 text-center px-8">
+          <div className="mb-8">
+            <div
+              className="text-6xl font-black mb-4"
+              style={{ color: accentColor }}
             >
               BrightKids
-            </Link>
-          </div>
-          <p className="text-gray-400 text-sm mt-4">
-            Đăng nhập để tiếp tục hành trình học tập
-          </p>
-        </div>
-
-        {/* Login Card */}
-        <div className="glass-effect rounded-3xl p-8 mb-8 login-container">
-          <form onSubmit={handleLogin} className="space-y-6">
-            {/* Email Field */}
-            <div>
-              <label
-                htmlFor="email"
-                className="block mb-2 text-sm font-semibold text-gray-300"
-              >
-                Địa chỉ Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                className={`w-full input-field px-4 py-3 rounded-xl text-white placeholder-gray-600 ${
-                  errors.email ? "error" : ""
-                }`}
-              />
-              {errors.email && <p className="error-text">{errors.email}</p>}
             </div>
+            <div className="text-xl font-bold text-gray-800 mb-2">
+              Hành Trình Học Tập Sáng Tạo
+            </div>
+            <p className="text-gray-600 max-w-md mx-auto leading-relaxed">
+              Khám phá thế giới lập trình, robotics và tài chính cùng những giáo
+              viên giỏi nhất
+            </p>
+          </div>
 
-            {/* Password Field */}
-            <div>
-              <label
-                htmlFor="password"
-                className="block mb-2 text-sm font-semibold text-gray-300"
+          {/* Illustration Circles */}
+          <div className="relative w-64 h-64 mx-auto mb-8">
+            <div className="absolute inset-0 rounded-full border-2 border-teal-200/50"></div>
+            <div className="absolute inset-8 rounded-full border-2 border-cyan-200/30"></div>
+            <div className="absolute inset-16 rounded-full bg-gradient-to-br from-cyan-400/10 to-teal-400/10"></div>
+
+            {/* Center Icon */}
+            <div className="absolute inset-0 flex items-center justify-center text-6xl floating-shape">
+              🚀
+            </div>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-4 max-w-xs mx-auto">
+            <div className="bg-white/60 backdrop-blur rounded-lg p-3">
+              <div
+                className="text-2xl font-black"
+                style={{ color: accentColor }}
               >
-                Mật khẩu
-              </label>
-              <div className="relative">
-                <input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className={`w-full input-field px-4 py-3 rounded-xl text-white placeholder-gray-600 pr-12 ${
-                    errors.password ? "error" : ""
-                  }`}
-                />
+                10K+
+              </div>
+              <div className="text-xs text-gray-600 font-medium">Học viên</div>
+            </div>
+            <div className="bg-white/60 backdrop-blur rounded-lg p-3">
+              <div
+                className="text-2xl font-black"
+                style={{ color: accentColor }}
+              >
+                50+
+              </div>
+              <div className="text-xs text-gray-600 font-medium">Khóa học</div>
+            </div>
+            <div className="bg-white/60 backdrop-blur rounded-lg p-3">
+              <div
+                className="text-2xl font-black"
+                style={{ color: accentColor }}
+              >
+                98%
+              </div>
+              <div className="text-xs text-gray-600 font-medium">Hài lòng</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Form Side */}
+      <div className="w-full md:w-1/2 flex flex-col items-center justify-center px-6 sm:px-8 lg:px-12 py-12 form-side">
+        <div className="w-full max-w-sm">
+          {/* Mobile Header */}
+          <div className="md:hidden text-center mb-8">
+            <div
+              className="text-4xl font-black mb-2"
+              style={{ color: accentColor }}
+            >
+              BrightKids
+            </div>
+            <p className="text-gray-600 text-sm">
+              Đăng nhập để tiếp tục hành trình học tập
+            </p>
+          </div>
+
+          {/* Form Container */}
+          <div className="form-container">
+            <h2 className="text-3xl font-black text-gray-900 mb-2">
+              Đăng Nhập
+            </h2>
+            <p className="text-gray-600 text-sm mb-8">
+              Nhập thông tin để tiếp tục
+            </p>
+
+            <form onSubmit={handleLogin} className="space-y-6">
+              {/* Email Field */}
+              <div className="input-group" style={{ animationDelay: "0.1s" }}>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-semibold text-gray-700 mb-3"
+                >
+                  Email
+                </label>
+                <div className="relative">
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                    <Mail size={20} />
+                  </div>
+                  <input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your@email.com"
+                    className={`w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 pl-12 text-gray-900 placeholder-gray-400 transition-all focus:bg-white focus:border-teal-500 focus:ring-1 focus:ring-teal-500 ${
+                      errors.email ? "error" : ""
+                    }`}
+                  />
+                </div>
+                {errors.email && <p className="error-text">{errors.email}</p>}
+              </div>
+
+              {/* Password Field */}
+              <div className="input-group" style={{ animationDelay: "0.2s" }}>
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-semibold text-gray-700 mb-3"
+                >
+                  Mật khẩu
+                </label>
+                <div className="relative">
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                    <Lock size={20} />
+                  </div>
+                  <input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="••••••••"
+                    className={`w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 pl-12 pr-12 text-gray-900 placeholder-gray-400 transition-all focus:bg-white focus:border-teal-500 focus:ring-1 focus:ring-teal-500 ${
+                      errors.password ? "error" : ""
+                    }`}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-teal-600 transition-colors"
+                  >
+                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </button>
+                </div>
+                {errors.password && (
+                  <p className="error-text">{errors.password}</p>
+                )}
+              </div>
+
+              {/* Remember & Forgot */}
+              <div
+                className="flex items-center justify-between text-sm"
+                style={{ animationDelay: "0.3s" }}
+              >
+                <label className="flex items-center gap-2 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                    className="w-4 h-4 bg-white border border-gray-300 rounded cursor-pointer accent-teal-600"
+                  />
+                  <span className="text-gray-600 group-hover:text-gray-700 transition-colors">
+                    Nhớ mật khẩu
+                  </span>
+                </label>
+                <a
+                  href="#"
+                  className="text-teal-600 hover:text-teal-700 font-medium transition-colors"
+                >
+                  Quên mật khẩu?
+                </a>
+              </div>
+
+              {/* Login Button */}
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full text-white font-black py-3 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+                style={{
+                  backgroundColor: accentColor,
+                  boxShadow: `0 4px 12px rgba(8, 145, 178, 0.3)`,
+                }}
+              >
+                {loading ? (
+                  <>
+                    <div className="loading-spinner"></div>
+                    Đang đăng nhập...
+                  </>
+                ) : (
+                  "Đăng nhập"
+                )}
+              </button>
+
+              {/* Divider */}
+              <div className="flex items-center gap-4">
+                <div className="flex-1 h-px bg-gray-200"></div>
+                <span className="text-gray-500 text-sm font-medium">
+                  Hoặc tiếp tục với
+                </span>
+                <div className="flex-1 h-px bg-gray-200"></div>
+              </div>
+
+              {/* Social Login */}
+              <div className="grid grid-cols-3 gap-4">
                 <button
                   type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-400 transition-colors"
+                  onClick={() => handleSocialLogin("Google")}
+                  className="btn-social py-3 rounded-lg flex items-center justify-center text-xl font-bold"
                 >
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  G
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleSocialLogin("Facebook")}
+                  className="btn-social py-3 rounded-lg flex items-center justify-center text-xl font-bold"
+                >
+                  f
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleSocialLogin("Apple")}
+                  className="btn-social py-3 rounded-lg flex items-center justify-center text-xl font-bold"
+                >
+                  ⊕
                 </button>
               </div>
-              {errors.password && (
-                <p className="error-text">{errors.password}</p>
-              )}
-            </div>
+            </form>
+          </div>
 
-            {/* Remember Me & Forgot Password */}
-            <div className="flex items-center justify-between text-sm">
-              <label className="flex items-center gap-2 cursor-pointer group">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4 bg-white/5 border border-white/20 rounded cursor-pointer accent-blue-400"
-                />
-                <span className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                  Nhớ mật khẩu
-                </span>
-              </label>
+          {/* Sign Up Link */}
+          <div className="mt-8 text-center text-gray-700">
+            <p>
+              Chưa có tài khoản?{" "}
               <a
-                href="/forgot-password"
-                className="text-gray-400 hover:text-blue-400 link-hover transition-colors"
+                href="#"
+                className="font-black transition-colors"
+                style={{ color: accentColor }}
               >
-                Quên mật khẩu?
+                Đăng ký
+              </a>
+            </p>
+          </div>
+
+          {/* Footer Note */}
+          <div className="mt-8 pt-8 border-t border-gray-200 text-center text-xs text-gray-600 space-y-2">
+            <p>© 2024 BrightKids. All rights reserved.</p>
+            <div className="flex gap-4 justify-center">
+              <a href="#" className="hover:text-teal-600 transition-colors">
+                Điều khoản
+              </a>
+              <span>•</span>
+              <a href="#" className="hover:text-teal-600 transition-colors">
+                Chính sách
+              </a>
+              <span>•</span>
+              <a href="#" className="hover:text-teal-600 transition-colors">
+                Liên hệ
               </a>
             </div>
-
-            {/* Login Button */}
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full btn-login bg-blue-400 hover:bg-blue-500 text-black font-black py-3 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-              style={{
-                boxShadow: "0 0 30px rgba(102, 153, 255, 0.5)",
-              }}
-            >
-              {loading ? (
-                <>
-                  <div className="loading-spinner"></div>
-                  Đang đăng nhập...
-                </>
-              ) : (
-                "Đăng nhập"
-              )}
-            </button>
-
-            {/* Divider */}
-            <div className="flex items-center gap-4 my-8">
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-              <span className="text-gray-500 text-sm">Hoặc đăng nhập bằng</span>
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-            </div>
-
-            {/* Social Login Buttons */}
-            <div className="grid grid-cols-3 gap-4">
-              <button
-                type="button"
-                onClick={() => handleSocialLogin("Google")}
-                className="social-btn py-3 rounded-xl flex items-center justify-center text-xl hover:bg-blue-400/10"
-                title="Google Login"
-              >
-                🔵
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSocialLogin("Facebook")}
-                className="social-btn py-3 rounded-xl flex items-center justify-center text-xl hover:bg-blue-400/10"
-                title="Facebook Login"
-              >
-                👤
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSocialLogin("Apple")}
-                className="social-btn py-3 rounded-xl flex items-center justify-center text-xl hover:bg-blue-400/10"
-                title="Apple Login"
-              >
-                🍎
-              </button>
-            </div>
-          </form>
-        </div>
-
-        {/* Sign Up Link */}
-        <div className="text-center text-gray-400 login-container">
-          <p className="mb-4">
-            Chưa có tài khoản?{" "}
-            <a
-              href="/register"
-              className="text-blue-400 font-black hover:text-blue-300 transition-colors"
-            >
-              Đăng ký ngay
-            </a>
-          </p>
-        </div>
-
-        {/* Info Box */}
-        <div className="glass-effect rounded-2xl p-6 mt-8 login-container border border-blue-400/20 bg-blue-400/5">
-          <div className="flex gap-3">
-            <div className="text-2xl flex-shrink-0">💡</div>
-            <div>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                <span className="font-bold text-blue-400">Mẹo:</span> Sử dụng
-                email học viên BrightKids của bạn hoặc tạo tài khoản mới để bắt
-                đầu học tập.
-              </p>
-            </div>
           </div>
-        </div>
-
-        {/* Footer Links */}
-        <div className="mt-12 text-center text-xs text-gray-600 flex gap-4 justify-center flex-wrap login-container">
-          <a href="#" className="hover:text-blue-400 transition-colors">
-            Điều khoản
-          </a>
-          <span>•</span>
-          <a href="#" className="hover:text-blue-400 transition-colors">
-            Chính sách
-          </a>
-          <span>•</span>
-          <a href="#" className="hover:text-blue-400 transition-colors">
-            Liên hệ
-          </a>
         </div>
       </div>
     </div>
