@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 
 export default function Login() {
@@ -52,7 +52,12 @@ export default function Login() {
       userName.charAt(0).toUpperCase() + userName.slice(1)
     );
 
-    window.location.href = "/learn";
+    // window.location.href = "/learn";
+    if (email === "admin@gmail.com") {
+      window.location.href = "/dashboard";
+    } else {
+      window.location.href = "/learn";
+    }
   };
 
   const handleSocialLogin = (provider) => {

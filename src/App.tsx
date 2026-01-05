@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import LandingEdu from "./views/LandingEdu";
-import DashboardEdu from "./views/DashboardEdu";
-import Test from "./views/Test";
+import Landing from "./views/Landing";
+import Dashboard from "./views/Dashboard";
+
 import Login from "./views/Login";
 import Register from "./views/Register";
 import Learn from "./views/Learn";
@@ -15,13 +15,13 @@ const ProtectedRoute = ({ children }) => {
 export default function App() {
   return (
     <Routes>
-      <Route path="/dashboard" element={<DashboardEdu />} />
-      <Route path="/landing" element={<LandingEdu />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/landing" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/learn" element={<Learn />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/test" element={<Test />} />
+
       <Route
         path="/"
         element={

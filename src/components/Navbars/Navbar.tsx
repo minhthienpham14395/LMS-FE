@@ -1,136 +1,297 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
-export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+interface NavbarProps {
+  accentColor?: string;
+  isLoggedIn?: boolean;
+  userName?: string;
+  userEmail?: string;
+  onLoginClick?: () => void;
+  onSignupClick?: () => void;
+  onLogoutClick?: () => void;
+  onProfileClick?: () => void;
+  onDashboardClick?: () => void;
+  onSettingsClick?: () => void;
+}
 
+export default function Navbar({
+  accentColor = "#0891b2",
+  isLoggedIn = false,
+  userName = "Admin",
+  userEmail = "user@brightkids.com",
+  onLoginClick,
+  onSignupClick,
+  onLogoutClick,
+  onProfileClick,
+  onDashboardClick,
+  onSettingsClick,
+}: NavbarProps) {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Handle click outside dropdown
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setDropdownOpen(false);
+      }
+    }
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    if (dropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
 
-  const navItems = [
-    { name: 'Trang chủ', href: '#home' },
-    { name: 'Giới thiệu', href: '#about' },
-    { name: 'Dịch vụ', href: '#services' },
-    { name: 'Dự án', href: '#projects' },
-    { name: 'Liên hệ', href: '#contact' },
-  ];
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [dropdownOpen]);
+
+  const handleLogout = () => {
+    setDropdownOpen(false);
+    onLogoutClick?.();
+  };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/90 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0 group cursor-pointer">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-                <span className="text-white font-bold text-xl">L</span>
-              </div>
-              <span className={`text-xl font-bold transition-colors duration-300 ${
-                isScrolled ? 'text-gray-800' : 'text-white'
-              }`}>
-                Logo
-              </span>
-            </div>
-          </div>
+    <>
+      <style>{`
+        @keyframes slideDown {
+          from {
+            transform: translateY(-100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
 
-          {/* Desktop Menu */}
-          <div className="hidden md:block">
-            <div className="flex items-center space-x-1">
-              {navItems.map((item, index) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105 relative group ${
-                    isScrolled
-                      ? 'text-gray-700 hover:text-blue-600'
-                      : 'text-white hover:text-blue-200'
-                  }`}
+        .navbar-container {
+          animation: slideDown 0.6s ease-out;
+          background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(249, 250, 251, 0.9));
+          backdrop-filter: blur(10px);
+        }
+
+        nav a {
+          position: relative;
+          transition: all 0.3s ease;
+        }
+
+        nav a::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: ${accentColor};
+          transition: width 0.3s;
+          box-shadow: 0 0 8px rgba(8, 145, 178, 0.3);
+        }
+
+        nav a:hover::after {
+          width: 100%;
+        }
+
+        .dropdown-menu {
+          animation: slideDown 0.3s ease-out;
+        }
+
+        @media (max-width: 768px) {
+          .navbar-nav {
+            display: none;
+          }
+
+          .navbar-container {
+            padding: 1rem;
+          }
+
+          .navbar-logo {
+            font-size: 1.5rem;
+          }
+        }
+      `}</style>
+
+      {/* Navbar */}
+      <header className="navbar-container fixed top-0 w-full px-12 py-5 flex justify-between items-center z-50 border-b border-gray-200/50">
+        {/* Logo */}
+        <div className="flex items-center gap-2">
+          <div
+            className="navbar-logo text-3xl font-black"
+            style={{
+              color: accentColor,
+              textShadow: `0 0 12px rgba(8, 145, 178, 0.2)`,
+            }}
+          >
+            <a href="/" className="hover:opacity-80 transition-opacity">
+              BrightKids
+            </a>
+          </div>
+        </div>
+
+        {/* Navigation Links */}
+        <nav className="navbar-nav hidden md:flex gap-8 items-center">
+          <a
+            href="#skills"
+            className="text-gray-700 hover:text-teal-700 transition-all font-medium"
+          >
+            Khóa học
+          </a>
+          <a
+            href="#why"
+            className="text-gray-700 hover:text-teal-700 transition-all font-medium"
+          >
+            Tại sao chọn chúng tôi
+          </a>
+          <a
+            href="#teachers"
+            className="text-gray-700 hover:text-teal-700 transition-all font-medium"
+          >
+            Giáo viên
+          </a>
+          <a
+            href="#contact"
+            className="text-gray-700 hover:text-teal-700 transition-all font-medium"
+          >
+            Liên hệ
+          </a>
+        </nav>
+
+        {/* Auth Section */}
+        <div className="flex items-center gap-4">
+          {!isLoggedIn ? (
+            <>
+              {/* Login Button */}
+              <button
+                onClick={onLoginClick}
+                className="text-gray-700 hover:text-teal-700 transition-all font-medium px-6 py-2 rounded-lg hover:bg-gray-100"
+              >
+                <Link
+                  to="/login"
+                  className="text-teal-700 hover:text-teal-800 transition-all font-medium px-6 py-2 rounded-lg hover:bg-gray-100"
+                >
+                  Đăng nhập
+                </Link>
+              </button>
+
+              {/* Signup Button */}
+              <button
+                onClick={onSignupClick}
+                className="text-white px-6 py-2 rounded-lg font-semibold hover:shadow-md transition-all"
+                style={{
+                  backgroundColor: accentColor,
+                  boxShadow: `0 4px 12px rgba(8, 145, 178, 0.2)`,
+                }}
+              >
+                <Link
+                  to="/register"
+                  className="text-teal-700 hover:text-teal-800 transition-all font-medium px-6 py-2 rounded-lg "
+                >
+                  Đăng ký
+                </Link>
+              </button>
+            </>
+          ) : (
+            // User Dropdown Menu
+            <div className="relative" ref={dropdownRef}>
+              {/* User Profile Button */}
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all"
+              >
+                {/* User Avatar */}
+                <div
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-white font-black text-sm"
                   style={{
-                    animationDelay: `${index * 0.1}s`,
+                    backgroundColor: accentColor,
+                    boxShadow: `0 0 10px rgba(8, 145, 178, 0.2)`,
                   }}
                 >
-                  {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
-                </a>
-              ))}
+                  {userName.charAt(0).toUpperCase()}
+                </div>
+
+                {/* Username */}
+                <span className="text-gray-900 font-semibold text-sm">
+                  {userName}
+                </span>
+
+                {/* Dropdown Arrow */}
+                <svg
+                  className={`w-4 h-4 text-gray-600 transition-transform ${
+                    dropdownOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                  />
+                </svg>
+              </button>
+
+              {/* Dropdown Menu */}
+              {dropdownOpen && (
+                <div className="dropdown-menu absolute right-0 top-12 w-56 bg-white border border-gray-200 rounded-xl overflow-hidden shadow-lg z-50">
+                  {/* User Info Section */}
+                  <div className="px-4 py-3 border-b border-gray-200">
+                    <p className="text-gray-900 font-semibold text-sm">
+                      {userName}
+                    </p>
+                    <p className="text-gray-500 text-xs">{userEmail}</p>
+                  </div>
+
+                  {/* Menu Items */}
+                  <div className="p-2 space-y-1">
+                    <button
+                      onClick={() => {
+                        setDropdownOpen(false);
+                        onProfileClick?.();
+                      }}
+                      className="w-full text-left px-4 py-2 hover:bg-gray-50 text-gray-900 text-sm rounded transition-all"
+                    >
+                      👤 Hồ sơ
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setDropdownOpen(false);
+                        onDashboardClick?.();
+                      }}
+                      className="w-full text-left px-4 py-2 hover:bg-gray-50 text-gray-900 text-sm rounded transition-all"
+                    >
+                      📊 Dashboard
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setDropdownOpen(false);
+                        onSettingsClick?.();
+                      }}
+                      className="w-full text-left px-4 py-2 hover:bg-gray-50 text-gray-900 text-sm rounded transition-all"
+                    >
+                      ⚙️ Cài đặt
+                    </button>
+                  </div>
+
+                  {/* Logout Button */}
+                  <div className="border-t border-gray-200 p-2">
+                    <button
+                      onClick={handleLogout}
+                      className="w-full px-4 py-2 hover:bg-red-50 text-red-600 text-sm rounded transition-all font-semibold"
+                    >
+                      🚪 Đăng xuất
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <button className="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium hover:shadow-lg hover:scale-105 transition-all duration-300 hover:from-blue-600 hover:to-purple-700">
-              Bắt đầu
-            </button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 rounded-lg transition-colors duration-300 ${
-                isScrolled
-                  ? 'text-gray-700 hover:bg-gray-100'
-                  : 'text-white hover:bg-white/10'
-              }`}
-              aria-label="Toggle menu"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {isMobileMenuOpen ? (
-                  <path d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
+          )}
         </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="px-4 pt-2 pb-4 space-y-2 bg-white/95 backdrop-blur-md shadow-lg">
-          {navItems.map((item, index) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-blue-600 transition-all duration-300 font-medium transform hover:translate-x-2"
-              style={{
-                animationDelay: `${index * 0.05}s`,
-              }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {item.name}
-            </a>
-          ))}
-          <button className="w-full mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium hover:shadow-lg hover:scale-105 transition-all duration-300">
-            Bắt đầu
-          </button>
-        </div>
-      </div>
-    </nav>
+      </header>
+    </>
   );
 }

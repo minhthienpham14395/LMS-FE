@@ -126,7 +126,7 @@ export default function Register() {
   };
 
   const getPasswordStrengthColor = () => {
-    if (passwordStrength === 0) return "bg-gray-500";
+    if (passwordStrength === 0) return "bg-gray-400";
     if (passwordStrength <= 2) return "bg-red-500";
     if (passwordStrength <= 3) return "bg-yellow-500";
     return "bg-green-500";
@@ -140,7 +140,7 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center px-4 py-12 relative overflow-hidden">
+    <div className="min-h-screen bg-white text-gray-900 flex items-center justify-center px-4 py-12 relative overflow-hidden">
       <style>{`
         @keyframes slideIn {
           from {
@@ -164,23 +164,23 @@ export default function Register() {
 
         @keyframes glow {
           0%, 100% {
-            text-shadow: 0 0 20px rgba(102, 153, 255, 0.5);
-            box-shadow: 0 0 20px rgba(102, 153, 255, 0.3);
+            text-shadow: 0 0 20px rgba(8, 145, 178, 0.3);
+            box-shadow: 0 0 20px rgba(8, 145, 178, 0.2);
           }
           50% {
-            text-shadow: 0 0 40px rgba(102, 153, 255, 0.8);
-            box-shadow: 0 0 40px rgba(102, 153, 255, 0.5);
+            text-shadow: 0 0 40px rgba(8, 145, 178, 0.5);
+            box-shadow: 0 0 40px rgba(8, 145, 178, 0.3);
           }
         }
 
         @keyframes pulse {
           0%, 100% {
             transform: scale(1);
-            opacity: 0.3;
+            opacity: 0.15;
           }
           50% {
             transform: scale(1.1);
-            opacity: 0.5;
+            opacity: 0.25;
           }
         }
 
@@ -215,9 +215,9 @@ export default function Register() {
           display: inline-block;
           width: 20px;
           height: 20px;
-          border: 3px solid rgba(102, 153, 255, 0.3);
+          border: 3px solid rgba(8, 145, 178, 0.2);
           border-radius: 50%;
-          border-top-color: #6699FF;
+          border-top-color: #0891b2;
           animation: spin 1s linear infinite;
         }
 
@@ -228,31 +228,43 @@ export default function Register() {
         }
 
         .glass-effect {
-          background: rgba(255, 255, 255, 0.03);
+          background: rgba(255, 255, 255, 0.7);
           backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(8, 145, 178, 0.15);
+          box-shadow: 0 8px 32px rgba(8, 145, 178, 0.12);
+          transition: box-shadow 0.3s ease;
+        }
+
+        .glass-effect:hover {
+          box-shadow: 0 12px 48px rgba(8, 145, 178, 0.18);
         }
 
         .input-field {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.9);
+          border: 1px solid rgba(8, 145, 178, 0.2);
+          color: #111827;
           transition: all 0.3s ease;
         }
 
         .input-field:focus {
-          background: rgba(102, 153, 255, 0.1);
-          border-color: #6699FF;
-          box-shadow: 0 0 15px rgba(102, 153, 255, 0.3);
+          background: rgba(8, 145, 178, 0.05);
+          border-color: #0891b2;
+          box-shadow: 0 0 15px rgba(8, 145, 178, 0.25);
+        }
+
+        .input-field::placeholder {
+          color: #9ca3af;
         }
 
         .btn-register {
           position: relative;
           overflow: hidden;
           transition: all 0.3s ease;
+          box-shadow: 0 6px 20px rgba(8, 145, 178, 0.3);
         }
 
         .btn-register:hover:not(:disabled) {
-          box-shadow: 0 0 30px rgba(102, 153, 255, 0.6);
+          box-shadow: 0 12px 32px rgba(8, 145, 178, 0.5);
           transform: translateY(-2px);
         }
 
@@ -262,24 +274,26 @@ export default function Register() {
 
         .social-btn {
           transition: all 0.3s ease;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(8, 145, 178, 0.2);
+          background: rgba(249, 250, 251, 0.8);
+          box-shadow: 0 2px 8px rgba(8, 145, 178, 0.08);
         }
 
         .social-btn:hover {
-          border-color: #6699FF;
-          background: rgba(102, 153, 255, 0.1);
-          box-shadow: 0 0 15px rgba(102, 153, 255, 0.3);
+          border-color: #0891b2;
+          background: rgba(8, 145, 178, 0.05);
+          box-shadow: 0 6px 16px rgba(8, 145, 178, 0.15);
+          transform: translateY(-2px);
         }
 
         .link-hover:hover {
-          color: #6699FF;
+          color: #0891b2;
         }
 
         label {
           font-size: 0.875rem;
           font-weight: 500;
-          color: #ccc;
+          color: #4b5563;
         }
 
         .error-text {
@@ -290,7 +304,7 @@ export default function Register() {
 
         .password-strength-bar {
           height: 4px;
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(8, 145, 178, 0.15);
           border-radius: 2px;
           margin-top: 0.5rem;
           overflow: hidden;
@@ -306,55 +320,56 @@ export default function Register() {
           appearance: none;
           width: 18px;
           height: 18px;
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          border: 1px solid rgba(8, 145, 178, 0.3);
           border-radius: 4px;
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(255, 255, 255, 0.9);
           cursor: pointer;
           transition: all 0.3s ease;
         }
 
         .checkbox-custom:checked {
-          background: #6699FF;
-          border-color: #6699FF;
-          box-shadow: 0 0 15px rgba(102, 153, 255, 0.5);
+          background: #0891b2;
+          border-color: #0891b2;
+          box-shadow: 0 0 15px rgba(8, 145, 178, 0.4);
         }
 
         .interest-tag {
           padding: 0.5rem 1rem;
           border-radius: 20px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(8, 145, 178, 0.2);
+          background: rgba(249, 250, 251, 0.8);
           cursor: pointer;
           transition: all 0.3s ease;
           font-size: 0.875rem;
+          color: #4b5563;
         }
 
         .interest-tag:hover {
-          border-color: #6699FF;
-          background: rgba(102, 153, 255, 0.1);
+          border-color: #0891b2;
+          background: rgba(8, 145, 178, 0.05);
         }
 
         .interest-tag.selected {
-          background: #6699FF;
-          color: #000;
-          border-color: #6699FF;
+          background: #0891b2;
+          color: #ffffff;
+          border-color: #0891b2;
           font-weight: 600;
-          box-shadow: 0 0 15px rgba(102, 153, 255, 0.5);
+          box-shadow: 0 0 15px rgba(8, 145, 178, 0.4);
         }
       `}</style>
 
       {/* Background Elements */}
-      <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-to-br from-blue-400 to-transparent opacity-20 top-0 right-0 -translate-y-32 translate-x-32 float-circle"></div>
-      <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-to-br from-blue-400 to-transparent opacity-15 bottom-0 left-0 -translate-x-32 translate-y-32 pulse-circle"></div>
-      <div className="absolute w-64 h-64 rounded-full blur-2xl bg-gradient-to-br from-blue-400 to-transparent opacity-10 top-1/2 right-1/4 -translate-y-1/2"></div>
+      <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-to-br from-cyan-200 to-transparent opacity-15 top-0 right-0 -translate-y-32 translate-x-32 float-circle"></div>
+      <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-to-br from-cyan-200 to-transparent opacity-10 bottom-0 left-0 -translate-x-32 translate-y-32 pulse-circle"></div>
+      <div className="absolute w-64 h-64 rounded-full blur-2xl bg-gradient-to-br from-cyan-200 to-transparent opacity-8 top-1/2 right-1/4 -translate-y-1/2"></div>
 
       {/* Animated Background Grid */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-3">
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "linear-gradient(0deg, #6699FF 1px, transparent 1px), linear-gradient(90deg, #6699FF 1px, transparent 1px)",
+              "linear-gradient(0deg, #0891b2 1px, transparent 1px), linear-gradient(90deg, #0891b2 1px, transparent 1px)",
             backgroundSize: "50px 50px",
           }}
         ></div>
@@ -364,17 +379,17 @@ export default function Register() {
         {/* Logo */}
         <div className="text-center mb-10 register-container">
           <div
-            className="text-4xl font-black text-blue-400 mb-2 glow-border inline-block px-6 py-2 rounded-xl"
-            style={{ textShadow: "0 0 20px rgba(102, 153, 255, 0.5)" }}
+            className="text-4xl font-black text-teal-700 mb-2 glow-border inline-block px-6 py-2 rounded-xl"
+            style={{ textShadow: "0 0 20px rgba(8, 145, 178, 0.2)" }}
           >
             <Link
               to="/landing"
-              className="text-white hover:text-blue-400 transition-all font-medium px-6 py-2 rounded-lg hover:bg-white/5"
+              className="text-teal-700 hover:text-teal-800 transition-all font-medium px-6 py-2 rounded-lg hover:bg-gray-100"
             >
               BrightKids
             </Link>
           </div>
-          <p className="text-gray-400 text-sm mt-3">
+          <p className="text-gray-600 text-sm mt-3">
             Tạo tài khoản để bắt đầu học tập cùng chúng tôi
           </p>
         </div>
@@ -386,7 +401,7 @@ export default function Register() {
             <div>
               <label
                 htmlFor="fullName"
-                className="block mb-2 text-sm font-semibold text-gray-300"
+                className="block mb-2 text-sm font-semibold text-gray-700"
               >
                 Họ và Tên
               </label>
@@ -397,7 +412,7 @@ export default function Register() {
                 value={formData.fullName}
                 onChange={handleInputChange}
                 placeholder="Nhập họ tên đầy đủ"
-                className={`w-full input-field px-4 py-3 rounded-xl text-white placeholder-gray-600 ${
+                className={`w-full input-field px-4 py-3 rounded-xl placeholder-gray-400 ${
                   errors.fullName ? "error" : ""
                 }`}
               />
@@ -410,7 +425,7 @@ export default function Register() {
             <div>
               <label
                 htmlFor="email"
-                className="block mb-2 text-sm font-semibold text-gray-300"
+                className="block mb-2 text-sm font-semibold text-gray-700"
               >
                 Địa chỉ Email
               </label>
@@ -421,7 +436,7 @@ export default function Register() {
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="your@email.com"
-                className={`w-full input-field px-4 py-3 rounded-xl text-white placeholder-gray-600 ${
+                className={`w-full input-field px-4 py-3 rounded-xl placeholder-gray-400 ${
                   errors.email ? "error" : ""
                 }`}
               />
@@ -434,7 +449,7 @@ export default function Register() {
               <div>
                 <label
                   htmlFor="age"
-                  className="block mb-2 text-sm font-semibold text-gray-300"
+                  className="block mb-2 text-sm font-semibold text-gray-700"
                 >
                   Độ tuổi
                 </label>
@@ -443,13 +458,13 @@ export default function Register() {
                   name="age"
                   value={formData.age}
                   onChange={handleInputChange}
-                  className={`w-full input-field px-4 py-3 rounded-xl text-white ${
+                  className={`w-full input-field px-4 py-3 rounded-xl ${
                     errors.age ? "error" : ""
                   }`}
                 >
                   <option value="">Chọn độ tuổi</option>
                   {ageGroups.map((group) => (
-                    <option key={group} value={group} className="bg-gray-900">
+                    <option key={group} value={group} className="bg-white">
                       {group}
                     </option>
                   ))}
@@ -461,7 +476,7 @@ export default function Register() {
               <div>
                 <label
                   htmlFor="interest"
-                  className="block mb-2 text-sm font-semibold text-gray-300"
+                  className="block mb-2 text-sm font-semibold text-gray-700"
                 >
                   Sở thích
                 </label>
@@ -470,7 +485,7 @@ export default function Register() {
                   name="interest"
                   value={formData.interest}
                   onChange={handleInputChange}
-                  className={`w-full input-field px-4 py-3 rounded-xl text-white ${
+                  className={`w-full input-field px-4 py-3 rounded-xl ${
                     errors.interest ? "error" : ""
                   }`}
                 >
@@ -479,7 +494,7 @@ export default function Register() {
                     <option
                       key={interest}
                       value={interest}
-                      className="bg-gray-900"
+                      className="bg-white"
                     >
                       {interest}
                     </option>
@@ -495,7 +510,7 @@ export default function Register() {
             <div>
               <label
                 htmlFor="password"
-                className="block mb-2 text-sm font-semibold text-gray-300"
+                className="block mb-2 text-sm font-semibold text-gray-700"
               >
                 Mật khẩu
               </label>
@@ -507,14 +522,14 @@ export default function Register() {
                   value={formData.password}
                   onChange={handleInputChange}
                   placeholder="••••••••"
-                  className={`w-full input-field px-4 py-3 rounded-xl text-white placeholder-gray-600 pr-12 ${
+                  className={`w-full input-field px-4 py-3 rounded-xl placeholder-gray-400 pr-12 ${
                     errors.password ? "error" : ""
                   }`}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-400 transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-600 hover:text-teal-700 transition-colors"
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
@@ -527,15 +542,15 @@ export default function Register() {
                       style={{ width: `${(passwordStrength / 5) * 100}%` }}
                     ></div>
                   </div>
-                  <p className="text-xs text-gray-400 mt-1">
+                  <p className="text-xs text-gray-600 mt-1">
                     Độ mạnh:{" "}
                     <span
                       className={`${
                         passwordStrength <= 2
-                          ? "text-red-400"
+                          ? "text-red-500"
                           : passwordStrength <= 3
-                          ? "text-yellow-400"
-                          : "text-green-400"
+                          ? "text-yellow-600"
+                          : "text-green-600"
                       }`}
                     >
                       {getPasswordStrengthText()}
@@ -552,7 +567,7 @@ export default function Register() {
             <div>
               <label
                 htmlFor="confirmPassword"
-                className="block mb-2 text-sm font-semibold text-gray-300"
+                className="block mb-2 text-sm font-semibold text-gray-700"
               >
                 Xác nhận mật khẩu
               </label>
@@ -564,14 +579,14 @@ export default function Register() {
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
                   placeholder="••••••••"
-                  className={`w-full input-field px-4 py-3 rounded-xl text-white placeholder-gray-600 pr-12 ${
+                  className={`w-full input-field px-4 py-3 rounded-xl placeholder-gray-400 pr-12 ${
                     errors.confirmPassword ? "error" : ""
                   }`}
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-400 transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-600 hover:text-teal-700 transition-colors"
                 >
                   {showConfirmPassword ? (
                     <EyeOff size={20} />
@@ -584,13 +599,13 @@ export default function Register() {
                 <div className="mt-2 flex items-center gap-2 text-xs">
                   {formData.password === formData.confirmPassword ? (
                     <>
-                      <Check size={16} className="text-green-500" />
-                      <span className="text-green-400">Mật khẩu khớp</span>
+                      <Check size={16} className="text-green-600" />
+                      <span className="text-green-700">Mật khẩu khớp</span>
                     </>
                   ) : (
                     <>
                       <X size={16} className="text-red-500" />
-                      <span className="text-red-400">Mật khẩu không khớp</span>
+                      <span className="text-red-600">Mật khẩu không khớp</span>
                     </>
                   )}
                 </div>
@@ -612,14 +627,14 @@ export default function Register() {
               />
               <label
                 htmlFor="terms"
-                className="text-xs text-gray-400 leading-relaxed cursor-pointer"
+                className="text-xs text-gray-600 leading-relaxed cursor-pointer"
               >
                 Tôi đồng ý với{" "}
-                <a href="#" className="text-blue-400 hover:text-blue-300">
+                <a href="#" className="text-teal-700 hover:text-teal-800">
                   Điều khoản dịch vụ
                 </a>{" "}
                 và{" "}
-                <a href="#" className="text-blue-400 hover:text-blue-300">
+                <a href="#" className="text-teal-700 hover:text-teal-800">
                   Chính sách bảo mật
                 </a>{" "}
                 của BrightKids
@@ -631,9 +646,9 @@ export default function Register() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full btn-register bg-blue-400 hover:bg-blue-500 text-black font-black py-3 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-6"
+              className="w-full btn-register bg-teal-600 hover:bg-teal-700 text-white font-black py-3 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-6"
               style={{
-                boxShadow: "0 0 30px rgba(102, 153, 255, 0.5)",
+                boxShadow: "0 6px 20px rgba(8, 145, 178, 0.3)",
               }}
             >
               {loading ? (
@@ -648,9 +663,9 @@ export default function Register() {
 
             {/* Divider */}
             <div className="flex items-center gap-4 my-6">
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
               <span className="text-gray-500 text-sm">Hoặc đăng ký bằng</span>
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
             </div>
 
             {/* Social Signup */}
@@ -658,21 +673,21 @@ export default function Register() {
               <button
                 type="button"
                 onClick={() => handleSocialSignup("Google")}
-                className="social-btn py-3 rounded-xl flex items-center justify-center text-xl hover:bg-blue-400/10"
+                className="social-btn py-3 rounded-xl flex items-center justify-center text-xl hover:bg-teal-600/10"
               >
                 🔵
               </button>
               <button
                 type="button"
                 onClick={() => handleSocialSignup("Facebook")}
-                className="social-btn py-3 rounded-xl flex items-center justify-center text-xl hover:bg-blue-400/10"
+                className="social-btn py-3 rounded-xl flex items-center justify-center text-xl hover:bg-teal-600/10"
               >
                 👤
               </button>
               <button
                 type="button"
                 onClick={() => handleSocialSignup("Apple")}
-                className="social-btn py-3 rounded-xl flex items-center justify-center text-xl hover:bg-blue-400/10"
+                className="social-btn py-3 rounded-xl flex items-center justify-center text-xl hover:bg-teal-600/10"
               >
                 🍎
               </button>
@@ -681,12 +696,12 @@ export default function Register() {
         </div>
 
         {/* Sign In Link */}
-        <div className="text-center text-gray-400 register-container">
+        <div className="text-center text-gray-600 register-container">
           <p className="mb-6">
             Đã có tài khoản?{" "}
             <Link
               to="/login"
-              className="text-white hover:text-blue-400 transition-all font-medium px-6 py-2 rounded-lg hover:bg-white/5"
+              className="text-teal-700 hover:text-teal-800 transition-all font-medium px-6 py-2 rounded-lg hover:bg-gray-100"
             >
               Đăng nhập ngay
             </Link>
@@ -694,12 +709,12 @@ export default function Register() {
         </div>
 
         {/* Info Box */}
-        <div className="glass-effect rounded-2xl p-6 register-container border border-blue-400/20 bg-blue-400/5">
+        <div className="glass-effect rounded-2xl p-6 register-container border border-teal-300 bg-teal-50">
           <div className="flex gap-3">
             <div className="text-2xl flex-shrink-0">🎓</div>
             <div>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                <span className="font-bold text-blue-400">Lợi ích:</span> Tạo
+              <p className="text-sm text-gray-700 leading-relaxed">
+                <span className="font-bold text-teal-700">Lợi ích:</span> Tạo
                 tài khoản ngay để nhận buổi học thử miễn phí và truy cập hàng
                 loạt khóa học chất lượng cao từ các giáo viên giàu kinh nghiệm.
               </p>
@@ -709,15 +724,15 @@ export default function Register() {
 
         {/* Footer Links */}
         <div className="mt-10 text-center text-xs text-gray-600 flex gap-4 justify-center flex-wrap register-container">
-          <a href="#" className="hover:text-blue-400 transition-colors">
+          <a href="#" className="hover:text-teal-700 transition-colors">
             Trợ giúp
           </a>
           <span>•</span>
-          <a href="#" className="hover:text-blue-400 transition-colors">
+          <a href="#" className="hover:text-teal-700 transition-colors">
             Liên hệ
           </a>
           <span>•</span>
-          <a href="#" className="hover:text-blue-400 transition-colors">
+          <a href="#" className="hover:text-teal-700 transition-colors">
             Blog
           </a>
         </div>
