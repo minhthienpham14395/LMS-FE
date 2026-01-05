@@ -14,6 +14,8 @@ export default function ForgotPassword() {
   const [errors, setErrors] = useState({});
   const [passwordStrength, setPasswordStrength] = useState(0);
 
+  const accentColor = "#0891b2"; // Teal accent color
+
   const calculatePasswordStrength = (password) => {
     let strength = 0;
     if (password.length >= 8) strength++;
@@ -128,7 +130,7 @@ export default function ForgotPassword() {
   };
 
   const getPasswordStrengthColor = () => {
-    if (passwordStrength === 0) return "bg-gray-500";
+    if (passwordStrength === 0) return "bg-gray-400";
     if (passwordStrength <= 2) return "bg-red-500";
     if (passwordStrength <= 3) return "bg-yellow-500";
     return "bg-green-500";
@@ -142,7 +144,7 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center px-4 py-12 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 text-gray-900 flex items-center justify-center px-4 py-12 relative overflow-hidden">
       <style>{`
         @keyframes slideIn {
           from {
@@ -199,27 +201,33 @@ export default function ForgotPassword() {
         }
 
         .glass-effect {
-          background: rgba(255, 255, 255, 0.03);
+          background: rgba(255, 255, 255, 0.9);
+          border: 1px solid rgba(8, 145, 178, 0.2);
+          box-shadow: 0 8px 32px rgba(8, 145, 178, 0.1);
           backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .input-field {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.95);
+          border: 1px solid rgba(8, 145, 178, 0.2);
+          color: #111827;
           transition: all 0.3s ease;
         }
 
         .input-field:focus {
           outline: none;
-          background: rgba(102, 153, 255, 0.1);
-          border-color: #6699FF;
-          box-shadow: 0 0 15px rgba(102, 153, 255, 0.3);
+          background: rgba(255, 255, 255, 1);
+          border-color: #0891b2;
+          box-shadow: 0 0 15px rgba(8, 145, 178, 0.3);
         }
 
         .input-field.error {
           border-color: #ef4444 !important;
           background-color: rgba(239, 68, 68, 0.05) !important;
+        }
+
+        .input-field::placeholder {
+          color: #9CA3AF;
         }
 
         .btn-primary {
@@ -228,11 +236,11 @@ export default function ForgotPassword() {
 
         .btn-primary:hover:not(:disabled) {
           transform: translateY(-2px);
-          box-shadow: 0 0 30px rgba(102, 153, 255, 0.6);
+          box-shadow: 0 12px 32px rgba(8, 145, 178, 0.3);
         }
 
         .btn-primary:disabled {
-          opacity: 0.5;
+          opacity: 0.6;
           cursor: not-allowed;
         }
 
@@ -240,9 +248,9 @@ export default function ForgotPassword() {
           display: inline-block;
           width: 20px;
           height: 20px;
-          border: 3px solid rgba(102, 153, 255, 0.3);
+          border: 3px solid rgba(8, 145, 178, 0.3);
           border-radius: 50%;
-          border-top-color: #6699FF;
+          border-top-color: #0891b2;
           animation: spin 1s linear infinite;
         }
 
@@ -265,18 +273,18 @@ export default function ForgotPassword() {
         }
 
         .step-indicator.active {
-          background: #6699FF;
-          color: black;
-          box-shadow: 0 0 20px rgba(102, 153, 255, 0.5);
+          background: #0891b2;
+          color: white;
+          box-shadow: 0 0 20px rgba(8, 145, 178, 0.5);
         }
 
         .step-line {
           height: 2px;
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(8, 145, 178, 0.1);
         }
 
         .step-line.active {
-          background: #6699FF;
+          background: #0891b2;
         }
 
         .success-icon {
@@ -305,7 +313,7 @@ export default function ForgotPassword() {
 
         .password-strength-bar {
           height: 4px;
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(8, 145, 178, 0.1);
           border-radius: 2px;
           margin-top: 0.5rem;
           overflow: hidden;
@@ -319,19 +327,22 @@ export default function ForgotPassword() {
       `}</style>
 
       {/* Background Elements */}
-      <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-to-br from-blue-400 to-transparent opacity-20 top-0 right-0 -translate-y-32 translate-x-32 float-circle"></div>
-      <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-to-br from-blue-400 to-transparent opacity-15 bottom-0 left-0 -translate-x-32 translate-y-32 pulse-circle"></div>
+      <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-to-br from-cyan-400 to-transparent opacity-15 top-0 right-0 -translate-y-32 translate-x-32 float-circle"></div>
+      <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-to-br from-cyan-400 to-transparent opacity-10 bottom-0 left-0 -translate-x-32 translate-y-32 pulse-circle"></div>
 
       <div className="w-full max-w-md relative z-10">
         {/* Logo */}
         <div className="text-center mb-10 container">
           <div
-            className="text-4xl font-black text-blue-400 mb-2 glow-border inline-block px-6 py-2 rounded-xl"
-            style={{ textShadow: "0 0 20px rgba(102, 153, 255, 0.5)" }}
+            className="text-4xl font-black rounded-xl px-6 py-2 inline-block"
+            style={{
+              color: "#0891b2",
+              textShadow: "0 0 20px rgba(8, 145, 178, 0.3)",
+            }}
           >
             BrightKids
           </div>
-          <p className="text-gray-400 text-sm mt-3">Đặt lại mật khẩu của bạn</p>
+          <p className="text-gray-600 text-sm mt-3">Đặt lại mật khẩu của bạn</p>
         </div>
 
         {/* Step Indicator */}
@@ -339,7 +350,7 @@ export default function ForgotPassword() {
           <div className="flex items-center justify-between mb-10 container">
             <div
               className={`step-indicator w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
-                step === "email" ? "active" : "bg-white/10 text-gray-400"
+                step === "email" ? "active" : "bg-gray-200 text-gray-600"
               }`}
             >
               1
@@ -353,7 +364,7 @@ export default function ForgotPassword() {
               className={`step-indicator w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
                 ["otp", "newpassword", "success"].includes(step)
                   ? "active"
-                  : "bg-white/10 text-gray-400"
+                  : "bg-gray-200 text-gray-600"
               }`}
             >
               2
@@ -365,7 +376,7 @@ export default function ForgotPassword() {
             ></div>
             <div
               className={`step-indicator w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
-                step === "success" ? "active" : "bg-white/10 text-gray-400"
+                step === "success" ? "active" : "bg-gray-200 text-gray-600"
               }`}
             >
               3
@@ -376,10 +387,10 @@ export default function ForgotPassword() {
         {/* Email Step */}
         {step === "email" && (
           <div className="glass-effect rounded-3xl p-10 container">
-            <h2 className="text-2xl font-black text-white mb-2">
+            <h2 className="text-2xl font-black text-gray-900 mb-2">
               Quên mật khẩu?
             </h2>
-            <p className="text-gray-400 text-sm mb-8">
+            <p className="text-gray-600 text-sm mb-8">
               Nhập địa chỉ email của bạn và chúng tôi sẽ gửi cho bạn mã để đặt
               lại mật khẩu.
             </p>
@@ -388,13 +399,13 @@ export default function ForgotPassword() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block mb-2 text-sm font-semibold text-gray-300"
+                  className="block mb-2 text-sm font-semibold text-gray-700"
                 >
                   Địa chỉ Email
                 </label>
                 <div className="relative">
                   <Mail
-                    className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
                     size={20}
                   />
                   <input
@@ -403,7 +414,7 @@ export default function ForgotPassword() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
-                    className={`w-full input-field pl-12 px-4 py-3 rounded-xl text-white placeholder-gray-600 ${
+                    className={`w-full input-field pl-12 px-4 py-3 rounded-xl placeholder-gray-400 ${
                       errors.email ? "error" : ""
                     }`}
                   />
@@ -414,8 +425,11 @@ export default function ForgotPassword() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full btn-primary bg-blue-400 hover:bg-blue-500 text-black font-black py-3 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                style={{ boxShadow: "0 0 30px rgba(102, 153, 255, 0.5)" }}
+                className="w-full btn-primary text-white font-black py-3 rounded-xl transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                style={{
+                  backgroundColor: "#0891b2",
+                  boxShadow: "0 8px 24px rgba(8, 145, 178, 0.3)",
+                }}
               >
                 {loading ? (
                   <>
@@ -427,11 +441,12 @@ export default function ForgotPassword() {
                 )}
               </button>
 
-              <p className="text-center text-gray-400 text-sm">
+              <p className="text-center text-gray-600 text-sm">
                 Nhớ mật khẩu?{" "}
                 <Link
                   to="/login"
-                  className="text-blue-400 font-black hover:text-blue-300 transition-colors"
+                  className="font-black transition-colors"
+                  style={{ color: "#0891b2" }}
                 >
                   Đăng nhập
                 </Link>
@@ -445,23 +460,26 @@ export default function ForgotPassword() {
           <div className="glass-effect rounded-3xl p-10 container">
             <button
               onClick={() => setStep("email")}
-              className="flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors mb-6 font-semibold"
+              className="flex items-center gap-2 transition-colors mb-6 font-semibold"
+              style={{ color: "#0891b2" }}
             >
               <ArrowLeft size={18} />
               Quay lại
             </button>
 
-            <h2 className="text-2xl font-black text-white mb-2">
+            <h2 className="text-2xl font-black text-gray-900 mb-2">
               Xác nhận email
             </h2>
-            <p className="text-gray-400 text-sm mb-8">
+            <p className="text-gray-600 text-sm mb-8">
               Chúng tôi đã gửi mã xác nhận 6 chữ số đến{" "}
-              <span className="text-blue-400 font-semibold">{email}</span>
+              <span style={{ color: "#0891b2" }} className="font-semibold">
+                {email}
+              </span>
             </p>
 
             <form onSubmit={handleVerifyOTP} className="space-y-6">
               <div>
-                <label className="block mb-4 text-sm font-semibold text-gray-300">
+                <label className="block mb-4 text-sm font-semibold text-gray-700">
                   Nhập mã xác nhận
                 </label>
                 <div className="flex gap-2 justify-center">
@@ -484,12 +502,13 @@ export default function ForgotPassword() {
               </div>
 
               <div className="text-center">
-                <p className="text-gray-400 text-sm mb-3">
+                <p className="text-gray-600 text-sm mb-3">
                   Không nhận được mã?
                 </p>
                 <button
                   type="button"
-                  className="text-blue-400 font-semibold hover:text-blue-300 transition-colors text-sm"
+                  className="font-semibold transition-colors text-sm"
+                  style={{ color: "#0891b2" }}
                 >
                   Gửi lại mã
                 </button>
@@ -498,8 +517,11 @@ export default function ForgotPassword() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full btn-primary bg-blue-400 hover:bg-blue-500 text-black font-black py-3 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                style={{ boxShadow: "0 0 30px rgba(102, 153, 255, 0.5)" }}
+                className="w-full btn-primary text-white font-black py-3 rounded-xl transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                style={{
+                  backgroundColor: "#0891b2",
+                  boxShadow: "0 8px 24px rgba(8, 145, 178, 0.3)",
+                }}
               >
                 {loading ? (
                   <>
@@ -519,16 +541,17 @@ export default function ForgotPassword() {
           <div className="glass-effect rounded-3xl p-10 container">
             <button
               onClick={() => setStep("otp")}
-              className="flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors mb-6 font-semibold"
+              className="flex items-center gap-2 transition-colors mb-6 font-semibold"
+              style={{ color: "#0891b2" }}
             >
               <ArrowLeft size={18} />
               Quay lại
             </button>
 
-            <h2 className="text-2xl font-black text-white mb-2">
+            <h2 className="text-2xl font-black text-gray-900 mb-2">
               Đặt mật khẩu mới
             </h2>
-            <p className="text-gray-400 text-sm mb-8">
+            <p className="text-gray-600 text-sm mb-8">
               Nhập mật khẩu mới của bạn. Hãy chắc chắn nó mạnh và dễ nhớ.
             </p>
 
@@ -537,7 +560,7 @@ export default function ForgotPassword() {
               <div>
                 <label
                   htmlFor="newPassword"
-                  className="block mb-2 text-sm font-semibold text-gray-300"
+                  className="block mb-2 text-sm font-semibold text-gray-700"
                 >
                   Mật khẩu mới
                 </label>
@@ -553,14 +576,15 @@ export default function ForgotPassword() {
                       );
                     }}
                     placeholder="••••••••"
-                    className={`w-full input-field px-4 py-3 rounded-xl text-white placeholder-gray-600 pr-12 ${
+                    className={`w-full input-field px-4 py-3 rounded-xl placeholder-gray-400 pr-12 ${
                       errors.newPassword ? "error" : ""
                     }`}
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-400 transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition-colors"
+                    style={{ color: "#0891b2" }}
                   >
                     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                   </button>
@@ -573,15 +597,15 @@ export default function ForgotPassword() {
                         style={{ width: `${(passwordStrength / 5) * 100}%` }}
                       ></div>
                     </div>
-                    <p className="text-xs text-gray-400 mt-1">
+                    <p className="text-xs text-gray-600 mt-1">
                       Độ mạnh:{" "}
                       <span
                         className={`${
                           passwordStrength <= 2
-                            ? "text-red-400"
+                            ? "text-red-600"
                             : passwordStrength <= 3
-                            ? "text-yellow-400"
-                            : "text-green-400"
+                            ? "text-yellow-600"
+                            : "text-green-600"
                         }`}
                       >
                         {getPasswordStrengthText()}
@@ -598,7 +622,7 @@ export default function ForgotPassword() {
               <div>
                 <label
                   htmlFor="confirmPassword"
-                  className="block mb-2 text-sm font-semibold text-gray-300"
+                  className="block mb-2 text-sm font-semibold text-gray-700"
                 >
                   Xác nhận mật khẩu
                 </label>
@@ -609,14 +633,15 @@ export default function ForgotPassword() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="••••••••"
-                    className={`w-full input-field px-4 py-3 rounded-xl text-white placeholder-gray-600 pr-12 ${
+                    className={`w-full input-field px-4 py-3 rounded-xl placeholder-gray-400 pr-12 ${
                       errors.confirmPassword ? "error" : ""
                     }`}
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-400 transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition-colors"
+                    style={{ color: "#0891b2" }}
                   >
                     {showConfirmPassword ? (
                       <EyeOff size={20} />
@@ -633,8 +658,11 @@ export default function ForgotPassword() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full btn-primary bg-blue-400 hover:bg-blue-500 text-black font-black py-3 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                style={{ boxShadow: "0 0 30px rgba(102, 153, 255, 0.5)" }}
+                className="w-full btn-primary text-white font-black py-3 rounded-xl transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                style={{
+                  backgroundColor: "#0891b2",
+                  boxShadow: "0 8px 24px rgba(8, 145, 178, 0.3)",
+                }}
               >
                 {loading ? (
                   <>
@@ -654,14 +682,14 @@ export default function ForgotPassword() {
           <div className="glass-effect rounded-3xl p-10 text-center container">
             <div className="success-icon mb-6 flex justify-center">
               <div className="w-20 h-20 bg-gradient-to-br from-green-400 to-green-500 rounded-full flex items-center justify-center">
-                <CheckCircle size={48} className="text-black" />
+                <CheckCircle size={48} className="text-white" />
               </div>
             </div>
 
-            <h2 className="text-2xl font-black text-white mb-3">
+            <h2 className="text-2xl font-black text-gray-900 mb-3">
               Mật khẩu đã đặt lại thành công!
             </h2>
-            <p className="text-gray-400 text-sm mb-8">
+            <p className="text-gray-600 text-sm mb-8">
               Bạn có thể đăng nhập ngay bây giờ với mật khẩu mới của mình.
             </p>
 
@@ -671,8 +699,11 @@ export default function ForgotPassword() {
                 e.preventDefault();
                 window.location.href = "/login";
               }}
-              className="w-full btn-primary bg-blue-400 hover:bg-blue-500 text-black font-black py-3 rounded-xl transition-all inline-block"
-              style={{ boxShadow: "0 0 30px rgba(102, 153, 255, 0.5)" }}
+              className="w-full btn-primary text-white font-black py-3 rounded-xl transition-all inline-block"
+              style={{
+                backgroundColor: "#0891b2",
+                boxShadow: "0 8px 24px rgba(8, 145, 178, 0.3)",
+              }}
             >
               Quay lại Đăng nhập
             </a>
