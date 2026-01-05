@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -371,12 +372,13 @@ export default function Login() {
                     Nhớ mật khẩu
                   </span>
                 </label>
-                <a
-                  href="#"
-                  className="text-teal-600 hover:text-teal-700 font-medium transition-colors"
+                <Link
+                  to="/forgot-password"
+                  className="font-black transition-colors"
+                  style={{ color: accentColor }}
                 >
-                  Quên mật khẩu?
-                </a>
+                  Quên mật khẩu ?
+                </Link>
               </div>
 
               {/* Login Button */}
@@ -439,13 +441,13 @@ export default function Login() {
           <div className="mt-8 text-center text-gray-700">
             <p>
               Chưa có tài khoản?{" "}
-              <a
-                href="#"
+              <Link
+                to="/register"
                 className="font-black transition-colors"
                 style={{ color: accentColor }}
               >
                 Đăng ký
-              </a>
+              </Link>
             </p>
           </div>
 
