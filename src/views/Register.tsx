@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Eye, EyeOff, Check, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import Autocomplete, { type AutocompleteItem } from "@/UI/Autocomplete";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -19,14 +20,43 @@ export default function Register() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
 
-  const interests = [
+  const interestsList = [
     "Lập trình",
     "Robotics",
     "Toán học",
     "Tài chính",
-    "Sáng tạo",
-    "Game Design",
+    "Thiết kế",
   ];
+
+  const interestItems: AutocompleteItem[] = interestsList.map(
+    (interest) => ({
+      id: interest,
+      label: interest,
+      value: interest.toLowerCase(),
+    })
+  );
+
+   // Autocomplete multiselect handler
+  const handleSelectField =
+    (field: string) => (items: AutocompleteItem[] | AutocompleteItem | null) => {
+      const ids = Array.isArray(items) ? items.map((item) => item.id) : [];
+      setFormData((prev) => ({
+        ...prev,
+        [field]: ids,
+      }));
+
+      // Clear error
+      if (errors[field as keyof typeof errors]) {
+        setErrors((prev) => ({
+          ...prev,
+          [field]: "",
+        }));
+      }
+    };
+
+  
+  // Handle interest selection
+
 
   const ageGroups = ["6-8 tuổi", "9-11 tuổi", "12-14 tuổi", "15-16 tuổi"];
 
@@ -473,7 +503,7 @@ export default function Register() {
               </div>
 
               {/* Interest Selection */}
-              <div>
+              {/* <div>
                 <label
                   htmlFor="interest"
                   className="block mb-2 text-sm font-semibold text-gray-700"
@@ -503,7 +533,19 @@ export default function Register() {
                 {errors.interest && (
                   <p className="error-text">{errors.interest}</p>
                 )}
-              </div>
+              </div> */}
+               <Autocomplete
+            items={interestItems}
+            value={formData.interest}
+            onChange={handleSelectField("interest")}
+            label="Sở thích"
+            placeholder="Chọn sở thích..."
+            error={errors.interest}
+            required
+            multiple={true}
+            maxSelect={3}
+            accentColor="#A855F7"
+          />
             </div>
 
             {/* Password Field */}
