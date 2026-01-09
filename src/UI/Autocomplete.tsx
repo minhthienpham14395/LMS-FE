@@ -5,7 +5,7 @@ export interface AutocompleteItem {
   id: string | number;
   label: string;
   value?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface AutocompleteProps {
@@ -56,7 +56,6 @@ export default function Autocomplete({
   minChars = 0,
   debounceMs = 300,
   renderItem,
-  renderValue,
   maxSelect,
   tagsClassName = "",
   removeIcon,
@@ -68,7 +67,7 @@ export default function Autocomplete({
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
-  const debounceTimer = useRef<NodeJS.Timeout>();
+  const debounceTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   // Get selected items (handle both single and multiple)
   const selectedItems = useMemo(() => {
@@ -407,7 +406,7 @@ export default function Autocomplete({
                               }
                           } }
                           placeholder={multiple ? "Thêm mục..." : placeholder}
-                          disabled={disabled || (multiple && isMaxSelectReached)}
+                          disabled={disabled || !!(multiple && isMaxSelectReached)}
                           className={`autocomplete-input w-full pl-10 pr-10 py-3 rounded-lg border border-gray-300 bg-white transition-all text-gray-900 placeholder-gray-400 text-sm md:text-base ${error ? "error" : ""} ${disabled || isMaxSelectReached ? "opacity-60 cursor-not-allowed" : ""}`} />
 
                       {/* Clear / Dropdown Icon */}
