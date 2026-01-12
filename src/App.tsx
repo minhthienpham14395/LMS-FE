@@ -5,9 +5,11 @@ import Login from "./views/Login";
 import Register from "./views/Register";
 import Learn from "./views/Learn";
 import ForgotPassword from "./views/ForgotPassword";
+import SendEmail from "./testmail/SendEmail";
+
 
 // Component bảo vệ route
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const isLoggedIn = localStorage.getItem("brightkids_userEmail") !== null;
 
   if (!isLoggedIn) {
@@ -22,6 +24,7 @@ export default function App() {
     <Routes>
       {/* Public routes */}
       <Route path="/login" element={<Login />} />
+      <Route path="/send" element={<SendEmail />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
 

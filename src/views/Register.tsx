@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Eye, EyeOff, Check, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import Autocomplete, { type AutocompleteItem } from "@/UI/Autocomplete";
@@ -14,7 +14,7 @@ export default function Register() {
     terms: false,
   });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -60,7 +60,7 @@ export default function Register() {
 
   const ageGroups = ["6-8 tuổi", "9-11 tuổi", "12-14 tuổi", "15-16 tuổi"];
 
-  const calculatePasswordStrength = (password) => {
+  const calculatePasswordStrength = (password: string) => {
     let strength = 0;
     if (password.length >= 8) strength++;
     if (password.length >= 12) strength++;
@@ -70,8 +70,9 @@ export default function Register() {
     return strength;
   };
 
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
     const newValue = type === "checkbox" ? checked : value;
 
     setFormData((prev) => ({
@@ -84,7 +85,7 @@ export default function Register() {
     }
 
     // Clear error for this field
-    if (errors[name]) {
+    if (errors[name as keyof typeof errors]) {
       setErrors((prev) => ({
         ...prev,
         [name]: "",
@@ -93,7 +94,7 @@ export default function Register() {
   };
 
   const validateForm = () => {
-    const newErrors = {};
+    const newErrors: Record<string, string> = {};
 
     if (!formData.fullName.trim()) {
       newErrors.fullName = "Họ tên không được để trống";
@@ -135,7 +136,7 @@ export default function Register() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleRegister = async (e) => {
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validateForm()) return;
@@ -151,7 +152,7 @@ export default function Register() {
     );
   };
 
-  const handleSocialSignup = (provider) => {
+  const handleSocialSignup = (provider: string) => {
     alert(`Đăng ký qua ${provider} (Demo)`);
   };
 
