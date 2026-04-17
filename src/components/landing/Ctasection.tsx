@@ -2,10 +2,12 @@
 
 interface CTASectionProps {
   accentColor?: string;
+  primaryColor?: string;
 }
 
 export default function CTASection({
-  accentColor = "#0891b2",
+  accentColor = "#3085c7",
+  primaryColor = "#164789",
 }: CTASectionProps) {
   return (
     <>
@@ -67,7 +69,10 @@ export default function CTASection({
         <p className="text-2xl mb-10 cta-subtitle">
           Đăng ký ngay hôm nay và nhận buổi học thử miễn phí!
         </p>
-        <button className="bg-white text-gray-900 px-16 py-4 rounded-full font-black text-lg transition-all hover:shadow-lg hover:-translate-y-1 cta-button">
+        <button 
+          className="text-white px-16 py-4 rounded-full font-black text-lg transition-all hover:shadow-lg hover:-translate-y-1 cta-button"
+          style={{ backgroundColor: primaryColor }}
+        >
           Đăng ký miễn phí
         </button>
       </section>

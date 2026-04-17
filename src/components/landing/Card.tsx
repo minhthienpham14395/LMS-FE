@@ -1,4 +1,39 @@
 import React from 'react';
+import {
+  GraduationCap,
+  Users,
+  Target,
+  Award,
+  Lightbulb,
+  TrendingUp,
+  Palette,
+  Handshake,
+  Monitor,
+  DollarSign,
+  Cpu,
+  User,
+} from 'lucide-react';
+
+// Icon mapping function
+export const getIconComponent = (iconName: string) => {
+  const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+    GraduationCap,
+    Users,
+    Target,
+    Award,
+    Lightbulb,
+    TrendingUp,
+    Palette,
+    Handshake,
+    Monitor,
+    DollarSign,
+    Cpu,
+    User,
+  };
+
+  const IconComponent = iconMap[iconName];
+  return IconComponent ? <IconComponent size={48} className="text-gray-600" /> : null;
+};
 
 interface CardProps {
   children: React.ReactNode;
@@ -18,7 +53,7 @@ export const Card: React.FC<CardProps> = ({
   return (
     <div
       className={`card-base bg-white rounded-2xl border border-gray-200 transition-all duration-300 ${
-        hover ? 'hover:border-teal-300 hover:shadow-lg hover:-translate-y-1' : ''
+        hover ? 'hover:border-[#3085c7] hover:shadow-lg hover:-translate-y-1' : ''
       } ${onClick ? 'cursor-pointer' : ''} ${className}`}
       onClick={onClick}
       style={{
@@ -42,6 +77,7 @@ interface CourseCardProps {
   currentPrice: string;
   oldPrice: string;
   accentColor?: string;
+  onClick?: () => void;
 }
 
 export const CourseCard: React.FC<CourseCardProps & { animationDelay?: number }> = ({
@@ -54,14 +90,19 @@ export const CourseCard: React.FC<CourseCardProps & { animationDelay?: number }>
   age,
   currentPrice,
   oldPrice,
-  accentColor = '#0891b2',
+  accentColor = '#3085c7',
+  onClick,
   animationDelay = 0,
 }) => {
   return (
-    <Card animationDelay={animationDelay} className="overflow-hidden hover:shadow-2xl">
+    <Card
+      animationDelay={animationDelay}
+      className="overflow-hidden hover:shadow-2xl"
+      onClick={onClick}
+    >
       {/* Header */}
-      <div className="relative h-32 bg-linear-to-br from-cyan-50 to-blue-50 flex items-center justify-center">
-        <div className="text-5xl">{icon}</div>
+      <div className="relative h-32 bg-linear-to-br from-[#f7f8fa] to-[#f7f8fa] flex items-center justify-center">
+        {getIconComponent(icon)}
         <span
           className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold text-white"
           style={{ backgroundColor: accentColor }}
@@ -121,18 +162,18 @@ export const TeacherCard: React.FC<TeacherCardProps & { animationDelay?: number 
   name,
   bio,
   rating,
-  accentColor = '#0891b2',
+  accentColor = '#3085c7',
   animationDelay = 0,
 }) => {
   return (
     <Card animationDelay={animationDelay}>
       {/* Avatar */}
-      <div className="w-full h-64 bg-linear-to-br from-cyan-100 to-gray-100 flex items-center justify-center text-7xl relative overflow-hidden">
+      <div className="w-full h-64 bg-linear-to-br from-[#f7f8fa] to-[#f7f8fa] flex items-center justify-center text-7xl relative overflow-hidden">
         <div
-          className="absolute w-full h-full bg-gradient-radial from-cyan-300/10 to-transparent"
+          className="absolute w-full h-full bg-gradient-radial from-[#3085c7]/10 to-transparent"
           style={{ animation: 'pulse 3s ease-in-out infinite' }}
         ></div>
-        {avatar}
+        {getIconComponent(avatar)}
       </div>
 
       {/* Info */}
@@ -161,8 +202,8 @@ export const SkillCard: React.FC<SkillCardProps & { animationDelay?: number }> =
 }) => {
   return (
     <Card animationDelay={animationDelay} className="p-8">
-      <div className="text-5xl mb-5 skill-icon" style={{ animation: 'rotateIcon 3s ease-in-out infinite' }}>
-        {icon}
+      <div className="mb-5 skill-icon flex justify-center" style={{ animation: 'rotateIcon 3s ease-in-out infinite' }}>
+        {getIconComponent(icon)}
       </div>
       <h3 className="text-2xl font-black mb-3 text-gray-900">{title}</h3>
       <p className="text-gray-600 leading-relaxed text-sm">{description}</p>
@@ -227,7 +268,7 @@ export const StatCard: React.FC<StatCardProps & { animationDelay?: number }> = (
   return (
     <Card animationDelay={animationDelay} className="p-8 text-center" hover={false}>
       {icon && <div className="text-5xl mb-4">{icon}</div>}
-      <div className="text-4xl font-black text-teal-600 mb-2">{value}</div>
+      <div className="text-4xl font-black text-[#3085c7] mb-2">{value}</div>
       <p className="text-gray-600 font-semibold">{label}</p>
     </Card>
   );
@@ -263,10 +304,10 @@ export const CardStyles = `
   }
 
   .card-base {
-    box-shadow: 0 4px 16px rgba(8, 145, 178, 0.08);
+    box-shadow: 0 4px 16px rgba(48, 133, 199, 0.08);
   }
 
   .card-base:hover {
-    box-shadow: 0 12px 32px rgba(8, 145, 178, 0.18);
+    box-shadow: 0 12px 32px rgba(48, 133, 199, 0.18);
   }
 `;

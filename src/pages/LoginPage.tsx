@@ -10,7 +10,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({ email: "", password: "" });
 
-  const accentColor = "#0891b2";
+  const accentColor = "#3085c7";
 
   interface ErrorsState {
     email: string;
@@ -161,9 +161,9 @@ export default function Login() {
           display: inline-block;
           width: 16px;
           height: 16px;
-          border: 2px solid rgba(8, 145, 178, 0.3);
+          border: 2px solid rgba(48, 133, 199, 0.3);
           border-radius: 50%;
-          border-top-color: #0891b2;
+          border-top-color: #3085c7;
           animation: spin 1s linear infinite;
         }
 
@@ -180,7 +180,7 @@ export default function Login() {
         }
 
         .gradient-divider {
-          background: linear-gradient(90deg, transparent, #0891b2, transparent);
+          background: linear-gradient(90deg, transparent, #3085c7, transparent);
           height: 2px;
         }
 
@@ -191,8 +191,8 @@ export default function Login() {
         }
 
         .btn-social:hover {
-          border-color: #0891b2;
-          background: rgba(8, 145, 178, 0.05);
+          border-color: #3085c7;
+          background: rgba(48, 133, 199, 0.05);
           transform: translateY(-2px);
         }
 
@@ -392,7 +392,7 @@ export default function Login() {
                 className="w-full text-white font-black py-3 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
                 style={{
                   backgroundColor: accentColor,
-                  boxShadow: `0 4px 12px rgba(8, 145, 178, 0.3)`,
+                  boxShadow: `0 4px 12px rgba(48, 133, 199, 0.3)`,
                 }}
               >
                 {loading ? (

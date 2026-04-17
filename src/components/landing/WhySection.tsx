@@ -1,5 +1,7 @@
 
 
+import { getIconComponent } from './Card';
+
 interface WhyReason {
   icon: string;
   title: string;
@@ -27,12 +29,12 @@ export default function WhySection({ reasons }: WhySectionProps) {
 
         .why-card {
           animation: fadeInUp 0.6s ease-out;
-          box-shadow: 0 4px 16px rgba(8, 145, 178, 0.08);
+          box-shadow: 0 4px 16px rgba(48, 133, 199, 0.08);
           transition: all 0.3s ease;
         }
 
         .why-card:hover {
-          box-shadow: 0 12px 32px rgba(8, 145, 178, 0.18);
+          box-shadow: 0 12px 32px rgba(48, 133, 199, 0.18);
           transform: translateY(-4px);
         }
 
@@ -50,8 +52,8 @@ export default function WhySection({ reasons }: WhySectionProps) {
         }
       `}</style>
 
-      <section id="why" className="py-24 px-12 bg-blue-200 relative">
-        <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-radial from-cyan-400/5 to-transparent top-0 right-0 -translate-y-32 translate-x-32"></div>
+      <section id="why" className="py-24 px-12 bg-[#f7f8fa] relative">
+        <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-radial from-[#3085c7]/5 to-transparent top-0 right-0 -translate-y-32 translate-x-32"></div>
 
         <h2 className="text-5xl font-black text-center mb-5 title-fadeInUp text-gray-900">
           Tại sao chọn chúng tôi
@@ -64,9 +66,9 @@ export default function WhySection({ reasons }: WhySectionProps) {
           {reasons.map((reason, idx) => (
             <div
               key={idx}
-              className="why-card bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-teal-300"
+              className="why-card bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-[#3085c7]"
             >
-              <div className="text-5xl mb-5">{reason.icon}</div>
+              <div className="mb-5 flex justify-center">{getIconComponent(reason.icon)}</div>
               <h3 className="text-2xl font-black mb-3 text-gray-900">
                 {reason.title}
               </h3>

@@ -13,6 +13,7 @@ import {
   X,
   ChevronDown,
 } from "lucide-react";
+import { Table } from "../components";
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -88,6 +89,16 @@ export default function Dashboard() {
       status: "Active",
     },
   ];
+
+  const recentCourseHeaders = ["Khoa hoc", "HV", "Doanh thu", "TT"];
+  const recentCourseRows = recentCourses.map((course) => [
+    <p className="font-semibold text-gray-900 truncate">{course.name}</p>,
+    <span className="text-gray-600">{course.students}</span>,
+    <span className="font-semibold text-teal-700">{course.revenue}</span>,
+    <span className="inline-block px-2 md:px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold">
+      {course.status === "Active" ? "✓" : "●"}
+    </span>,
+  ]);
 
   const activities = [
     {
@@ -587,53 +598,16 @@ export default function Dashboard() {
                   Xem tất cả →
                 </button>
               </div>
-
-              <div className="overflow-x-auto -mx-4 md:mx-0">
-                <table className="w-full text-xs md:text-sm">
-                  <thead>
-                    <tr className="border-b border-gray-300">
-                      <th className="text-left py-3 md:py-4 px-4 font-black text-gray-600 uppercase tracking-wider">
-                        Khóa học
-                      </th>
-                      <th className="text-left py-3 md:py-4 px-4 font-black text-gray-600 uppercase tracking-wider">
-                        HV
-                      </th>
-                      <th className="text-left py-3 md:py-4 px-4 font-black text-gray-600 uppercase tracking-wider">
-                        Doanh thu
-                      </th>
-                      <th className="text-left py-3 md:py-4 px-4 font-black text-gray-600 uppercase tracking-wider">
-                        TT
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {recentCourses.map((course, idx) => (
-                      <tr
-                        key={idx}
-                        className="border-b border-gray-200 hover:bg-gray-100/50 transition-all"
-                      >
-                        <td className="py-3 md:py-4 px-4">
-                          <p className="font-semibold text-gray-900 truncate">
-                            {course.name}
-                          </p>
-                        </td>
-                        <td className="py-3 md:py-4 px-4 text-gray-600">
-                          {course.students}
-                        </td>
-                        <td className="py-3 md:py-4 px-4 font-semibold text-teal-700">
-                          {course.revenue}
-                        </td>
-                        <td className="py-3 md:py-4 px-4">
-                          <span className="inline-block px-2 md:px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold">
-                            {course.status === "Active" ? "✓" : "●"}
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <Table
+                headers={recentCourseHeaders}
+                data={recentCourseRows}
+                className="-mx-4 md:mx-0"
+                tableClassName="w-full text-xs md:text-sm bg-transparent border-0"
+                headerClassName="border-b border-gray-300 bg-transparent"
+                rowClassName="border-b border-gray-200 hover:bg-gray-100/50 transition-all"
+                cellClassName="py-3 md:py-4"
+              />
               </div>
-            </div>
 
             {/* Activity Feed */}
             <div className="glass-effect rounded-2xl p-4 md:p-8">

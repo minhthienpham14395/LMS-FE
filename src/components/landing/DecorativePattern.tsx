@@ -5,7 +5,7 @@ interface DecorativePatternProps {
 }
 
 export default function DecorativePattern({
-  accentColor = "#0891b2",
+  accentColor = "#3085c7",
 }: DecorativePatternProps) {
   return (
     <>
@@ -71,21 +71,21 @@ export default function DecorativePattern({
         <div
           className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-3xl opacity-3"
           style={{
-            background: `radial-gradient(circle, rgba(8, 145, 178, 0.3) 0%, transparent 70%)`,
+            background: `radial-gradient(circle, rgba(48, 133, 199, 0.3) 0%, transparent 70%)`,
             animation: "pulse 8s ease-in-out infinite",
           }}
         ></div>
         <div
           className="absolute top-20 left-1/4 w-64 h-64 rounded-full blur-3xl opacity-2"
           style={{
-            background: `radial-gradient(circle, rgba(8, 145, 178, 0.2) 0%, transparent 70%)`,
+            background: `radial-gradient(circle, rgba(48, 133, 199, 0.2) 0%, transparent 70%)`,
             animation: "pulse 10s ease-in-out infinite 0.5s",
           }}
         ></div>
         <div
           className="absolute bottom-1/3 right-1/3 w-96 h-96 rounded-full blur-3xl opacity-2"
           style={{
-            background: `radial-gradient(circle, rgba(8, 145, 178, 0.15) 0%, transparent 70%)`,
+            background: `radial-gradient(circle, rgba(48, 133, 199, 0.15) 0%, transparent 70%)`,
             animation: "pulse 12s ease-in-out infinite 1s",
           }}
         ></div>

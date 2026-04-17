@@ -196,12 +196,12 @@ export default function Register() {
 
         @keyframes glow {
           0%, 100% {
-            text-shadow: 0 0 20px rgba(8, 145, 178, 0.3);
-            box-shadow: 0 0 20px rgba(8, 145, 178, 0.2);
+            text-shadow: 0 0 20px rgba(48, 133, 199, 0.3);
+            box-shadow: 0 0 20px rgba(48, 133, 199, 0.2);
           }
           50% {
-            text-shadow: 0 0 40px rgba(8, 145, 178, 0.5);
-            box-shadow: 0 0 40px rgba(8, 145, 178, 0.3);
+            text-shadow: 0 0 40px rgba(48, 133, 199, 0.5);
+            box-shadow: 0 0 40px rgba(48, 133, 199, 0.3);
           }
         }
 
@@ -247,9 +247,9 @@ export default function Register() {
           display: inline-block;
           width: 20px;
           height: 20px;
-          border: 3px solid rgba(8, 145, 178, 0.2);
+          border: 3px solid rgba(48, 133, 199, 0.2);
           border-radius: 50%;
-          border-top-color: #0891b2;
+          border-top-color: #3085c7;
           animation: spin 1s linear infinite;
         }
 
@@ -262,26 +262,26 @@ export default function Register() {
         .glass-effect {
           background: rgba(255, 255, 255, 0.7);
           backdrop-filter: blur(10px);
-          border: 1px solid rgba(8, 145, 178, 0.15);
-          box-shadow: 0 8px 32px rgba(8, 145, 178, 0.12);
+          border: 1px solid rgba(48, 133, 199, 0.15);
+          box-shadow: 0 8px 32px rgba(48, 133, 199, 0.12);
           transition: box-shadow 0.3s ease;
         }
 
         .glass-effect:hover {
-          box-shadow: 0 12px 48px rgba(8, 145, 178, 0.18);
+          box-shadow: 0 12px 48px rgba(48, 133, 199, 0.18);
         }
 
         .input-field {
           background: rgba(255, 255, 255, 0.9);
-          border: 1px solid rgba(8, 145, 178, 0.2);
+          border: 1px solid rgba(48, 133, 199, 0.2);
           color: #111827;
           transition: all 0.3s ease;
         }
 
         .input-field:focus {
-          background: rgba(8, 145, 178, 0.05);
-          border-color: #0891b2;
-          box-shadow: 0 0 15px rgba(8, 145, 178, 0.25);
+          background: rgba(48, 133, 199, 0.05);
+          border-color: #3085c7;
+          box-shadow: 0 0 15px rgba(48, 133, 199, 0.25);
         }
 
         .input-field::placeholder {
@@ -292,11 +292,11 @@ export default function Register() {
           position: relative;
           overflow: hidden;
           transition: all 0.3s ease;
-          box-shadow: 0 6px 20px rgba(8, 145, 178, 0.3);
+          box-shadow: 0 6px 20px rgba(48, 133, 199, 0.3);
         }
 
         .btn-register:hover:not(:disabled) {
-          box-shadow: 0 12px 32px rgba(8, 145, 178, 0.5);
+          box-shadow: 0 12px 32px rgba(48, 133, 199, 0.5);
           transform: translateY(-2px);
         }
 
@@ -306,20 +306,20 @@ export default function Register() {
 
         .social-btn {
           transition: all 0.3s ease;
-          border: 1px solid rgba(8, 145, 178, 0.2);
+          border: 1px solid rgba(48, 133, 199, 0.2);
           background: rgba(249, 250, 251, 0.8);
-          box-shadow: 0 2px 8px rgba(8, 145, 178, 0.08);
+          box-shadow: 0 2px 8px rgba(48, 133, 199, 0.08);
         }
 
         .social-btn:hover {
-          border-color: #0891b2;
-          background: rgba(8, 145, 178, 0.05);
-          box-shadow: 0 6px 16px rgba(8, 145, 178, 0.15);
+          border-color: #3085c7;
+          background: rgba(48, 133, 199, 0.05);
+          box-shadow: 0 6px 16px rgba(48, 133, 199, 0.15);
           transform: translateY(-2px);
         }
 
         .link-hover:hover {
-          color: #0891b2;
+          color: #3085c7;
         }
 
         label {
@@ -336,7 +336,7 @@ export default function Register() {
 
         .password-strength-bar {
           height: 4px;
-          background: rgba(8, 145, 178, 0.15);
+          background: rgba(48, 133, 199, 0.15);
           border-radius: 2px;
           margin-top: 0.5rem;
           overflow: hidden;
@@ -352,7 +352,7 @@ export default function Register() {
           appearance: none;
           width: 18px;
           height: 18px;
-          border: 1px solid rgba(8, 145, 178, 0.3);
+          border: 1px solid rgba(48, 133, 199, 0.3);
           border-radius: 4px;
           background: rgba(255, 255, 255, 0.9);
           cursor: pointer;
@@ -360,15 +360,15 @@ export default function Register() {
         }
 
         .checkbox-custom:checked {
-          background: #0891b2;
-          border-color: #0891b2;
-          box-shadow: 0 0 15px rgba(8, 145, 178, 0.4);
+          background: #3085c7;
+          border-color: #3085c7;
+          box-shadow: 0 0 15px rgba(48, 133, 199, 0.4);
         }
 
         .interest-tag {
           padding: 0.5rem 1rem;
           border-radius: 20px;
-          border: 1px solid rgba(8, 145, 178, 0.2);
+          border: 1px solid rgba(48, 133, 199, 0.2);
           background: rgba(249, 250, 251, 0.8);
           cursor: pointer;
           transition: all 0.3s ease;
@@ -377,16 +377,16 @@ export default function Register() {
         }
 
         .interest-tag:hover {
-          border-color: #0891b2;
-          background: rgba(8, 145, 178, 0.05);
+          border-color: #3085c7;
+          background: rgba(48, 133, 199, 0.05);
         }
 
         .interest-tag.selected {
-          background: #0891b2;
+          background: #3085c7;
           color: #ffffff;
-          border-color: #0891b2;
+          border-color: #3085c7;
           font-weight: 600;
-          box-shadow: 0 0 15px rgba(8, 145, 178, 0.4);
+          box-shadow: 0 0 15px rgba(48, 133, 199, 0.4);
         }
       `}</style>
 
@@ -401,7 +401,7 @@ export default function Register() {
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "linear-gradient(0deg, #0891b2 1px, transparent 1px), linear-gradient(90deg, #0891b2 1px, transparent 1px)",
+              "linear-gradient(0deg, #3085c7 1px, transparent 1px), linear-gradient(90deg, #3085c7 1px, transparent 1px)",
             backgroundSize: "50px 50px",
           }}
         ></div>
@@ -412,7 +412,7 @@ export default function Register() {
         <div className="text-center mb-10 register-container">
           <div
             className="text-4xl font-black text-teal-700 mb-2 glow-border inline-block px-6 py-2 rounded-xl"
-            style={{ textShadow: "0 0 20px rgba(8, 145, 178, 0.2)" }}
+            style={{ textShadow: "0 0 20px rgba(48, 133, 199, 0.2)" }}
           >
             <Link
               to="/landing"
@@ -691,7 +691,7 @@ export default function Register() {
               disabled={loading}
               className="w-full btn-register bg-teal-600 hover:bg-teal-700 text-white font-black py-3 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-6"
               style={{
-                boxShadow: "0 6px 20px rgba(8, 145, 178, 0.3)",
+                boxShadow: "0 6px 20px rgba(48, 133, 199, 0.3)",
               }}
             >
               {loading ? (

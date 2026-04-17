@@ -199,14 +199,14 @@ export default function ForgotPassword() {
 
         .glass-effect {
           background: rgba(255, 255, 255, 0.9);
-          border: 1px solid rgba(8, 145, 178, 0.2);
-          box-shadow: 0 8px 32px rgba(8, 145, 178, 0.1);
+          border: 1px solid rgba(48, 133, 199, 0.2);
+          box-shadow: 0 8px 32px rgba(48, 133, 199, 0.1);
           backdrop-filter: blur(10px);
         }
 
         .input-field {
           background: rgba(255, 255, 255, 0.95);
-          border: 1px solid rgba(8, 145, 178, 0.2);
+          border: 1px solid rgba(48, 133, 199, 0.2);
           color: #111827;
           transition: all 0.3s ease;
         }
@@ -214,8 +214,8 @@ export default function ForgotPassword() {
         .input-field:focus {
           outline: none;
           background: rgba(255, 255, 255, 1);
-          border-color: #0891b2;
-          box-shadow: 0 0 15px rgba(8, 145, 178, 0.3);
+          border-color: #3085c7;
+          box-shadow: 0 0 15px rgba(48, 133, 199, 0.3);
         }
 
         .input-field.error {
@@ -233,7 +233,7 @@ export default function ForgotPassword() {
 
         .btn-primary:hover:not(:disabled) {
           transform: translateY(-2px);
-          box-shadow: 0 12px 32px rgba(8, 145, 178, 0.3);
+          box-shadow: 0 12px 32px rgba(48, 133, 199, 0.3);
         }
 
         .btn-primary:disabled {
@@ -245,9 +245,9 @@ export default function ForgotPassword() {
           display: inline-block;
           width: 20px;
           height: 20px;
-          border: 3px solid rgba(8, 145, 178, 0.3);
+          border: 3px solid rgba(48, 133, 199, 0.3);
           border-radius: 50%;
-          border-top-color: #0891b2;
+          border-top-color: #3085c7;
           animation: spin 1s linear infinite;
         }
 
@@ -270,18 +270,18 @@ export default function ForgotPassword() {
         }
 
         .step-indicator.active {
-          background: #0891b2;
+          background: #3085c7;
           color: white;
-          box-shadow: 0 0 20px rgba(8, 145, 178, 0.5);
+          box-shadow: 0 0 20px rgba(48, 133, 199, 0.5);
         }
 
         .step-line {
           height: 2px;
-          background: rgba(8, 145, 178, 0.1);
+          background: rgba(48, 133, 199, 0.1);
         }
 
         .step-line.active {
-          background: #0891b2;
+          background: #3085c7;
         }
 
         .success-icon {
@@ -310,7 +310,7 @@ export default function ForgotPassword() {
 
         .password-strength-bar {
           height: 4px;
-          background: rgba(8, 145, 178, 0.1);
+          background: rgba(48, 133, 199, 0.1);
           border-radius: 2px;
           margin-top: 0.5rem;
           overflow: hidden;
@@ -333,8 +333,8 @@ export default function ForgotPassword() {
           <div
             className="text-4xl font-black rounded-xl px-6 py-2 inline-block"
             style={{
-              color: "#0891b2",
-              textShadow: "0 0 20px rgba(8, 145, 178, 0.3)",
+              color: "#3085c7",
+              textShadow: "0 0 20px rgba(48, 133, 199, 0.3)",
             }}
           >
             BrightKids
@@ -424,8 +424,8 @@ export default function ForgotPassword() {
                 disabled={loading}
                 className="w-full btn-primary text-white font-black py-3 rounded-xl transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 style={{
-                  backgroundColor: "#0891b2",
-                  boxShadow: "0 8px 24px rgba(8, 145, 178, 0.3)",
+                  backgroundColor: "#3085c7",
+                  boxShadow: "0 8px 24px rgba(48, 133, 199, 0.3)",
                 }}
               >
                 {loading ? (
@@ -443,7 +443,7 @@ export default function ForgotPassword() {
                 <Link
                   to="/login"
                   className="font-black transition-colors"
-                  style={{ color: "#0891b2" }}
+                  style={{ color: "#3085c7" }}
                 >
                   Đăng nhập
                 </Link>
@@ -458,7 +458,7 @@ export default function ForgotPassword() {
             <button
               onClick={() => setStep("email")}
               className="flex items-center gap-2 transition-colors mb-6 font-semibold"
-              style={{ color: "#0891b2" }}
+              style={{ color: "#3085c7" }}
             >
               <ArrowLeft size={18} />
               Quay lại
@@ -469,7 +469,7 @@ export default function ForgotPassword() {
             </h2>
             <p className="text-gray-600 text-sm mb-8">
               Chúng tôi đã gửi mã xác nhận 6 chữ số đến{" "}
-              <span style={{ color: "#0891b2" }} className="font-semibold">
+              <span style={{ color: "#3085c7" }} className="font-semibold">
                 {email}
               </span>
             </p>
@@ -505,7 +505,7 @@ export default function ForgotPassword() {
                 <button
                   type="button"
                   className="font-semibold transition-colors text-sm"
-                  style={{ color: "#0891b2" }}
+                  style={{ color: "#3085c7" }}
                 >
                   Gửi lại mã
                 </button>
@@ -516,8 +516,8 @@ export default function ForgotPassword() {
                 disabled={loading}
                 className="w-full btn-primary text-white font-black py-3 rounded-xl transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 style={{
-                  backgroundColor: "#0891b2",
-                  boxShadow: "0 8px 24px rgba(8, 145, 178, 0.3)",
+                  backgroundColor: "#3085c7",
+                  boxShadow: "0 8px 24px rgba(48, 133, 199, 0.3)",
                 }}
               >
                 {loading ? (
@@ -539,7 +539,7 @@ export default function ForgotPassword() {
             <button
               onClick={() => setStep("otp")}
               className="flex items-center gap-2 transition-colors mb-6 font-semibold"
-              style={{ color: "#0891b2" }}
+              style={{ color: "#3085c7" }}
             >
               <ArrowLeft size={18} />
               Quay lại
@@ -581,7 +581,7 @@ export default function ForgotPassword() {
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition-colors"
-                    style={{ color: "#0891b2" }}
+                    style={{ color: "#3085c7" }}
                   >
                     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                   </button>
@@ -638,7 +638,7 @@ export default function ForgotPassword() {
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition-colors"
-                    style={{ color: "#0891b2" }}
+                    style={{ color: "#3085c7" }}
                   >
                     {showConfirmPassword ? (
                       <EyeOff size={20} />
@@ -657,8 +657,8 @@ export default function ForgotPassword() {
                 disabled={loading}
                 className="w-full btn-primary text-white font-black py-3 rounded-xl transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 style={{
-                  backgroundColor: "#0891b2",
-                  boxShadow: "0 8px 24px rgba(8, 145, 178, 0.3)",
+                  backgroundColor: "#3085c7",
+                  boxShadow: "0 8px 24px rgba(48, 133, 199, 0.3)",
                 }}
               >
                 {loading ? (
@@ -698,8 +698,8 @@ export default function ForgotPassword() {
               }}
               className="w-full btn-primary text-white font-black py-3 rounded-xl transition-all inline-block"
               style={{
-                backgroundColor: "#0891b2",
-                boxShadow: "0 8px 24px rgba(8, 145, 178, 0.3)",
+                backgroundColor: "#3085c7",
+                boxShadow: "0 8px 24px rgba(48, 133, 199, 0.3)",
               }}
             >
               Quay lại Đăng nhập

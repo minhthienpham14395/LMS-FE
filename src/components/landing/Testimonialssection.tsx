@@ -41,8 +41,8 @@ export default function TestimonialsSection({
         }
       `}</style>
 
-      <section className="py-24 px-12 bg-white relative">
-        <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-radial from-cyan-400/5 to-transparent top-0 right-0 -translate-y-32 translate-x-32"></div>
+      <section className="py-24 px-12 bg-[#f7f8fa] relative">
+        <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-radial from-[#3085c7]/5 to-transparent top-0 right-0 -translate-y-32 translate-x-32"></div>
 
         <h2 className="text-5xl font-black text-center mb-5 title-fadeInUp text-gray-900">
           Học viên nói gì về chúng tôi

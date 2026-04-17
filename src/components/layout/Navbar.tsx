@@ -15,7 +15,7 @@ interface NavbarProps {
 }
 
 export default function Navbar({
-  accentColor = "#0891b2",
+  accentColor = "#3085c7",
   isLoggedIn = false,
   userName = "Admin",
   userEmail = "user@brightkids.com",
@@ -86,7 +86,7 @@ export default function Navbar({
           height: 2px;
           background: ${accentColor};
           transition: width 0.3s;
-          box-shadow: 0 0 8px rgba(8, 145, 178, 0.3);
+          box-shadow: 0 0 8px rgba(48, 133, 199, 0.3);
         }
 
         nav a:hover::after {
@@ -120,7 +120,7 @@ export default function Navbar({
             className="navbar-logo text-3xl font-black"
             style={{
               color: accentColor,
-              textShadow: `0 0 12px rgba(8, 145, 178, 0.2)`,
+              textShadow: `0 0 12px rgba(48, 133, 199, 0.2)`,
             }}
           >
             <a href="/" className="hover:opacity-80 transition-opacity">
@@ -133,25 +133,25 @@ export default function Navbar({
         <nav className="navbar-nav hidden md:flex gap-8 items-center">
           <a
             href="#skills"
-            className="text-gray-700 hover:text-teal-700 transition-all font-medium"
+            className="text-gray-700 hover:text-[#3085c7] transition-all font-medium"
           >
             Khóa học
           </a>
           <a
             href="#why"
-            className="text-gray-700 hover:text-teal-700 transition-all font-medium"
+            className="text-gray-700 hover:text-[#3085c7] transition-all font-medium"
           >
             Tại sao chọn chúng tôi
           </a>
           <a
             href="#teachers"
-            className="text-gray-700 hover:text-teal-700 transition-all font-medium"
+            className="text-gray-700 hover:text-[#3085c7] transition-all font-medium"
           >
             Giáo viên
           </a>
           <a
             href="#contact"
-            className="text-gray-700 hover:text-teal-700 transition-all font-medium"
+            className="text-gray-700 hover:text-[#3085c7] transition-all font-medium"
           >
             Liên hệ
           </a>
@@ -164,11 +164,11 @@ export default function Navbar({
               {/* Login Button */}
               <button
                 onClick={onLoginClick}
-                className="text-gray-700 hover:text-teal-700 transition-all font-medium px-6 py-2 rounded-lg hover:bg-gray-100"
+                className="text-gray-700 hover:text-[#3085c7] transition-all font-medium px-6 py-2 rounded-lg hover:bg-gray-100"
               >
                 <Link
                   to="/login"
-                  className="text-teal-700 hover:text-teal-800 transition-all font-medium px-6 py-2 rounded-lg hover:bg-gray-100"
+                  className="text-[#3085c7] hover:text-[#164789] transition-all font-medium px-6 py-2 rounded-lg hover:bg-gray-100"
                 >
                   Đăng nhập
                 </Link>
@@ -180,12 +180,12 @@ export default function Navbar({
                 className="text-white px-6 py-2 rounded-lg font-semibold hover:shadow-md transition-all"
                 style={{
                   backgroundColor: accentColor,
-                  boxShadow: `0 4px 12px rgba(8, 145, 178, 0.2)`,
+                  boxShadow: `0 4px 12px rgba(48, 133, 199, 0.2)`,
                 }}
               >
                 <Link
                   to="/register"
-                  className="text-teal-700 hover:text-teal-800 transition-all font-medium px-6 py-2 rounded-lg "
+                  className="text-[#3085c7] hover:text-[#164789] transition-all font-medium px-6 py-2 rounded-lg "
                 >
                   Đăng ký
                 </Link>
@@ -204,7 +204,7 @@ export default function Navbar({
                   className="w-8 h-8 rounded-full flex items-center justify-center text-white font-black text-sm"
                   style={{
                     backgroundColor: accentColor,
-                    boxShadow: `0 0 10px rgba(8, 145, 178, 0.2)`,
+                    boxShadow: `0 0 10px rgba(48, 133, 199, 0.2)`,
                   }}
                 >
                   {userName.charAt(0).toUpperCase()}

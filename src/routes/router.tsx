@@ -6,6 +6,7 @@ import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import LandingPage from "../pages/LandingPage";
 import LearnPage from "../pages/LearnPage";
 import DashboardPage from "../pages/DashboardPage";
+import CourseDetailPage from "../pages/CourseDetailPage";
 
 // Component bảo vệ route
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -47,6 +48,14 @@ export const AppRouter = () => {
         element={
           <ProtectedRoute>
             <LearnPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/courses/:courseId"
+        element={
+          <ProtectedRoute>
+            <CourseDetailPage />
           </ProtectedRoute>
         }
       />

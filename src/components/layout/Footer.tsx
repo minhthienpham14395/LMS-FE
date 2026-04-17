@@ -12,7 +12,7 @@ interface FooterProps {
 }
 
 export default function Footer({
-  accentColor = "#0891b2",
+  accentColor = "#3085c7",
   footerLinks,
   copyrightText = "&copy; 2024 BrightKids. All rights reserved.",
 }: FooterProps) {
@@ -37,7 +37,7 @@ export default function Footer({
     <>
       <style>{`
         footer {
-          box-shadow: 0 -4px 16px rgba(8, 145, 178, 0.08);
+          box-shadow: 0 -4px 16px rgba(48, 133, 199, 0.08);
         }
 
         footer a {
@@ -78,7 +78,7 @@ export default function Footer({
                   <li key={linkIdx}>
                     <a
                       href="#"
-                      className="text-gray-600 hover:text-teal-700 transition-colors"
+                      className="text-gray-600 hover:text-[#3085c7] transition-colors"
                     >
                       {link}
                     </a>

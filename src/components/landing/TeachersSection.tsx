@@ -15,7 +15,7 @@ interface TeachersSectionProps {
 
 export default function TeachersSection({
   teachers,
-  accentColor = "#0891b2",
+  accentColor = "#3085c7",
 }: TeachersSectionProps) {
   return (
     <>
@@ -42,8 +42,8 @@ export default function TeachersSection({
         }
       `}</style>
 
-      <section id="teachers" className="py-24 px-12 bg-gray-50 relative">
-        <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-radial from-cyan-400/5 to-transparent bottom-0 left-1/2 -translate-x-1/2 translate-y-32"></div>
+      <section id="teachers" className="py-24 px-12 bg-[#f7f8fa] relative">
+        <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-radial from-[#3085c7]/5 to-transparent bottom-0 left-1/2 -translate-x-1/2 translate-y-32"></div>
 
         <h2 className="text-5xl font-black text-center mb-5 title-fadeInUp text-gray-900">
           Đội ngũ giáo viên

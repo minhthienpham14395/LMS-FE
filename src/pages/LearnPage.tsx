@@ -1,18 +1,9 @@
 import React, { useState } from "react";
 import {
-  Search,
-  Filter,
   X,
-  Star,
-  Users,
-  Clock,
-  BookOpen,
-  Code,
-  Zap,
   ChevronDown,
   Menu,
   Lock,
-  Unlock,
   Settings,
   Edit2,
   Globe,
@@ -503,7 +494,7 @@ export default function CourseExplorer() {
                 {/* Lessons List */}
                 {currentModule?.id === module.id && (
                   <div className="space-y-3">
-                    {module.lessons.map((lesson, idx) => (
+                    {module.lessons.map((lesson) => (
                       <div
                         key={lesson.id}
                         className="lesson-item rounded-xl p-4 flex items-center justify-between"

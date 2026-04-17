@@ -13,7 +13,7 @@ interface HowItWorksSectionProps {
 
 export default function HowItWorksSection({
   steps,
-  accentColor = "#0891b2",
+  accentColor = "#3085c7",
 }: HowItWorksSectionProps) {
   return (
     <>
@@ -36,12 +36,12 @@ export default function HowItWorksSection({
 
         .step {
           animation: fadeInUp 0.6s ease-out;
-          box-shadow: 0 4px 16px rgba(8, 145, 178, 0.08);
+          box-shadow: 0 4px 16px rgba(48, 133, 199, 0.08);
           transition: all 0.3s ease;
         }
 
         .step:hover {
-          box-shadow: 0 12px 32px rgba(8, 145, 178, 0.18);
+          box-shadow: 0 12px 32px rgba(48, 133, 199, 0.18);
         }
 
         .step:nth-child(1) { animation-delay: 0.1s; }
@@ -67,7 +67,7 @@ export default function HowItWorksSection({
       `}</style>
 
       <section className="py-24 px-12 bg-white relative">
-        <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-radial from-cyan-400/5 to-transparent top-0 right-0 -translate-y-32 translate-x-32"></div>
+        <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-radial from-[#3085c7]/5 to-transparent top-0 right-0 -translate-y-32 translate-x-32"></div>
 
         <h2 className="text-5xl font-black text-center mb-5 title-fadeInUp text-gray-900">
           Cách thức hoạt động
@@ -83,7 +83,7 @@ export default function HowItWorksSection({
                 className="step-number w-20 h-20 rounded-full flex items-center justify-center text-4xl font-black text-white mx-auto mb-6"
                 style={{
                   backgroundColor: accentColor,
-                  boxShadow: `0 0 15px rgba(8, 145, 178, 0.2)`,
+                  boxShadow: `0 0 15px rgba(48, 133, 199, 0.2)`,
                 }}
               >
                 {step.number}

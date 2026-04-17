@@ -21,7 +21,7 @@ interface CoursesSectionProps {
 
 export default function CoursesSection({
   courses,
-  accentColor = "#0891b2",
+  accentColor = "#3085c7",
 }: CoursesSectionProps) {
   const [activeFilter, setActiveFilter] = useState("Tất cả");
 
@@ -50,8 +50,8 @@ export default function CoursesSection({
         }
       `}</style>
 
-      <section className="py-24 px-12 bg-gray-50 relative">
-        <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-radial from-cyan-400/5 to-transparent bottom-0 left-1/2 -translate-x-1/2 translate-y-32"></div>
+      <section className="py-24 px-12 bg-[#f7f8fa] relative">
+        <div className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-radial from-[#3085c7]/5 to-transparent bottom-0 left-1/2 -translate-x-1/2 translate-y-32"></div>
 
         <h2 className="text-5xl font-black text-center mb-5 title-fadeInUp text-gray-900">
           Các khóa học hàng đầu
@@ -71,7 +71,7 @@ export default function CoursesSection({
                   className={
                     activeFilter === filter
                       ? "text-white px-6 py-2 rounded-full font-semibold transition-all"
-                      : "bg-white border border-gray-300 text-gray-900 hover:border-teal-300 px-6 py-2 rounded-full transition-all"
+                      : "bg-white border border-gray-300 text-gray-900 hover:border-[#3085c7] px-6 py-2 rounded-full transition-all"
                   }
                   style={
                     activeFilter === filter
