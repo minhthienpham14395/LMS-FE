@@ -1,124 +1,66 @@
+import { Link } from "react-router-dom";
 
+import { Container } from "@/components/layout/Container";
+import { Logo } from "@/components/shared/Logo";
 
-interface FooterLink {
-  title: string;
-  links: string[];
-}
+const columns = [
+  {
+    title: "Học tập",
+    links: [
+      ["Khóa học", "/courses"],
+      ["Giáo viên", "/landing#teachers"],
+      ["Cách hoạt động", "/landing#how-it-works"],
+    ],
+  },
+  {
+    title: "Hỗ trợ",
+    links: [
+      ["FAQ", "/landing#faq"],
+      ["Liên hệ", "/contact"],
+      ["Bảo mật", "/privacy"],
+    ],
+  },
+];
 
-interface FooterProps {
-  accentColor?: string;
-  footerLinks?: FooterLink[];
-  copyrightText?: string;
-}
-
-export default function Footer({
-  accentColor = "#3085c7",
-  footerLinks,
-  copyrightText = "&copy; 2024 BrightKids. All rights reserved.",
-}: FooterProps) {
-  const defaultFooterLinks: FooterLink[] = [
-    {
-      title: "Khóa học",
-      links: ["Lập trình", "Robotics", "Tài chính", "Toán học"],
-    },
-    {
-      title: "Về chúng tôi",
-      links: ["Câu chuyện", "Đội ngũ", "Tuyển dụng", "Giải thưởng"],
-    },
-    {
-      title: "Hỗ trợ",
-      links: ["Trung tâm trợ giúp", "Liên hệ", "FAQ", "Chính sách"],
-    },
-  ];
-
-  const links = footerLinks || defaultFooterLinks;
-
+export function Footer() {
   return (
-    <>
-      <style>{`
-        footer {
-          box-shadow: 0 -4px 16px rgba(48, 133, 199, 0.08);
-        }
+    <footer className="border-t border-brand-100 bg-brand-50 text-slate-700">
+      <Container className="py-10 sm:py-12">
+        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr]">
+          <div className="max-w-md">
+            <Logo />
+            <p className="mt-4 text-sm leading-6 text-slate-600 sm:text-base">
+              Học tiếng Anh với lộ trình rõ ràng, bài học thực tế và tiến độ đo lường được.
+            </p>
+          </div>
 
-        footer a {
-          transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-          color: ${accentColor};
-        }
-
-        .social-icon {
-          transition: all 0.3s ease;
-          border: 2px solid ${accentColor};
-          color: ${accentColor};
-        }
-
-        .social-icon:hover {
-          background-color: ${accentColor};
-          color: white;
-          transform: translateY(-2px);
-        }
-      `}</style>
-
-      <footer className="relative bg-white text-gray-900 px-12 py-20 border-t border-gray-200">
-        {/* Main Footer Content */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Footer Sections */}
-          {links.map((section, idx) => (
-            <div key={idx}>
-              <h3
-                className="font-black mb-5 text-lg"
-                style={{ color: accentColor }}
-              >
-                {section.title}
-              </h3>
-              <ul className="space-y-3">
-                {section.links.map((link, linkIdx) => (
-                  <li key={linkIdx}>
-                    <a
-                      href="#"
-                      className="text-gray-600 hover:text-[#3085c7] transition-colors"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
-          {/* Social Links */}
-          <div>
-            <h3
-              className="font-black mb-5 text-lg"
-              style={{ color: accentColor }}
-            >
-              Kết nối
-            </h3>
-            <p className="text-gray-600 mb-5">Theo dõi chúng tôi</p>
-            <div className="flex gap-3">
-              {["f", "t", "in", "ig"].map((social, idx) => (
-                <a
-                  key={idx}
-                  href="#"
-                  className="social-icon w-10 h-10 rounded-full flex items-center justify-center transition-all hover:-translate-y-1"
-                  style={{
-                    backgroundColor: "transparent",
-                  }}
-                >
-                  {social}
-                </a>
-              ))}
-            </div>
+          <div className="grid grid-cols-2 gap-8">
+            {columns.map((column) => (
+              <div key={column.title} className="min-w-0">
+                <h2 className="break-words font-semibold text-slate-950">{column.title}</h2>
+                <ul className="mt-4 space-y-3">
+                  {column.links.map(([label, href]) => (
+                    <li key={href} className="min-w-0">
+                      <Link
+                        to={href}
+                        className="break-words text-sm text-slate-600 transition hover:text-brand-700"
+                      >
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-gray-200 pt-8 text-center text-gray-600">
-          <p dangerouslySetInnerHTML={{ __html: copyrightText }} />
+        <div className="mt-10 border-t border-brand-100 pt-6 text-xs text-slate-500">
+          &copy; {new Date().getFullYear()} LMS Tiếng Anh.
         </div>
-      </footer>
-    </>
+      </Container>
+    </footer>
   );
 }
+
+export default Footer;

@@ -1,6 +1,18 @@
-export { Table } from './Table';
-export { Autocomplete } from './Autocomplete';
-
-// Export layout components
-export { default as Footer } from './layout/Footer';
-export { default as Navbar } from './layout/Navbar';
+export {
+  Container,
+  Footer,
+  Header,
+  MobileMenu,
+  PublicFooter,
+  Section,
+} from "./layout";
+export {
+  CourseCard,
+  Logo,
+  SectionHeading,
+  TeacherCard,
+  TestimonialCard,
+  type CourseCardCourse,
+  type TeacherCardTeacher,
+  type TestimonialCardTestimonial,
+} from "./shared";

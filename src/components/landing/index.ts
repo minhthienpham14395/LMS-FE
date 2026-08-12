@@ -1,11 +1,9 @@
-// Card Components
-export { Card, CourseCard, TeacherCard, SkillCard, TestimonialCard, StatCard, CardStyles } from './Card';
-
-// Landing components
-export { default as LandingHeader } from './LandingHeader';
-export { default as LandingHeroSection } from './LandingHeroSection';
-export { default as LandingDisciplinesSection } from './LandingDisciplinesSection';
-export { default as LandingFeaturedCoursesSection } from './LandingFeaturedCoursesSection';
-export { default as LandingExpertsSection } from './LandingExpertsSection';
-export { default as LandingTestimonialsSection } from './LandingTestimonialsSection';
-export { default as LandingFooter } from './LandingFooter';
+export { default as LandingCTASection } from "./LandingCTASection";
+export { default as LandingFAQSection } from "./LandingFAQSection";
+export { default as LandingHeroSection } from "./LandingHeroSection";
+export { default as LandingHowItWorksSection } from "./LandingHowItWorksSection";
+export { default as LandingPopularCoursesSection } from "./LandingPopularCoursesSection";
+export { default as LandingSkillsSection } from "./LandingSkillsSection";
+export { default as LandingTeachersSection } from "./LandingTeachersSection";
+export { default as LandingTestimonialsSection } from "./LandingTestimonialsSection";
+export { default as LandingWhyChooseUsSection } from "./LandingWhyChooseUsSection";

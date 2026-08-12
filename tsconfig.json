@@ -3,15 +3,5 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ],
-   "compilerOptions": {
-    "jsx": "react-jsx", // hoặc "react-jsxdev" cho dev
-    "module": "esnext",
-    "target": "es6",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "allowJs": true,
-    "strict": true,
-    "noImplicitAny": true,
-  }
+  ]
 }
