@@ -1,180 +1,220 @@
-import { Link, Navigate, useParams } from "react-router-dom";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
-import { CardStyles, getIconComponent } from "../components/landing/Card";
-import { allCourses } from "../data/courseData";
+import { Link, useParams } from "react-router-dom";
+import {
+  AlertCircle,
+  ArrowLeft,
+  Check,
+  Clock3,
+  PlayCircle,
+  Star,
+} from "lucide-react";
+import { toast } from "sonner";
+
+import { Container } from "@/components/layout/Container";
+import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
+import { useCourse, useEnrollCourse } from "@/features/courses";
+
+function CourseDetailSkeleton() {
+  return (
+    <Container className="py-8 sm:py-10 lg:py-12">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] xl:grid-cols-[minmax(0,1fr)_380px]">
+        <main className="min-w-0 space-y-5">
+          <div className="h-4 w-32 animate-pulse rounded bg-slate-100" />
+          <div className="h-12 w-4/5 animate-pulse rounded bg-slate-100" />
+          <div className="h-24 w-full max-w-3xl animate-pulse rounded bg-slate-100" />
+          <div className="aspect-video w-full animate-pulse rounded-2xl bg-slate-100" />
+        </main>
+        <aside className="h-52 animate-pulse rounded-2xl border bg-slate-100" />
+      </div>
+    </Container>
+  );
+}
+
+interface CourseDetailErrorProps {
+  onRetry: () => void;
+}
+
+function CourseDetailError({ onRetry }: CourseDetailErrorProps) {
+  return (
+    <Container className="py-8 sm:py-10 lg:py-12">
+      <div className="rounded-2xl border border-destructive/30 bg-destructive/5 px-5 py-10 text-center">
+        <AlertCircle className="mx-auto size-8 text-destructive" />
+        <h1 className="mt-3 text-xl font-bold text-slate-950">
+          Không thể tải khóa học này
+        </h1>
+        <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-600">
+          Khóa học có thể đã được chuyển hoặc danh mục đang tạm thời không khả dụng.
+        </p>
+        <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:justify-center">
+          <Button onClick={onRetry}>Thử lại</Button>
+          <Button variant="outline" asChild>
+            <Link to="/courses">Quay lại khóa học</Link>
+          </Button>
+        </div>
+      </div>
+    </Container>
+  );
+}
 
 export default function CourseDetailPage() {
-  const { courseId } = useParams();
-  const accentColor = "#3085c7";
-  const primaryColor = "#164789";
-  const parsedCourseId = Number(courseId);
-  const course = allCourses.find((item) => item.id === parsedCourseId);
+  const { slug } = useParams();
+  const courseQuery = useCourse(slug);
+  const enrollMutation = useEnrollCourse();
 
-  if (!courseId || Number.isNaN(parsedCourseId) || !course) {
-    return <Navigate to="/landing" replace />;
+  if (courseQuery.isLoading) {
+    return <CourseDetailSkeleton />;
   }
 
+  if (courseQuery.isError) {
+    return <CourseDetailError onRetry={() => void courseQuery.refetch()} />;
+  }
+
+  if (!courseQuery.data) {
+    return null;
+  }
+
+  const course = courseQuery.data;
+  const outcomes =
+    course.outcomes && course.outcomes.length > 0
+      ? course.outcomes
+      : [
+          "Xây dựng sự tự tin qua các bài luyện tiếng Anh có hướng dẫn.",
+          "Nắm vững từ vựng và ngữ pháp cốt lõi cho trình độ này.",
+          "Hoàn thành bài luyện tập trọng tâm với tiến độ đo lường được.",
+          "Chuẩn bị bước học tiếp theo thật rõ ràng.",
+        ];
+
+  const handleEnroll = () => {
+    enrollMutation.mutate(course.id, {
+      onSuccess: () => toast.success("Đã bắt đầu ghi danh."),
+      onError: () => toast.error("Không thể ghi danh khóa học này."),
+    });
+  };
+
   return (
-    <>
-      <style>{`
-        ${CardStyles}
+    <Container className="pb-24 pt-8 sm:py-10 lg:pb-12 lg:pt-12">
+      <Button
+        variant="ghost"
+        asChild
+        className="mb-6 min-h-0 px-0 py-0 text-slate-700 hover:bg-transparent hover:text-brand-600"
+      >
+        <Link to="/courses">
+          <ArrowLeft className="size-4" />
+          Quay lại khóa học
+        </Link>
+      </Button>
 
-        @keyframes floatUp {
-          from {
-            opacity: 0;
-            transform: translateY(24px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .detail-animate {
-          animation: floatUp 0.55s ease-out both;
-        }
-      `}</style>
-
-      <div className="min-h-screen bg-[#f7f8fa] text-gray-900">
-        <Navbar
-          accentColor={accentColor}
-          isLoggedIn={false}
-          onLoginClick={() => console.log("Navigate to login")}
-          onSignupClick={() => console.log("Navigate to signup")}
-        />
-
-        <main className="px-6 pt-28 pb-12 md:px-10 md:pt-32 lg:px-12">
-          <div className="mx-auto max-w-6xl">
-            <Link
-              to="/landing"
-              className="detail-animate inline-flex items-center gap-2 rounded-full border border-[#3085c7]/20 bg-white px-4 py-2 text-sm font-semibold text-[#164789] transition-all hover:-translate-y-0.5 hover:shadow-md"
-            >
-              ← Quay lại danh sách khóa học
-            </Link>
-
-            <section className="mt-8 grid gap-8 lg:grid-cols-[1.3fr_0.7fr]">
-              <div
-                className="detail-animate rounded-[32px] border border-white/70 bg-white p-8 shadow-[0_20px_60px_rgba(48,133,199,0.12)]"
-                style={{ animationDelay: "0.08s" }}
-              >
-                <div className="mb-6 flex flex-wrap items-center gap-3">
-                  <span
-                    className="rounded-full px-4 py-1 text-sm font-bold text-white"
-                    style={{ backgroundColor: accentColor }}
-                  >
-                    {course.badge}
-                  </span>
-                  <span className="rounded-full bg-[#eef5fb] px-4 py-1 text-sm font-semibold text-[#164789]">
-                    {course.groupTitle}
-                  </span>
-                </div>
-
-                <div className="grid gap-8 md:grid-cols-[0.95fr_1.05fr] md:items-center">
-                  <div className="rounded-[28px] bg-gradient-to-br from-[#edf6ff] via-white to-[#f6fbff] p-10">
-                    <div className="flex min-h-[240px] items-center justify-center rounded-[24px] border border-dashed border-[#3085c7]/20 bg-white/70">
-                      {getIconComponent(course.icon)}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h1 className="text-4xl font-black text-gray-900 md:text-5xl">
-                      {course.title}
-                    </h1>
-                    <p className="mt-4 text-lg leading-8 text-gray-600">
-                      {course.description}
-                    </p>
-
-                    <div className="mt-6 flex flex-wrap gap-3">
-                      <span className="rounded-xl bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-700">
-                        Thời lượng: {course.duration}
-                      </span>
-                      <span className="rounded-xl bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-700">
-                        Hình thức: {course.type}
-                      </span>
-                      <span className="rounded-xl bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-700">
-                        Độ tuổi: {course.age}
-                      </span>
-                    </div>
-
-                    <div className="mt-8 flex items-end gap-4">
-                      <span
-                        className="text-4xl font-black"
-                        style={{ color: accentColor }}
-                      >
-                        {course.currentPrice}
-                      </span>
-                      <span className="pb-1 text-lg text-gray-400 line-through">
-                        {course.oldPrice}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <aside
-                className="detail-animate space-y-6 rounded-[32px] border border-white/70 bg-white p-8 shadow-[0_20px_60px_rgba(48,133,199,0.12)]"
-                style={{ animationDelay: "0.16s" }}
-              >
-                <div>
-                  <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#3085c7]">
-                    Course Detail
-                  </p>
-                  <h2 className="mt-2 text-2xl font-black text-gray-900">
-                    Lộ trình phù hợp cho bé
-                  </h2>
-                  <p className="mt-3 text-sm leading-7 text-gray-600">
-                    Khóa học giúp học viên xây dựng nền tảng tư duy logic, thực hành
-                    theo dự án và phát triển kỹ năng công nghệ từng bước.
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="rounded-2xl bg-[#f7f8fa] p-4">
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-gray-500">
-                      Chương trình
-                    </p>
-                    <p className="mt-2 text-base font-semibold text-gray-900">
-                      {course.groupTitle}
-                    </p>
-                  </div>
-                  <div className="rounded-2xl bg-[#f7f8fa] p-4">
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-gray-500">
-                      Hình thức học
-                    </p>
-                    <p className="mt-2 text-base font-semibold text-gray-900">
-                      {course.type}
-                    </p>
-                  </div>
-                  <div className="rounded-2xl bg-[#f7f8fa] p-4">
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-gray-500">
-                      Độ tuổi phù hợp
-                    </p>
-                    <p className="mt-2 text-base font-semibold text-gray-900">
-                      {course.age}
-                    </p>
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  className="w-full rounded-2xl px-6 py-4 text-base font-black text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
-                  style={{
-                    background: `linear-gradient(135deg, ${primaryColor}, ${accentColor})`,
-                  }}
-                >
-                  Đăng ký khóa học này
-                </button>
-              </aside>
-            </section>
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start xl:grid-cols-[minmax(0,1fr)_380px]">
+        <main className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge>{course.level}</Badge>
+            <span className="text-sm font-bold text-brand-600">
+              {course.category}
+            </span>
           </div>
+
+          <h1 className="mt-3 break-words text-3xl font-bold text-slate-950 sm:text-4xl lg:text-5xl">
+            {course.title}
+          </h1>
+
+          <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg">
+            {course.description}
+          </p>
+
+          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-500">
+            <span className="inline-flex items-center gap-1.5">
+              <Clock3 className="size-4" />
+              {course.duration}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Star className="size-4" />
+              {course.rating}
+            </span>
+            {course.lessonsCount ? (
+              <span className="inline-flex items-center gap-1.5">
+                <PlayCircle className="size-4" />
+                {course.lessonsCount} bài học
+              </span>
+            ) : null}
+          </div>
+
+          <div className="mt-8 aspect-video overflow-hidden rounded-2xl bg-slate-100">
+            <img
+              src={course.thumbnail}
+              alt=""
+              width="960"
+              height="540"
+              loading="eager"
+              decoding="async"
+              className="h-full w-full object-cover"
+            />
+          </div>
+
+          <section className="mt-8">
+            <h2 className="text-xl font-bold text-slate-950">
+              Bạn sẽ học được gì
+            </h2>
+            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+              {outcomes.map((outcome) => (
+                <li key={outcome} className="flex gap-2 text-sm leading-6">
+                  <Check className="mt-1 size-4 shrink-0 text-brand-600" />
+                  <span>{outcome}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
         </main>
 
-        <Footer
-          accentColor={accentColor}
-          copyrightText="&copy; 2024 BrightKids. All rights reserved."
-        />
+        <aside className="lg:sticky lg:top-24">
+          <div className="rounded-2xl border bg-white p-5 shadow-sm">
+            <div className="flex items-center justify-between gap-3">
+              <span className="font-bold text-slate-950">Truy cập khóa học</span>
+              <span className="text-sm text-slate-500">{course.duration}</span>
+            </div>
+
+            <div className="mt-5 space-y-3 text-sm text-slate-600">
+              <div className="flex items-center justify-between gap-3">
+                <span>Trình độ</span>
+                <span className="font-semibold text-slate-950">
+                  {course.level}
+                </span>
+              </div>
+              <div className="flex items-center justify-between gap-3">
+                <span>Danh mục</span>
+                <span className="text-right font-semibold text-slate-950">
+                  {course.category}
+                </span>
+              </div>
+              {course.instructor ? (
+                <div className="flex items-center justify-between gap-3">
+                  <span>Giảng viên</span>
+                  <span className="text-right font-semibold text-slate-950">
+                    {course.instructor}
+                  </span>
+                </div>
+              ) : null}
+            </div>
+
+            <Button
+              className="mt-5 w-full"
+              disabled={enrollMutation.isPending}
+              onClick={handleEnroll}
+            >
+              {enrollMutation.isPending ? "Đang ghi danh..." : "Ghi danh ngay"}
+            </Button>
+          </div>
+        </aside>
       </div>
-    </>
+
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t bg-white/95 p-3 backdrop-blur lg:hidden pb-[max(.75rem,env(safe-area-inset-bottom))]">
+        <Button
+          className="w-full"
+          disabled={enrollMutation.isPending}
+          onClick={handleEnroll}
+        >
+          {enrollMutation.isPending ? "Đang ghi danh..." : "Ghi danh ngay"}
+        </Button>
+      </div>
+    </Container>
   );
 }
