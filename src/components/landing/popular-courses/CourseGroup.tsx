@@ -19,7 +19,7 @@ export function CourseGroup({ group, isExpanded, onToggle }: CourseGroupProps) {
   const canToggle = remaining > 0;
 
   return (
-    <section aria-labelledby={`${group.id}-courses-title`}>
+    <section aria-labelledby={`${group.id}-courses-title`} className="pb-12 last:pb-0 md:pb-16">
       <h2
         id={`${group.id}-courses-title`}
         className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl"
