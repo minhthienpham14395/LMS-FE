@@ -6,7 +6,7 @@ import { StudentMobileNav } from "./StudentMobileNav";
 
 export function StudentTopbar() {
   return (
-    <header className="sticky top-0 z-40 border-b bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-white/70 bg-white/66 shadow-sm backdrop-blur-xl">
       <div className="flex h-16 items-center justify-between gap-3 px-4 xs:px-5 sm:px-6 lg:px-8">
         <div className="lg:hidden">
           <StudentMobileNav />

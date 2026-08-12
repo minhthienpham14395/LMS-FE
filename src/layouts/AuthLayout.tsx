@@ -20,30 +20,32 @@ const highlights = [
 
 export default function AuthLayout() {
   return (
-    <div className="grid min-h-dvh bg-white lg:grid-cols-[minmax(0,1fr)_minmax(420px,0.76fr)]">
-      <aside className="relative hidden min-h-dvh overflow-hidden border-r border-brand-100 bg-brand-50 p-10 text-slate-950 lg:flex lg:flex-col lg:justify-between">
-        <Logo />
+    <div className="grid min-h-dvh lg:grid-cols-[minmax(0,1fr)_minmax(420px,0.76fr)]">
+      <aside className="relative hidden min-h-dvh overflow-hidden border-r border-white/60 bg-white/44 p-10 text-slate-950 backdrop-blur-xl lg:flex">
+        <div className="flex h-full flex-col justify-between">
+          <Logo />
 
-        <div className="max-w-xl">
-          <p className="text-4xl font-bold leading-tight">
-            Học đều đặn. Theo dõi tiến bộ thật rõ ràng.
-          </p>
-          <p className="mt-4 max-w-md text-base leading-7 text-slate-600">
-            Tiếp tục hành trình học tiếng Anh trên mọi thiết bị, với không gian
-            học tập gọn gàng cho bài học, ôn tập và luyện tập hằng ngày.
-          </p>
-        </div>
+          <div className="max-w-xl">
+            <p className="text-4xl font-bold leading-tight">
+              Học đều đặn. Theo dõi tiến bộ thật rõ ràng.
+            </p>
+            <p className="mt-4 max-w-md text-base leading-7 text-slate-600">
+              Tiếp tục hành trình học tiếng Anh trên mọi thiết bị, với không gian
+              học tập gọn gàng cho bài học, ôn tập và luyện tập hằng ngày.
+            </p>
+          </div>
 
-        <div className="grid max-w-2xl grid-cols-3 gap-3">
-          {highlights.map(({ icon: Icon, label }) => (
-            <div
-              key={label}
-              className="rounded-xl border border-brand-100 bg-white/80 p-4 text-sm font-semibold text-slate-700 shadow-sm"
-            >
-              <Icon className="mb-3 size-5 text-accent-500" />
-              {label}
-            </div>
-          ))}
+          <div className="grid max-w-2xl grid-cols-3 gap-3">
+            {highlights.map(({ icon: Icon, label }) => (
+              <div
+                key={label}
+                className="rounded-xl border border-white/70 bg-white/72 p-4 text-sm font-semibold text-slate-700 shadow-sm backdrop-blur"
+              >
+                <Icon className="mb-3 size-5 text-accent-500" />
+                {label}
+              </div>
+            ))}
+          </div>
         </div>
       </aside>
 
@@ -58,7 +60,9 @@ export default function AuthLayout() {
               Trang chủ
             </Link>
           </div>
-          <Outlet />
+          <div className="rounded-[1.75rem] border border-white/70 bg-white/78 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur-md sm:p-8">
+            <Outlet />
+          </div>
         </div>
       </main>
     </div>

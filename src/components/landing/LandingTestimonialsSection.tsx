@@ -32,7 +32,7 @@ const testimonials = [
 
 export default function LandingTestimonialsSection() {
   return (
-    <Section id="testimonials" className="bg-brand-50/60">
+    <Section id="testimonials" className="bg-white/34 backdrop-blur-[2px]">
       <Container>
         <SectionHeading
           eyebrow="Câu chuyện học viên"

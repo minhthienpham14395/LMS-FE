@@ -14,7 +14,7 @@ export function StudentBottomNav() {
   return (
     <nav
       aria-label="Điều hướng nhanh của học viên"
-      className="fixed inset-x-0 bottom-0 z-40 border-t bg-white/95 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-white/70 bg-white/78 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 shadow-[0_-8px_24px_rgba(15,23,42,0.08)] backdrop-blur-xl lg:hidden"
     >
       <div className="mx-auto grid max-w-md grid-cols-3 gap-1">
         {bottomItems.map(({ label, href, icon: Icon, end }) => (

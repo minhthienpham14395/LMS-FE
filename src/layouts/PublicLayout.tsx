@@ -5,9 +5,9 @@ import { Header } from "@/components/layout/Header";
 
 export default function PublicLayout() {
   return (
-    <div className="min-h-dvh bg-white">
+    <div className="min-h-dvh">
       <Header />
-      <main>
+      <main className="relative">
         <Outlet />
       </main>
       <Footer />

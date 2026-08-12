@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 export default function UnauthorizedPage() {
   return (
     <main className="grid min-h-dvh place-items-center px-4 py-10 text-center">
-      <div className="max-w-lg">
+      <div className="max-w-lg rounded-[1.75rem] border border-white/70 bg-white/78 px-6 py-8 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur-md sm:px-8">
         <p className="text-sm font-bold text-brand-600">403</p>
         <h1 className="mt-2 text-3xl font-bold text-slate-950 sm:text-4xl">
           Không có quyền truy cập

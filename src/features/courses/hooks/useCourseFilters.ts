@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import type { CourseFiltersState } from "../types/course.type";
@@ -15,31 +16,34 @@ export function useCourseFilters() {
     page: Number(searchParams.get("page") || 1),
   };
 
-  const update = (patch: CourseFilterPatch) => {
-    const next = new URLSearchParams(searchParams);
+  const update = useCallback(
+    (patch: CourseFilterPatch) => {
+      const next = new URLSearchParams(searchParams);
 
-    Object.entries(patch).forEach(([key, value]) => {
-      if (value === "" || value == null) {
-        next.delete(key);
-      } else {
-        next.set(key, String(value));
+      Object.entries(patch).forEach(([key, value]) => {
+        if (value === "" || value == null) {
+          next.delete(key);
+        } else {
+          next.set(key, String(value));
+        }
+      });
+
+      if (!("page" in patch)) {
+        next.set("page", "1");
       }
-    });
 
-    if (!("page" in patch)) {
-      next.set("page", "1");
-    }
+      if (next.get("sort") === "popular") {
+        next.delete("sort");
+      }
 
-    if (next.get("sort") === "popular") {
-      next.delete("sort");
-    }
+      if (next.get("page") === "1") {
+        next.delete("page");
+      }
 
-    if (next.get("page") === "1") {
-      next.delete("page");
-    }
-
-    setSearchParams(next, { replace: true });
-  };
+      setSearchParams(next, { replace: true });
+    },
+    [searchParams, setSearchParams]
+  );
 
   return { filters, update };
 }

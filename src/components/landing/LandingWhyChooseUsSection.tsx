@@ -9,7 +9,7 @@ const points = [
 
 export default function LandingWhyChooseUsSection() {
   return (
-    <Section className="bg-slate-50">
+    <Section className="bg-white/42 backdrop-blur-[2px]">
       <Container>
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
           <div className="aspect-[4/3] overflow-hidden rounded-3xl bg-slate-200">
@@ -31,7 +31,10 @@ export default function LandingWhyChooseUsSection() {
 
             <div className="mt-6 grid gap-4">
               {points.map(([title, text], index) => (
-                <div key={title} className="flex gap-4 rounded-2xl bg-white p-4">
+                <div
+                  key={title}
+                  className="flex gap-4 rounded-2xl border border-white/70 bg-white/76 p-4 shadow-sm backdrop-blur"
+                >
                   <span className="grid size-9 shrink-0 place-items-center rounded-full bg-brand-500 font-bold text-white">
                     {index + 1}
                   </span>
