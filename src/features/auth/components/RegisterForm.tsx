@@ -70,10 +70,10 @@ export function RegisterForm() {
       />
 
       <div className="min-w-0">
-        <label className="flex min-w-0 items-start gap-3 rounded-xl border border-transparent p-1 text-sm leading-6 text-slate-600 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ring">
+        <label className="flex min-w-0 items-start gap-3 rounded-xl border border-transparent p-1 text-sm leading-6 text-muted-foreground focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ring">
           <input
             type="checkbox"
-            className="mt-1 size-5 shrink-0 rounded border border-slate-300 accent-brand-600"
+            className="mt-1 size-5 shrink-0 rounded border border-border accent-primary"
             {...register("acceptTerms")}
           />
           <span className="min-w-0 break-words">
@@ -98,3 +98,4 @@ export function RegisterForm() {
     </form>
   );
 }
+

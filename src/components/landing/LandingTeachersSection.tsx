@@ -32,7 +32,7 @@ const teachers = [
 
 export default function LandingTeachersSection() {
   return (
-    <Section id="teachers" className="bg-white/42 backdrop-blur-[2px]">
+    <Section id="teachers" className="border-y border-border/70 bg-card/82 backdrop-blur-sm">
       <Container>
         <SectionHeading
           eyebrow="Giáo viên"
@@ -48,3 +48,5 @@ export default function LandingTeachersSection() {
     </Section>
   );
 }
+
+

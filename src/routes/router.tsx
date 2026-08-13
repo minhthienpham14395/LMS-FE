@@ -28,9 +28,9 @@ function PageSkeleton() {
       className="grid min-h-[50dvh] place-items-center px-4 py-12"
     >
       <div className="w-full max-w-3xl space-y-4">
-        <div className="h-4 w-32 animate-pulse rounded bg-slate-100" />
-        <div className="h-10 w-4/5 animate-pulse rounded bg-slate-100" />
-        <div className="h-24 w-full animate-pulse rounded bg-slate-100" />
+        <div className="h-4 w-32 animate-pulse rounded bg-secondary" />
+        <div className="h-10 w-4/5 animate-pulse rounded bg-secondary" />
+        <div className="h-24 w-full animate-pulse rounded bg-secondary" />
       </div>
     </div>
   );
@@ -163,3 +163,4 @@ export const AppRouter = () => {
     </Routes>
   );
 };
+

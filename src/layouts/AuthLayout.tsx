@@ -1,6 +1,8 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { BookOpen, ChartNoAxesColumnIncreasing, GraduationCap } from "lucide-react";
 
+import { AppBackground } from "@/components/layout/AppBackground";
+import { PageMotion } from "@/components/layout/PageMotion";
 import { Logo } from "@/components/shared";
 
 const highlights = [
@@ -19,9 +21,13 @@ const highlights = [
 ];
 
 export default function AuthLayout() {
+  const location = useLocation();
+
   return (
-    <div className="grid min-h-dvh lg:grid-cols-[minmax(0,1fr)_minmax(420px,0.76fr)]">
-      <aside className="relative hidden min-h-dvh overflow-hidden border-r border-white/60 bg-white/44 p-10 text-slate-950 backdrop-blur-xl lg:flex">
+    <div className="relative isolate grid min-h-dvh lg:grid-cols-[minmax(0,1fr)_minmax(420px,0.76fr)]">
+      <AppBackground />
+
+      <aside className="relative z-10 hidden min-h-dvh overflow-hidden border-r border-border bg-background-secondary/80 p-10 text-foreground backdrop-blur-xl lg:flex">
         <div className="flex h-full flex-col justify-between">
           <Logo />
 
@@ -29,7 +35,7 @@ export default function AuthLayout() {
             <p className="text-4xl font-bold leading-tight">
               Học đều đặn. Theo dõi tiến bộ thật rõ ràng.
             </p>
-            <p className="mt-4 max-w-md text-base leading-7 text-slate-600">
+            <p className="mt-4 max-w-md text-base leading-7 text-muted-foreground">
               Tiếp tục hành trình học tiếng Anh trên mọi thiết bị, với không gian
               học tập gọn gàng cho bài học, ôn tập và luyện tập hằng ngày.
             </p>
@@ -39,9 +45,9 @@ export default function AuthLayout() {
             {highlights.map(({ icon: Icon, label }) => (
               <div
                 key={label}
-                className="rounded-xl border border-white/70 bg-white/72 p-4 text-sm font-semibold text-slate-700 shadow-sm backdrop-blur"
+                className="rounded-xl border border-border bg-card p-4 text-sm font-semibold text-foreground shadow-sm backdrop-blur"
               >
-                <Icon className="mb-3 size-5 text-accent-500" />
+                <Icon className="mb-3 size-5 text-primary" />
                 {label}
               </div>
             ))}
@@ -49,21 +55,21 @@ export default function AuthLayout() {
         </div>
       </aside>
 
-      <main className="flex min-h-dvh items-start justify-center overflow-y-auto px-4 py-8 xs:px-5 sm:px-6 md:items-center lg:px-10 [@media_(max-height:640px)]:items-start">
-        <div className="w-full max-w-md">
+      <main className="relative z-10 flex min-h-dvh items-start justify-center overflow-y-auto px-4 py-8 xs:px-5 sm:px-6 md:items-center lg:px-10 [@media_(max-height:640px)]:items-start">
+        <PageMotion key={location.pathname} className="auth-page-enter w-full max-w-md">
           <div className="mb-7 flex items-center justify-between gap-4 lg:hidden">
-            <Logo />
+            <Logo className="text-foreground" />
             <Link
               to="/"
-              className="rounded-md text-sm font-semibold text-slate-600 hover:text-brand-600 focus-visible:outline-brand-500"
+              className="rounded-md text-sm font-semibold text-muted-foreground hover:text-primary focus-visible:outline-primary"
             >
               Trang chủ
             </Link>
           </div>
-          <div className="rounded-[1.75rem] border border-white/70 bg-white/78 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur-md sm:p-8">
+          <div className="rounded-[1.75rem] border border-border bg-card/96 p-6 shadow-lg backdrop-blur-md sm:p-8">
             <Outlet />
           </div>
-        </div>
+        </PageMotion>
       </main>
     </div>
   );

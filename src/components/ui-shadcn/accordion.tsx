@@ -137,13 +137,13 @@ export function AccordionTrigger({
   const { contentId, isOpen, triggerId, value } = useAccordionItemContext();
 
   return (
-    <button
+      <button
       id={triggerId}
       type="button"
       aria-controls={contentId}
       aria-expanded={isOpen}
       className={cn(
-        "flex min-h-14 w-full items-center justify-between gap-4 py-4 text-sm font-semibold transition hover:text-brand-600 sm:text-base",
+        "flex min-h-14 w-full items-center justify-between gap-4 py-4 text-sm font-semibold text-foreground transition hover:text-primary sm:text-base",
         className
       )}
       onClick={() => toggleValue(value)}
@@ -173,7 +173,7 @@ export function AccordionContent({
       id={contentId}
       role="region"
       aria-labelledby={triggerId}
-      className={cn("pb-4 text-sm", className)}
+      className={cn("pb-4 text-sm text-muted-foreground", className)}
       {...props}
     >
       {children}

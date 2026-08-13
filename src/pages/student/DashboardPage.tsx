@@ -8,6 +8,7 @@ import {
 import { Link } from "react-router-dom";
 
 import { Container } from "@/components/layout/Container";
+import { Reveal } from "@/components/layout";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Progress } from "@/components/ui-shadcn/progress";
@@ -35,35 +36,35 @@ function StatCard({
   value: string;
 }) {
   return (
-    <article className="min-w-0 rounded-2xl border bg-white p-4 shadow-sm sm:p-5">
+    <article className="min-w-0 rounded-2xl border bg-card p-4 shadow-sm sm:p-5">
       <div className="flex items-center justify-between gap-3">
-        <p className="truncate text-xs font-semibold text-slate-500 sm:text-sm">
+        <p className="truncate text-xs font-semibold text-muted-foreground sm:text-sm">
           {label}
         </p>
-        <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-700">
+        <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary-active">
           <Icon className="size-4" />
         </span>
       </div>
-      <p className="mt-2 truncate text-2xl font-bold text-slate-950">{value}</p>
+      <p className="mt-2 truncate text-2xl font-bold text-foreground">{value}</p>
     </article>
   );
 }
 
 function ContinueLearning() {
   return (
-    <section className="min-w-0 rounded-2xl border bg-white p-4 shadow-sm sm:p-6">
+    <section className="min-w-0 rounded-2xl border bg-card p-4 shadow-sm sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-lg font-bold text-slate-950">
+          <h2 className="text-lg font-bold text-foreground">
             Tiếp tục học
           </h2>
-          <p className="mt-1 text-sm text-slate-500">Nền tảng tiếng Anh</p>
+          <p className="mt-1 text-sm text-muted-foreground">Nền tảng tiếng Anh</p>
         </div>
         <Badge>Hoàn thành 72%</Badge>
       </div>
 
       <div className="mt-5 grid items-center gap-5 md:grid-cols-[180px_minmax(0,1fr)]">
-        <div className="aspect-video overflow-hidden rounded-xl bg-slate-100 md:aspect-[4/3]">
+        <div className="aspect-video overflow-hidden rounded-xl bg-secondary md:aspect-[4/3]">
           <img
             src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80"
             alt=""
@@ -76,10 +77,10 @@ function ContinueLearning() {
         </div>
 
         <div className="min-w-0">
-          <p className="text-xs font-semibold uppercase text-brand-600">
+          <p className="text-xs font-semibold uppercase text-primary">
             Bài tiếp theo
           </p>
-          <h3 className="mt-1 line-clamp-2 font-bold text-slate-950">
+          <h3 className="mt-1 line-clamp-2 font-bold text-foreground">
             Hội thoại hằng ngày: hỏi thông tin
           </h3>
 
@@ -106,8 +107,8 @@ function WeeklyProgress() {
   ] as const;
 
   return (
-    <section className="rounded-2xl border bg-white p-4 shadow-sm sm:p-6">
-      <h2 className="text-lg font-bold text-slate-950">Tuần này</h2>
+    <section className="rounded-2xl border bg-card p-4 shadow-sm sm:p-6">
+      <h2 className="text-lg font-bold text-foreground">Tuần này</h2>
 
       <div className="mt-6 flex h-40 items-end gap-2">
         {days.map(([day, value]) => (
@@ -115,14 +116,14 @@ function WeeklyProgress() {
             key={day}
             className="flex min-w-0 flex-1 flex-col items-center gap-2"
           >
-            <div className="flex h-28 w-full items-end rounded-lg bg-slate-100">
+            <div className="flex h-28 w-full items-end rounded-lg bg-secondary">
               <div
-                className="w-full rounded-lg bg-brand-500"
+                className="w-full rounded-lg bg-primary-soft"
                 style={{ height: `${value}%` }}
                 aria-label={`${day}: ${value}%`}
               />
             </div>
-            <span className="text-[10px] text-slate-500 xs:text-xs">{day}</span>
+            <span className="text-[10px] text-muted-foreground xs:text-xs">{day}</span>
           </div>
         ))}
       </div>
@@ -132,13 +133,13 @@ function WeeklyProgress() {
 
 function RecentActivity() {
   return (
-    <section className="rounded-2xl border bg-white p-4 shadow-sm sm:p-6">
-      <h2 className="text-lg font-bold text-slate-950">Hoạt động gần đây</h2>
+    <section className="rounded-2xl border bg-card p-4 shadow-sm sm:p-6">
+      <h2 className="text-lg font-bold text-foreground">Hoạt động gần đây</h2>
       <div className="mt-4 grid gap-3">
         {recentActivities.map((activity) => (
           <div
             key={activity}
-            className="rounded-xl border bg-slate-50 px-3 py-3 text-sm text-slate-700"
+            className="rounded-xl border bg-background-soft px-3 py-3 text-sm text-muted-foreground"
           >
             {activity}
           </div>
@@ -151,29 +152,41 @@ function RecentActivity() {
 export default function StudentDashboardPage() {
   return (
     <Container className="py-6 sm:py-8">
-      <div>
-        <h1 className="text-2xl font-bold text-slate-950 sm:text-3xl">
-          Tổng quan
-        </h1>
-        <p className="mt-1 text-sm text-slate-600 sm:text-base">
-          Tiếp tục học và giữ nhịp tiến bộ trong tuần.
-        </p>
-      </div>
+        <Reveal>
+          <div>
+            <h1 className="text-2xl font-bold text-foreground sm:text-3xl">
+              Tổng quan
+            </h1>
+            <p className="mt-1 text-sm text-muted-foreground sm:text-base">
+              Tiếp tục học và giữ nhịp tiến bộ trong tuần.
+            </p>
+          </div>
+        </Reveal>
 
-      <section className="mt-6 grid grid-cols-1 gap-4 xs:grid-cols-2 xl:grid-cols-4">
-        {stats.map((stat) => (
-          <StatCard key={stat.label} {...stat} />
-        ))}
-      </section>
+        <section className="mt-6 grid grid-cols-1 gap-4 xs:grid-cols-2 xl:grid-cols-4">
+          {stats.map((stat, index) => (
+            <Reveal key={stat.label} delay={index * 70}>
+              <StatCard {...stat} />
+            </Reveal>
+          ))}
+        </section>
 
-      <section className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1.35fr)_minmax(300px,.65fr)]">
-        <ContinueLearning />
-        <WeeklyProgress />
-      </section>
+        <section className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1.35fr)_minmax(300px,.65fr)]">
+          <Reveal>
+            <ContinueLearning />
+          </Reveal>
+          <Reveal delay={120}>
+            <WeeklyProgress />
+          </Reveal>
+        </section>
 
-      <div className="mt-6">
-        <RecentActivity />
-      </div>
+        <div className="mt-6">
+          <Reveal delay={180}>
+            <RecentActivity />
+          </Reveal>
+        </div>
     </Container>
   );
 }
+
+

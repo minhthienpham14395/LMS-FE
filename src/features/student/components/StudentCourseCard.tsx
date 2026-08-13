@@ -11,8 +11,8 @@ interface StudentCourseCardProps {
 
 export function StudentCourseCard({ course }: StudentCourseCardProps) {
   return (
-    <article className="min-w-0 overflow-hidden rounded-2xl border bg-white shadow-sm">
-      <div className="aspect-video bg-slate-100">
+    <article className="min-w-0 overflow-hidden rounded-2xl border bg-card shadow-sm">
+      <div className="aspect-video bg-secondary">
         <img
           src={course.thumbnail}
           alt=""
@@ -25,20 +25,20 @@ export function StudentCourseCard({ course }: StudentCourseCardProps) {
       </div>
 
       <div className="p-4 sm:p-5">
-        <div className="flex items-center justify-between gap-3 text-xs font-semibold text-slate-500">
+        <div className="flex items-center justify-between gap-3 text-xs font-semibold text-muted-foreground">
           <span className="truncate">{course.instructor}</span>
           <span className="shrink-0">{course.lastActivity}</span>
         </div>
 
-        <h2 className="mt-2 line-clamp-2 font-bold text-slate-950">
+        <h2 className="mt-2 line-clamp-2 font-bold text-foreground">
           {course.title}
         </h2>
-        <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-600">
+        <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground">
           {course.description}
         </p>
 
         <div className="mt-4">
-          <div className="flex justify-between gap-3 text-xs text-slate-500">
+          <div className="flex justify-between gap-3 text-xs text-muted-foreground">
             <span>Tiến độ</span>
             <span>{course.progress}%</span>
           </div>
@@ -54,3 +54,5 @@ export function StudentCourseCard({ course }: StudentCourseCardProps) {
     </article>
   );
 }
+
+

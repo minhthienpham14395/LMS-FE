@@ -1,6 +1,13 @@
 import { RotateCcw } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui-shadcn/select";
 import { COURSE_LEVELS } from "@/utils/constants";
 import { cn } from "@/utils/cn";
 
@@ -29,15 +36,15 @@ export function CourseFilters({ filters, onChange }: CourseFiltersProps) {
   return (
     <div className="space-y-6">
       <fieldset>
-        <legend className="text-sm font-bold text-slate-950">Trình độ</legend>
+        <legend className="text-sm font-bold text-foreground">Trình độ</legend>
         <div className="mt-3 grid gap-2">
           {COURSE_LEVELS.map((level) => (
             <label
               key={level.value}
               className={cn(
                 "flex min-h-11 cursor-pointer items-center gap-3 rounded-xl px-2 text-sm transition",
-                "hover:bg-slate-50",
-                filters.level === level.value && "bg-brand-50 text-brand-700"
+                "hover:bg-background-soft",
+                filters.level === level.value && "bg-primary-soft text-primary-active"
               )}
             >
               <input
@@ -53,16 +60,16 @@ export function CourseFilters({ filters, onChange }: CourseFiltersProps) {
       </fieldset>
 
       <fieldset>
-        <legend className="text-sm font-bold text-slate-950">Danh mục</legend>
+        <legend className="text-sm font-bold text-foreground">Danh mục</legend>
         <div className="mt-3 grid gap-2">
           {courseCategories.map((category) => (
             <label
               key={category.value}
               className={cn(
                 "flex min-h-11 cursor-pointer items-center gap-3 rounded-xl px-2 text-sm transition",
-                "hover:bg-slate-50",
+                "hover:bg-background-soft",
                 filters.category === category.value &&
-                  "bg-brand-50 text-brand-700"
+                  "bg-primary-soft text-primary-active"
               )}
             >
               <input
@@ -78,23 +85,26 @@ export function CourseFilters({ filters, onChange }: CourseFiltersProps) {
       </fieldset>
 
       <label className="block">
-        <span className="text-sm font-bold text-slate-950">Sắp xếp</span>
-        <select
-          value={filters.sort}
-          onChange={(event) => onChange({ sort: event.target.value })}
-          className="mt-3 min-h-11 w-full rounded-xl border border-input bg-white px-3 text-sm shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring"
-        >
-          {sortOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+        <span className="text-sm font-semibold text-foreground">Sắp xếp</span>
+        <div className="mt-2">
+          <Select value={filters.sort} onValueChange={(value) => onChange({ sort: value })}>
+            <SelectTrigger className={cn("rounded-lg border-border")}>
+              <SelectValue placeholder="Chọn kiểu sắp xếp" />
+            </SelectTrigger>
+            <SelectContent>
+              {sortOptions.map((option) => (
+                <SelectItem key={option.value} value={option.value} className="cursor-pointer">
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </label>
 
       <Button
         variant="outline"
-        className="w-full"
+        className="w-full cursor-pointer "
         onClick={() =>
           onChange({
             q: "",
@@ -111,3 +121,4 @@ export function CourseFilters({ filters, onChange }: CourseFiltersProps) {
     </div>
   );
 }
+

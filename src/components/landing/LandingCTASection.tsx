@@ -8,13 +8,13 @@ export default function LandingCTASection() {
   return (
     <Section>
       <Container>
-        <div className="overflow-hidden rounded-3xl border border-white/70 bg-white/76 px-5 py-8 text-slate-950 shadow-[0_24px_80px_rgba(15,23,42,0.08)] ring-1 ring-white/60 backdrop-blur-md sm:px-8 sm:py-10 lg:px-12 lg:py-12">
+        <div className="overflow-hidden rounded-3xl border border-border/80 bg-card/95 px-5 py-8 text-foreground shadow-lg ring-1 ring-border/70 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">
               <h2 className="text-2xl font-bold sm:text-3xl">
                 Sẵn sàng bắt đầu học?
               </h2>
-              <p className="mt-2 text-sm leading-6 text-slate-600 sm:text-base">
+              <p className="mt-2 text-sm leading-6 text-muted-foreground sm:text-base">
                 Chọn khóa học đầu tiên và xây dựng thói quen học đều đặn.
               </p>
             </div>
@@ -28,3 +28,5 @@ export default function LandingCTASection() {
     </Section>
   );
 }
+
+

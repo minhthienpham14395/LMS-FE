@@ -10,7 +10,7 @@ interface LessonBlocksProps {
 export function LessonBlocks({ blocks }: LessonBlocksProps) {
   if (blocks.length === 0) {
     return (
-      <div className="mt-8 rounded-2xl border bg-slate-50 p-5 text-sm leading-6 text-slate-600">
+      <div className="mt-8 rounded-2xl border bg-background-soft p-5 text-sm leading-6 text-muted-foreground">
         Nội dung bài học đang được chuẩn bị.
       </div>
     );
@@ -24,7 +24,7 @@ export function LessonBlocks({ blocks }: LessonBlocksProps) {
             return (
               <p
                 key={index}
-                className="break-words text-base leading-8 text-slate-700"
+                className="break-words text-base leading-8 text-muted-foreground"
               >
                 {block.text}
               </p>
@@ -35,7 +35,7 @@ export function LessonBlocks({ blocks }: LessonBlocksProps) {
             return (
               <HeadingTag
                 key={index}
-                className="break-words pt-2 text-xl font-bold leading-8 text-slate-950 sm:text-2xl"
+                className="break-words pt-2 text-xl font-bold leading-8 text-foreground sm:text-2xl"
               >
                 {block.text}
               </HeadingTag>
@@ -61,3 +61,4 @@ export function LessonBlocks({ blocks }: LessonBlocksProps) {
     </div>
   );
 }
+

@@ -26,7 +26,7 @@ export function AuthField({
       <div className="flex min-w-0 items-center justify-between gap-3">
         <label
           htmlFor={id}
-          className="min-w-0 text-sm font-semibold text-slate-800"
+          className="min-w-0 text-sm font-semibold text-foreground"
         >
           {label}
         </label>
@@ -51,3 +51,4 @@ export function AuthField({
     </div>
   );
 }
+

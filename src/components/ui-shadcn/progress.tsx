@@ -15,11 +15,11 @@ export function Progress({ className, value = 0, ...props }: ProgressProps) {
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={safeValue}
-      className={cn("h-2.5 w-full overflow-hidden rounded-full bg-slate-100", className)}
+      className={cn("h-2.5 w-full overflow-hidden rounded-full bg-secondary", className)}
       {...props}
     >
       <div
-        className="h-full rounded-full bg-brand-500 transition-all"
+        className="h-full rounded-full bg-primary transition-all"
         style={{ width: `${safeValue}%` }}
       />
     </div>

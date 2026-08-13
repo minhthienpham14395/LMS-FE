@@ -6,14 +6,14 @@ import { StudentMobileNav } from "./StudentMobileNav";
 
 export function StudentTopbar() {
   return (
-    <header className="sticky top-0 z-40 border-b border-white/70 bg-white/66 shadow-sm backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-border bg-card/95 shadow-sm backdrop-blur-xl">
       <div className="flex h-16 items-center justify-between gap-3 px-4 xs:px-5 sm:px-6 lg:px-8">
         <div className="lg:hidden">
           <StudentMobileNav />
         </div>
 
         <div className="min-w-0">
-          <p className="truncate text-sm font-semibold sm:text-base">
+          <p className="truncate text-sm font-semibold text-foreground sm:text-base">
             Chào mừng bạn quay lại
           </p>
         </div>
@@ -25,3 +25,4 @@ export function StudentTopbar() {
     </header>
   );
 }
+

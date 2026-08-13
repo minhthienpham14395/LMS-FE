@@ -21,7 +21,7 @@ export function PasswordField(props: AuthFieldProps) {
         variant="ghost"
         size="icon"
         aria-label={isVisible ? "Hide password" : "Show password"}
-        className="absolute right-0 top-7 text-slate-500 hover:text-slate-900"
+        className="absolute right-0 top-7 text-muted-foreground hover:text-foreground"
         onClick={() => setIsVisible((value) => !value)}
       >
         {isVisible ? <EyeOff /> : <Eye />}
@@ -29,3 +29,4 @@ export function PasswordField(props: AuthFieldProps) {
     </div>
   );
 }
+

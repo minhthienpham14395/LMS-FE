@@ -32,20 +32,26 @@ const testimonials = [
 
 export default function LandingTestimonialsSection() {
   return (
-    <Section id="testimonials" className="bg-white/34 backdrop-blur-[2px]">
+    <Section id="testimonials" className="bg-background-soft/90">
       <Container>
-        <SectionHeading
-          eyebrow="Câu chuyện học viên"
-          title="Tiến bộ có thể cảm nhận qua từng tuần"
-          description="Học viên dùng bài học có hướng dẫn, phản hồi từ giáo viên và theo dõi thói quen để duy trì nhịp học."
-        />
+        <div className="rounded-[2rem] border border-border/80 bg-card px-5 py-8 shadow-lg sm:px-8 sm:py-10 lg:px-10">
+          <SectionHeading
+            eyebrow="Câu chuyện học viên"
+            title="Tiến bộ có thể cảm nhận qua từng tuần"
+            description="Học viên dùng bài học có hướng dẫn, phản hồi từ giáo viên và theo dõi thói quen để duy trì nhịp học."
+            align="left"
+          />
 
-        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {testimonials.map((item) => (
-            <TestimonialCard key={item.id} testimonial={item} />
-          ))}
+          <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {testimonials.map((item) => (
+              <TestimonialCard key={item.id} testimonial={item} />
+            ))}
+          </div>
         </div>
       </Container>
     </Section>
   );
 }
+
+
+

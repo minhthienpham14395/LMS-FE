@@ -57,7 +57,7 @@ function FormField({ form, label, name }: FormFieldProps) {
 
   return (
     <div>
-      <label htmlFor={name} className="text-sm font-semibold text-slate-800">
+      <label htmlFor={name} className="text-sm font-semibold text-foreground">
         {label}
       </label>
       <Input
@@ -95,13 +95,13 @@ export function ProfileForm() {
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {Array.from({ length: 2 }).map((_, index) => (
             <div key={index}>
-              <div className="h-4 w-24 animate-pulse rounded bg-slate-100" />
-              <div className="mt-2 h-11 animate-pulse rounded-xl bg-slate-100" />
+              <div className="h-4 w-24 animate-pulse rounded bg-secondary" />
+              <div className="mt-2 h-11 animate-pulse rounded-xl bg-secondary" />
             </div>
           ))}
         </div>
-        <div className="h-11 animate-pulse rounded-xl bg-slate-100" />
-        <div className="h-32 animate-pulse rounded-xl bg-slate-100" />
+        <div className="h-11 animate-pulse rounded-xl bg-secondary" />
+        <div className="h-32 animate-pulse rounded-xl bg-secondary" />
       </div>
     );
   }
@@ -109,8 +109,8 @@ export function ProfileForm() {
   if (profile.isError) {
     return (
       <div className="rounded-xl border border-destructive/25 bg-destructive/5 p-4">
-        <h2 className="font-bold text-slate-950">Không thể tải hồ sơ</h2>
-        <p className="mt-1 text-sm leading-6 text-slate-600">
+        <h2 className="font-bold text-foreground">Không thể tải hồ sơ</h2>
+        <p className="mt-1 text-sm leading-6 text-muted-foreground">
           Hãy tải lại trang hoặc thử lại sau khi phiên học được kết nối lại.
         </p>
       </div>
@@ -128,13 +128,13 @@ export function ProfileForm() {
       </div>
 
       <div>
-        <label htmlFor="level" className="text-sm font-semibold text-slate-800">
+        <label htmlFor="level" className="text-sm font-semibold text-foreground">
           Trình độ hiện tại
         </label>
         <select
           id="level"
           className={cn(
-            "mt-2 flex min-h-11 w-full rounded-xl border border-input bg-background px-3 py-2 text-base text-foreground shadow-sm transition md:text-sm",
+            "mt-2 flex min-h-11 w-full rounded-lg border border-input bg-background px-3 py-2 text-base text-foreground shadow-sm transition md:text-sm",
             "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
             levelError &&
               "border-destructive bg-destructive/5 focus-visible:outline-destructive"
@@ -152,7 +152,7 @@ export function ProfileForm() {
       <div>
         <label
           htmlFor="learningGoal"
-          className="text-sm font-semibold text-slate-800"
+          className="text-sm font-semibold text-foreground"
         >
           Mục tiêu học tập
         </label>
@@ -160,7 +160,7 @@ export function ProfileForm() {
           id="learningGoal"
           rows={5}
           className={cn(
-            "mt-2 min-h-32 w-full resize-y rounded-xl border border-input bg-background px-3 py-2 text-base text-foreground shadow-sm transition",
+            "mt-2 min-h-32 w-full resize-y rounded-lg border border-input bg-background px-3 py-2 text-base text-foreground shadow-sm transition",
             "placeholder:text-muted-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
             learningGoalError &&
               "border-destructive bg-destructive/5 focus-visible:outline-destructive"
@@ -197,3 +197,4 @@ export function ProfileForm() {
     </form>
   );
 }
+

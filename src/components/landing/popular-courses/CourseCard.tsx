@@ -11,12 +11,12 @@ type CourseCardProps = {
 
 export function CourseCard({ course }: CourseCardProps) {
   return (
-    <article className="group min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-md">
+    <article className="group min-w-0 overflow-hidden rounded-2xl border border-border bg-card transition-all duration-200 hover:-translate-y-0.5 hover:border-primary-light hover:shadow-md">
       <Link
         to={`/courses/${course.slug}`}
-        className="flex h-full min-w-0 flex-col focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+        className="flex h-full min-w-0 flex-col focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
       >
-        <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
+        <div className="relative aspect-[16/9] overflow-hidden bg-secondary">
           <img
             src={course.image}
             alt={course.title}
@@ -33,7 +33,7 @@ export function CourseCard({ course }: CourseCardProps) {
                 <Badge
                   key={badge}
                   variant="outline"
-                  className="border-white/80 bg-white/95 px-2 py-1 text-[11px] font-semibold text-slate-700 shadow-sm backdrop-blur"
+                  className="border-border/80 bg-card/95 px-2 py-1 text-[11px] font-semibold text-muted-foreground shadow-sm backdrop-blur"
                 >
                   {badge}
                 </Badge>
@@ -43,21 +43,21 @@ export function CourseCard({ course }: CourseCardProps) {
         </div>
 
         <div className="flex flex-1 flex-col p-4">
-          <p className="truncate text-sm font-medium text-slate-600">
+          <p className="truncate text-sm font-medium text-muted-foreground">
             {course.provider}
           </p>
 
-          <h3 className="mt-3 line-clamp-2 min-h-12 text-base font-semibold leading-6 text-slate-950">
+          <h3 className="mt-3 line-clamp-2 min-h-12 text-base font-semibold leading-6 text-foreground">
             {course.title}
           </h3>
 
-          <div className="mt-auto space-y-2 pt-4 text-sm leading-5 text-slate-600">
+          <div className="mt-auto space-y-2 pt-4 text-sm leading-5 text-muted-foreground">
             <span className="flex min-w-0 items-center gap-2">
-              <ArrowUpRight className="size-4 shrink-0 text-brand-600" aria-hidden="true" />
+              <ArrowUpRight className="size-4 shrink-0 text-primary" aria-hidden="true" />
               <span className="truncate">{course.degreePath}</span>
             </span>
             <span className="flex min-w-0 items-center gap-2">
-              <Award className="size-4 shrink-0 text-emerald-600" aria-hidden="true" />
+              <Award className="size-4 shrink-0 text-primary-active" aria-hidden="true" />
               <span className="truncate">{course.credential}</span>
             </span>
           </div>
@@ -66,3 +66,6 @@ export function CourseCard({ course }: CourseCardProps) {
     </article>
   );
 }
+
+
+

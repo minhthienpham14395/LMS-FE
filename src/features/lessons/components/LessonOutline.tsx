@@ -20,7 +20,7 @@ export function LessonOutline({ courseId, onNavigate }: LessonOutlineProps) {
 
   if (outline.isError) {
     return (
-      <div className="p-4 text-sm leading-6 text-slate-600">
+      <div className="p-4 text-sm leading-6 text-muted-foreground">
         Không thể tải danh sách bài học.
       </div>
     );
@@ -30,7 +30,7 @@ export function LessonOutline({ courseId, onNavigate }: LessonOutlineProps) {
 
   if (modules.length === 0) {
     return (
-      <div className="p-4 text-sm leading-6 text-slate-600">
+      <div className="p-4 text-sm leading-6 text-muted-foreground">
         Chưa có bài học nào.
       </div>
     );
@@ -40,7 +40,7 @@ export function LessonOutline({ courseId, onNavigate }: LessonOutlineProps) {
     <nav aria-label="Bài học của khóa" className="p-3">
       {modules.map((module) => (
         <section key={module.id} className="mb-5 last:mb-0">
-          <h2 className="px-2 text-xs font-bold uppercase text-slate-500">
+          <h2 className="px-2 text-xs font-bold uppercase text-muted-foreground">
             {module.title}
           </h2>
 
@@ -52,7 +52,7 @@ export function LessonOutline({ courseId, onNavigate }: LessonOutlineProps) {
                 return (
                   <div
                     key={lesson.id}
-                    className="flex min-h-11 items-start gap-3 rounded-xl px-3 py-2.5 text-sm text-slate-400"
+                    className="flex min-h-11 items-start gap-3 rounded-xl px-3 py-2.5 text-sm text-muted-foreground"
                   >
                     <Lock className="mt-0.5 size-4 shrink-0" />
                     <span className="min-w-0 break-words">{lesson.title}</span>
@@ -67,8 +67,8 @@ export function LessonOutline({ courseId, onNavigate }: LessonOutlineProps) {
                   onClick={onNavigate}
                   className={({ isActive }) =>
                     cn(
-                      "flex min-h-11 items-start gap-3 rounded-xl px-3 py-2.5 text-sm transition hover:bg-slate-100",
-                      isActive && "bg-brand-50 text-brand-700"
+                      "flex min-h-11 items-start gap-3 rounded-xl px-3 py-2.5 text-sm transition hover:bg-secondary",
+                      isActive && "bg-primary-soft text-primary-active"
                     )
                   }
                 >
@@ -95,12 +95,12 @@ function LessonOutlineSkeleton() {
     <div className="space-y-5 p-4">
       {Array.from({ length: 3 }).map((_, moduleIndex) => (
         <div key={moduleIndex}>
-          <div className="h-3 w-28 animate-pulse rounded bg-slate-200" />
+          <div className="h-3 w-28 animate-pulse rounded bg-border" />
           <div className="mt-3 space-y-2">
             {Array.from({ length: 3 }).map((__, lessonIndex) => (
               <div
                 key={lessonIndex}
-                className="h-11 animate-pulse rounded-xl bg-slate-100"
+                className="h-11 animate-pulse rounded-xl bg-secondary"
               />
             ))}
           </div>
@@ -109,3 +109,4 @@ function LessonOutlineSkeleton() {
     </div>
   );
 }
+

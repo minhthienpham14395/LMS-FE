@@ -29,16 +29,22 @@ const faqs = [
 
 export default function LandingFAQSection() {
   return (
-    <Section id="faq">
+    <Section id="faq" className="bg-background-soft/90">
       <Container>
-        <div className="mx-auto max-w-3xl">
-          <SectionHeading title="Câu hỏi thường gặp" />
+        <div className="mx-auto max-w-3xl rounded-[2rem] border border-border/80 bg-card px-5 py-8 shadow-lg sm:px-8 sm:py-10 lg:px-10">
+          <SectionHeading title="Câu hỏi thường gặp" align="left" />
 
           <Accordion type="single" collapsible className="mt-8">
             {faqs.map((faq, index) => (
-              <AccordionItem key={faq.q} value={`faq-${index}`}>
-                <AccordionTrigger className="text-left">{faq.q}</AccordionTrigger>
-                <AccordionContent className="leading-6 text-slate-600">
+              <AccordionItem
+                key={faq.q}
+                value={`faq-${index}`}
+                className="border-border/80"
+              >
+                <AccordionTrigger className="text-left text-foreground hover:text-primary">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="pb-5 leading-6 text-muted-foreground">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>
@@ -49,3 +55,6 @@ export default function LandingFAQSection() {
     </Section>
   );
 }
+
+
+

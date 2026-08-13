@@ -16,7 +16,7 @@ export function Logo({ compact = false, className }: LogoProps) {
     >
       <span
         aria-hidden="true"
-        className="grid size-9 shrink-0 place-items-center rounded-xl bg-brand-500 text-base font-bold text-white"
+        className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-base font-bold text-primary-foreground"
       >
         E
       </span>

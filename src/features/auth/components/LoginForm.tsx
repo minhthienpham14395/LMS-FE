@@ -50,7 +50,7 @@ export function LoginForm() {
         action={
           <Link
             to="/forgot-password"
-            className="min-w-0 rounded-md text-right text-sm font-semibold text-brand-600 hover:underline focus-visible:outline-brand-500"
+            className="min-w-0 rounded-md text-right text-sm font-semibold text-primary hover:underline focus-visible:outline-primary"
           >
             Quên mật khẩu?
           </Link>
@@ -66,3 +66,4 @@ export function LoginForm() {
     </form>
   );
 }
+

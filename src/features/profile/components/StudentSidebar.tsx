@@ -33,10 +33,10 @@ export function StudentSidebar({ onNavigate }: StudentSidebarProps) {
             className={({ isActive }) =>
               cn(
                 "flex min-h-11 items-center gap-3 rounded-xl px-3",
-                "text-sm font-medium text-slate-600 transition",
-                "hover:bg-brand-50 hover:text-brand-700",
+                "text-sm font-medium text-muted-foreground transition",
+                "hover:bg-primary-soft hover:text-primary",
                 isActive &&
-                  "bg-brand-50 font-semibold text-brand-700 shadow-sm ring-1 ring-brand-100"
+                  "bg-primary-soft font-semibold text-primary shadow-sm ring-1 ring-primary-light"
               )
             }
           >

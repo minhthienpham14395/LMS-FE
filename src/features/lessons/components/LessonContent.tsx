@@ -20,11 +20,11 @@ export function LessonContent({ courseId, lessonId }: LessonContentProps) {
   if (!lessonId) {
     return (
       <div className="mx-auto w-full max-w-4xl px-4 py-8 xs:px-5 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border bg-white p-5 shadow-sm sm:p-6">
-          <h1 className="text-2xl font-bold text-slate-950">
+        <div className="rounded-2xl border bg-card p-5 shadow-sm sm:p-6">
+          <h1 className="text-2xl font-bold text-foreground">
             Chọn một bài học
           </h1>
-          <p className="mt-2 text-sm leading-6 text-slate-600">
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">
             Mở danh sách bài học và chọn nơi bạn muốn tiếp tục.
           </p>
         </div>
@@ -48,17 +48,17 @@ export function LessonContent({ courseId, lessonId }: LessonContentProps) {
     <article className="mx-auto w-full max-w-4xl px-4 py-6 xs:px-5 sm:px-6 sm:py-8 lg:px-8">
       <header>
         {lesson.data.moduleTitle && (
-          <p className="break-words text-sm font-bold text-brand-600">
+          <p className="break-words text-sm font-bold text-primary">
             {lesson.data.moduleTitle}
           </p>
         )}
-        <h1 className="mt-2 break-words text-2xl font-bold leading-tight text-slate-950 sm:text-3xl lg:text-4xl">
+        <h1 className="mt-2 break-words text-2xl font-bold leading-tight text-foreground sm:text-3xl lg:text-4xl">
           {lesson.data.title}
         </h1>
       </header>
 
       {lesson.data.videoUrl && (
-        <div className="mt-6 aspect-video overflow-hidden rounded-xl bg-slate-100 sm:rounded-2xl">
+        <div className="mt-6 aspect-video overflow-hidden rounded-xl bg-secondary sm:rounded-2xl">
           <video
             src={lesson.data.videoUrl}
             controls
@@ -70,7 +70,7 @@ export function LessonContent({ courseId, lessonId }: LessonContentProps) {
       )}
 
       {lesson.data.audioUrl && (
-        <div className="mt-6 rounded-2xl border bg-slate-50 p-4">
+        <div className="mt-6 rounded-2xl border bg-background-soft p-4">
           <audio src={lesson.data.audioUrl} controls preload="metadata" className="w-full" />
         </div>
       )}
@@ -96,13 +96,13 @@ export function LessonContent({ courseId, lessonId }: LessonContentProps) {
 function LessonSkeleton() {
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-6 xs:px-5 sm:px-6 sm:py-8 lg:px-8">
-      <div className="h-4 w-36 animate-pulse rounded bg-slate-100" />
-      <div className="mt-3 h-10 w-4/5 animate-pulse rounded bg-slate-100" />
-      <div className="mt-6 aspect-video animate-pulse rounded-xl bg-slate-100" />
+      <div className="h-4 w-36 animate-pulse rounded bg-secondary" />
+      <div className="mt-3 h-10 w-4/5 animate-pulse rounded bg-secondary" />
+      <div className="mt-6 aspect-video animate-pulse rounded-xl bg-secondary" />
       <div className="mt-8 space-y-3">
-        <div className="h-4 w-full animate-pulse rounded bg-slate-100" />
-        <div className="h-4 w-11/12 animate-pulse rounded bg-slate-100" />
-        <div className="h-4 w-3/4 animate-pulse rounded bg-slate-100" />
+        <div className="h-4 w-full animate-pulse rounded bg-secondary" />
+        <div className="h-4 w-11/12 animate-pulse rounded bg-secondary" />
+        <div className="h-4 w-3/4 animate-pulse rounded bg-secondary" />
       </div>
     </div>
   );
@@ -111,11 +111,11 @@ function LessonSkeleton() {
 function LessonError({ onRetry }: { onRetry: () => void }) {
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-8 xs:px-5 sm:px-6 lg:px-8">
-      <div className="rounded-2xl border bg-white p-5 shadow-sm sm:p-6">
-        <h1 className="text-2xl font-bold text-slate-950">
+      <div className="rounded-2xl border bg-card p-5 shadow-sm sm:p-6">
+        <h1 className="text-2xl font-bold text-foreground">
           Không thể tải bài học
         </h1>
-        <p className="mt-2 text-sm leading-6 text-slate-600">
+        <p className="mt-2 text-sm leading-6 text-muted-foreground">
           Hiện không thể tải bài học này.
         </p>
         <Button variant="outline" className="mt-5" onClick={onRetry}>
@@ -126,3 +126,5 @@ function LessonError({ onRetry }: { onRetry: () => void }) {
     </div>
   );
 }
+
+

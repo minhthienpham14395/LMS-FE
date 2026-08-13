@@ -49,15 +49,15 @@ export function QuizBlock({ quizId }: QuizBlockProps) {
   );
 
   return (
-    <section className="rounded-2xl border bg-white p-4 sm:p-6">
-      <h2 className="break-words text-xl font-bold text-slate-950">
+    <section className="rounded-2xl border bg-card p-4 sm:p-6">
+      <h2 className="break-words text-xl font-bold text-foreground">
         {quiz.data.title}
       </h2>
 
       <div className="mt-6 space-y-7">
         {quiz.data.questions.map((question, questionIndex) => (
           <fieldset key={question.id}>
-            <legend className="break-words font-bold leading-6 text-slate-950">
+            <legend className="break-words font-bold leading-6 text-foreground">
               {questionIndex + 1}. {question.prompt}
             </legend>
 
@@ -70,8 +70,8 @@ export function QuizBlock({ quizId }: QuizBlockProps) {
                     key={option.id}
                     className={cn(
                       "flex min-h-12 cursor-pointer items-start gap-3 rounded-xl border p-3 transition",
-                      "hover:bg-slate-50",
-                      selected && "border-brand-500 bg-brand-50"
+                      "hover:bg-background-soft",
+                      selected && "border-primary bg-primary-soft"
                     )}
                   >
                     <input
@@ -88,7 +88,7 @@ export function QuizBlock({ quizId }: QuizBlockProps) {
                       className="mt-1"
                     />
 
-                    <span className="min-w-0 break-words text-sm leading-6 text-slate-700">
+                    <span className="min-w-0 break-words text-sm leading-6 text-muted-foreground">
                       {option.text}
                     </span>
                   </label>
@@ -117,14 +117,14 @@ export function QuizBlock({ quizId }: QuizBlockProps) {
 
 function QuizSkeleton() {
   return (
-    <section className="rounded-2xl border bg-white p-4 sm:p-6">
-      <div className="h-6 w-44 animate-pulse rounded bg-slate-100" />
+    <section className="rounded-2xl border bg-card p-4 sm:p-6">
+      <div className="h-6 w-44 animate-pulse rounded bg-secondary" />
       <div className="mt-6 space-y-5">
         {Array.from({ length: 3 }).map((_, index) => (
           <div key={index} className="space-y-3">
-            <div className="h-4 w-4/5 animate-pulse rounded bg-slate-100" />
-            <div className="h-12 animate-pulse rounded-xl bg-slate-100" />
-            <div className="h-12 animate-pulse rounded-xl bg-slate-100" />
+            <div className="h-4 w-4/5 animate-pulse rounded bg-secondary" />
+            <div className="h-12 animate-pulse rounded-xl bg-secondary" />
+            <div className="h-12 animate-pulse rounded-xl bg-secondary" />
           </div>
         ))}
       </div>
@@ -134,9 +134,9 @@ function QuizSkeleton() {
 
 function QuizError({ onRetry }: { onRetry: () => void }) {
   return (
-    <section className="rounded-2xl border bg-white p-4 sm:p-6">
-      <h2 className="text-xl font-bold text-slate-950">Không thể tải quiz</h2>
-      <p className="mt-2 text-sm leading-6 text-slate-600">
+    <section className="rounded-2xl border bg-card p-4 sm:p-6">
+      <h2 className="text-xl font-bold text-foreground">Không thể tải quiz</h2>
+      <p className="mt-2 text-sm leading-6 text-muted-foreground">
         Hiện không thể tải quiz này.
       </p>
       <Button variant="outline" className="mt-5" onClick={onRetry}>
@@ -146,3 +146,5 @@ function QuizError({ onRetry }: { onRetry: () => void }) {
     </section>
   );
 }
+
+

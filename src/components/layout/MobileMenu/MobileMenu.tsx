@@ -48,10 +48,10 @@ export function MobileMenu() {
                   isPublicNavigationActive(item, pathname, hash) ? "page" : undefined
                 }
                 className={cn(
-                  "flex min-h-11 items-center rounded-xl px-3 text-base font-semibold text-slate-700 transition",
-                  "hover:bg-brand-50 hover:text-brand-700",
+                  "flex min-h-11 items-center rounded-xl px-3 text-base font-semibold text-muted-foreground transition",
+                  "hover:bg-primary-soft hover:text-primary",
                   isPublicNavigationActive(item, pathname, hash) &&
-                    "bg-brand-50 text-brand-700 ring-1 ring-brand-100"
+                    "bg-primary-soft text-primary ring-1 ring-primary-light"
                 )}
               >
                 {item.label}

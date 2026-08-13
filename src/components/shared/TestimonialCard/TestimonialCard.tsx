@@ -13,10 +13,10 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ testimonial }: TestimonialCardProps) {
   return (
-    <figure className="h-full rounded-2xl border bg-white p-5 sm:p-6">
-      <Quote className="size-7 text-brand-500" aria-hidden="true" />
+    <figure className="h-full rounded-2xl border border-border/80 bg-card p-5 shadow-md ring-1 ring-border/80 sm:p-6">
+      <Quote className="size-7 text-primary" aria-hidden="true" />
 
-      <blockquote className="mt-4 text-sm leading-7 text-slate-700 sm:text-base">
+      <blockquote className="mt-4 text-sm leading-7 text-muted-foreground sm:text-base">
         "{testimonial.quote}"
       </blockquote>
 
@@ -29,9 +29,12 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
         />
         <div className="min-w-0">
           <div className="truncate font-semibold">{testimonial.name}</div>
-          <div className="truncate text-xs text-slate-500">{testimonial.meta}</div>
+          <div className="truncate text-xs text-muted-foreground">{testimonial.meta}</div>
         </div>
       </figcaption>
     </figure>
   );
 }
+
+
+

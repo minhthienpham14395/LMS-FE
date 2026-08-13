@@ -22,7 +22,7 @@ export function CourseGroup({ group, isExpanded, onToggle }: CourseGroupProps) {
     <section aria-labelledby={`${group.id}-courses-title`} className="pb-12 last:pb-0 md:pb-16">
       <h2
         id={`${group.id}-courses-title`}
-        className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl"
+        className="text-2xl font-bold tracking-tight text-foreground md:text-3xl"
       >
         {group.title}
       </h2>
@@ -40,7 +40,7 @@ export function CourseGroup({ group, isExpanded, onToggle }: CourseGroupProps) {
         <Button
           variant="outline"
           size="sm"
-          className="mt-5"
+          className="mt-5 cursor-pointer"
           aria-expanded={isExpanded}
           aria-controls={`${group.id}-courses-grid`}
           onClick={() => onToggle(group.id)}
@@ -51,3 +51,4 @@ export function CourseGroup({ group, isExpanded, onToggle }: CourseGroupProps) {
     </section>
   );
 }
+

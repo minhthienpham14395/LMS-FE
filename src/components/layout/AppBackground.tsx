@@ -1,14 +1,13 @@
 export function AppBackground() {
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0">
-      <div className="absolute inset-0 bg-[#f5f8fc]" />
+      <div className="absolute inset-0 bg-background" />
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
         style={{ backgroundImage: "url('/app-lms-background.png')" }}
       />
-      <div className="absolute inset-0 bg-white/60" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.86)_0%,rgba(255,255,255,0)_42%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0)_28%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.38)_0%,rgba(255,255,255,0.64)_44%,rgba(248,250,252,0.9)_100%)]" />
+      <div className="absolute inset-0 bg-white/42 backdrop-blur-[1px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsl(var(--primary-light)/0.16)_0%,hsl(var(--background-soft)/0.1)_60%,transparent_100%),linear-gradient(90deg,hsl(var(--background-secondary)/0.06)_0%,transparent_45%,hsl(var(--background-secondary)/0.06)_100%)]" />
     </div>
   );
 }

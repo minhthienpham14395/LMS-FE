@@ -17,7 +17,7 @@ export function PopularCoursesSection() {
   };
 
   return (
-    <Section id="courses" className="bg-white/60">
+    <Section id="courses" className="border-y border-border/70 bg-card/95 backdrop-blur-sm">
       <Container>
         <div>
           {courseGroups.map((group) => (
@@ -33,3 +33,4 @@ export function PopularCoursesSection() {
     </Section>
   );
 }
+

@@ -21,10 +21,10 @@ interface CourseCardProps {
 
 export function CourseCard({ course }: CourseCardProps) {
   return (
-    <article className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+    <article className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border bg-card shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
       <Link
         to={`/courses/${course.slug}`}
-        className="relative block aspect-[16/10] overflow-hidden bg-slate-100"
+        className="relative block aspect-[16/10] overflow-hidden bg-secondary"
       >
         <img
           src={course.thumbnail}
@@ -39,7 +39,7 @@ export function CourseCard({ course }: CourseCardProps) {
       </Link>
 
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <p className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+        <p className="text-xs font-semibold uppercase tracking-wide text-primary">
           {course.category}
         </p>
 
@@ -47,11 +47,11 @@ export function CourseCard({ course }: CourseCardProps) {
           <Link to={`/courses/${course.slug}`}>{course.title}</Link>
         </h3>
 
-        <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-600">
+        <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground">
           {course.description}
         </p>
 
-        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-500">
+        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs text-muted-foreground">
           <span className="inline-flex items-center gap-1">
             <Clock3 className="size-4" />
             {course.duration}
@@ -71,3 +71,5 @@ export function CourseCard({ course }: CourseCardProps) {
     </article>
   );
 }
+
+

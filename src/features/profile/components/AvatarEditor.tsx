@@ -34,8 +34,8 @@ export function AvatarEditor() {
   const avatarUrl = previewUrl || profile.data?.avatarUrl;
 
   return (
-    <section className="rounded-2xl border bg-white p-4 text-center shadow-sm sm:p-6">
-      <div className="mx-auto grid size-24 place-items-center overflow-hidden rounded-full bg-brand-50 text-2xl font-bold text-brand-700">
+    <section className="rounded-2xl border bg-card p-4 text-center shadow-sm sm:p-6">
+      <div className="mx-auto grid size-24 place-items-center overflow-hidden rounded-full bg-primary-soft text-2xl font-bold text-primary-active">
         {avatarUrl ? (
           <img
             src={avatarUrl}
@@ -52,7 +52,7 @@ export function AvatarEditor() {
         htmlFor={inputId}
         className={cn(
           "mt-4 inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-xl border px-4 text-sm font-semibold transition",
-          "hover:bg-slate-50 focus-within:outline focus-within:outline-2 focus-within:outline-ring",
+          "hover:bg-background-soft focus-within:outline focus-within:outline-2 focus-within:outline-ring",
           uploadAvatar.isPending && "pointer-events-none opacity-60"
         )}
       >
@@ -83,9 +83,11 @@ export function AvatarEditor() {
         }}
       />
 
-      <p className="mt-3 text-xs leading-5 text-slate-500">
+      <p className="mt-3 text-xs leading-5 text-muted-foreground">
         Hỗ trợ JPG, PNG hoặc WebP. Hãy dùng tệp có dung lượng vừa phải.
       </p>
     </section>
   );
 }
+
+

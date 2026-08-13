@@ -24,12 +24,12 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-brand-100 bg-brand-50 text-slate-700">
+    <footer className="border-t border-border bg-background-secondary text-muted-foreground">
       <Container className="py-10 sm:py-12">
         <div className="grid gap-10 md:grid-cols-[1.2fr_1fr]">
           <div className="max-w-md">
             <Logo />
-            <p className="mt-4 text-sm leading-6 text-slate-600 sm:text-base">
+            <p className="mt-4 text-sm leading-6 text-muted-foreground sm:text-base">
               Học tiếng Anh với lộ trình rõ ràng, bài học thực tế và tiến độ đo lường được.
             </p>
           </div>
@@ -37,13 +37,13 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8">
             {columns.map((column) => (
               <div key={column.title} className="min-w-0">
-                <h2 className="break-words font-semibold text-slate-950">{column.title}</h2>
+                <h2 className="break-words font-semibold text-foreground">{column.title}</h2>
                 <ul className="mt-4 space-y-3">
                   {column.links.map(([label, href]) => (
                     <li key={href} className="min-w-0">
                       <Link
                         to={href}
-                        className="break-words text-sm text-slate-600 transition hover:text-brand-700"
+                        className="break-words text-sm text-muted-foreground transition hover:text-primary"
                       >
                         {label}
                       </Link>
@@ -55,7 +55,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-brand-100 pt-6 text-xs text-slate-500">
+        <div className="mt-10 border-t border-border pt-6 text-xs text-muted-foreground">
           &copy; {new Date().getFullYear()} LMS Tiếng Anh.
         </div>
       </Container>

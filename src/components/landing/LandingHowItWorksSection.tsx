@@ -10,22 +10,30 @@ const steps = [
 
 export default function LandingHowItWorksSection() {
   return (
-    <Section id="how-it-works">
+    <Section id="how-it-works" className="bg-background-soft/90">
       <Container>
-        <SectionHeading title="Cách hoạt động" />
+        <div className="rounded-[2rem] border border-border/80 bg-card px-5 py-8 shadow-lg sm:px-8 sm:py-10 lg:px-10">
+          <SectionHeading title="Cách hoạt động" align="left" />
 
-        <ol className="mt-8 grid gap-4 md:grid-cols-3">
-          {steps.map(([title, text], index) => (
-            <li key={title} className="rounded-2xl border p-5 sm:p-6">
-              <span className="text-3xl font-bold text-brand-500">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3 className="mt-4 text-lg font-bold">{title}</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
-            </li>
-          ))}
-        </ol>
+          <ol className="mt-8 grid gap-4 md:grid-cols-3">
+            {steps.map(([title, text], index) => (
+              <li
+                key={title}
+                className="rounded-2xl border border-border/80 bg-card p-5 shadow-md ring-1 ring-border/80 sm:p-6"
+              >
+                <span className="text-3xl font-bold text-primary">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-4 text-lg font-bold">{title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
       </Container>
     </Section>
   );
 }
+
+
+
