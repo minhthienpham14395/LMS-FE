@@ -8,7 +8,7 @@ interface SkillProgressProps {
 
 export function SkillProgress({ skills }: SkillProgressProps) {
   return (
-    <section className="rounded-2xl border bg-card p-4 shadow-sm sm:p-6">
+    <section className="rounded-xl border bg-card p-4 shadow-sm sm:p-6">
       <h2 className="text-lg font-bold text-foreground">Kỹ năng</h2>
 
       <div className="mt-5 space-y-5">

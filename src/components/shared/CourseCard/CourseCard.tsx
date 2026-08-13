@@ -21,7 +21,7 @@ interface CourseCardProps {
 
 export function CourseCard({ course }: CourseCardProps) {
   return (
-    <article className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border bg-card shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+    <article className="group flex min-w-0 flex-col overflow-hidden rounded-xl border bg-card shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
       <Link
         to={`/courses/${course.slug}`}
         className="relative block aspect-[16/10] overflow-hidden bg-secondary"

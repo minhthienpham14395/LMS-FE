@@ -10,7 +10,7 @@ interface LessonBlocksProps {
 export function LessonBlocks({ blocks }: LessonBlocksProps) {
   if (blocks.length === 0) {
     return (
-      <div className="mt-8 rounded-2xl border bg-background-soft p-5 text-sm leading-6 text-muted-foreground">
+      <div className="mt-8 rounded-xl border bg-background-soft p-5 text-sm leading-6 text-muted-foreground">
         Nội dung bài học đang được chuẩn bị.
       </div>
     );

@@ -20,7 +20,7 @@ export function LessonContent({ courseId, lessonId }: LessonContentProps) {
   if (!lessonId) {
     return (
       <div className="mx-auto w-full max-w-4xl px-4 py-8 xs:px-5 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border bg-card p-5 shadow-sm sm:p-6">
+        <div className="rounded-xl border bg-card p-5 shadow-sm sm:p-6">
           <h1 className="text-2xl font-bold text-foreground">
             Chọn một bài học
           </h1>
@@ -58,7 +58,7 @@ export function LessonContent({ courseId, lessonId }: LessonContentProps) {
       </header>
 
       {lesson.data.videoUrl && (
-        <div className="mt-6 aspect-video overflow-hidden rounded-xl bg-secondary sm:rounded-2xl">
+        <div className="mt-6 aspect-video overflow-hidden rounded-xl bg-secondary sm:rounded-xl">
           <video
             src={lesson.data.videoUrl}
             controls
@@ -70,7 +70,7 @@ export function LessonContent({ courseId, lessonId }: LessonContentProps) {
       )}
 
       {lesson.data.audioUrl && (
-        <div className="mt-6 rounded-2xl border bg-background-soft p-4">
+        <div className="mt-6 rounded-xl border bg-background-soft p-4">
           <audio src={lesson.data.audioUrl} controls preload="metadata" className="w-full" />
         </div>
       )}
@@ -111,7 +111,7 @@ function LessonSkeleton() {
 function LessonError({ onRetry }: { onRetry: () => void }) {
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-8 xs:px-5 sm:px-6 lg:px-8">
-      <div className="rounded-2xl border bg-card p-5 shadow-sm sm:p-6">
+      <div className="rounded-xl border bg-card p-5 shadow-sm sm:p-6">
         <h1 className="text-2xl font-bold text-foreground">
           Không thể tải bài học
         </h1>

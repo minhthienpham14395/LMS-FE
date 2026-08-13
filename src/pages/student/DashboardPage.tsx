@@ -36,7 +36,7 @@ function StatCard({
   value: string;
 }) {
   return (
-    <article className="min-w-0 rounded-2xl border bg-card p-4 shadow-sm sm:p-5">
+    <article className="min-w-0 rounded-xl border bg-card p-4 shadow-sm sm:p-5">
       <div className="flex items-center justify-between gap-3">
         <p className="truncate text-xs font-semibold text-muted-foreground sm:text-sm">
           {label}
@@ -52,7 +52,7 @@ function StatCard({
 
 function ContinueLearning() {
   return (
-    <section className="min-w-0 rounded-2xl border bg-card p-4 shadow-sm sm:p-6">
+    <section className="min-w-0 rounded-xl border bg-card p-4 shadow-sm sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="text-lg font-bold text-foreground">
@@ -107,7 +107,7 @@ function WeeklyProgress() {
   ] as const;
 
   return (
-    <section className="rounded-2xl border bg-card p-4 shadow-sm sm:p-6">
+    <section className="rounded-xl border bg-card p-4 shadow-sm sm:p-6">
       <h2 className="text-lg font-bold text-foreground">Tuần này</h2>
 
       <div className="mt-6 flex h-40 items-end gap-2">
@@ -133,7 +133,7 @@ function WeeklyProgress() {
 
 function RecentActivity() {
   return (
-    <section className="rounded-2xl border bg-card p-4 shadow-sm sm:p-6">
+    <section className="rounded-xl border bg-card p-4 shadow-sm sm:p-6">
       <h2 className="text-lg font-bold text-foreground">Hoạt động gần đây</h2>
       <div className="mt-4 grid gap-3">
         {recentActivities.map((activity) => (

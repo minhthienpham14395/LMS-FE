@@ -24,7 +24,7 @@ interface MetricCardProps {
 
 function MetricCard({ icon: Icon, label, value }: MetricCardProps) {
   return (
-    <article className="min-w-0 rounded-2xl border bg-card p-4 shadow-sm sm:p-5">
+    <article className="min-w-0 rounded-xl border bg-card p-4 shadow-sm sm:p-5">
       <div className="flex items-center justify-between gap-3">
         <p className="truncate text-xs font-semibold text-muted-foreground sm:text-sm">
           {label}
@@ -42,7 +42,7 @@ function MetricCard({ icon: Icon, label, value }: MetricCardProps) {
 
 function ProgressError() {
   return (
-    <section className="mt-6 rounded-2xl border border-destructive/25 bg-card p-5 shadow-sm">
+    <section className="mt-6 rounded-xl border border-destructive/25 bg-card p-5 shadow-sm">
       <h2 className="font-bold text-foreground">Không thể tải tiến độ</h2>
       <p className="mt-2 text-sm leading-6 text-muted-foreground">
         Hãy tải lại trang hoặc thử lại sau khi phiên học được kết nối lại.

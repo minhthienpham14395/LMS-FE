@@ -11,7 +11,7 @@ interface StudentCourseCardProps {
 
 export function StudentCourseCard({ course }: StudentCourseCardProps) {
   return (
-    <article className="min-w-0 overflow-hidden rounded-2xl border bg-card shadow-sm">
+    <article className="min-w-0 overflow-hidden rounded-xl border bg-card shadow-sm">
       <div className="aspect-video bg-secondary">
         <img
           src={course.thumbnail}

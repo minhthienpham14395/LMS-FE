@@ -8,7 +8,7 @@ interface RecentAchievementsProps {
 
 export function RecentAchievements({ achievements }: RecentAchievementsProps) {
   return (
-    <section className="rounded-2xl border bg-card p-4 shadow-sm sm:p-6">
+    <section className="rounded-xl border bg-card p-4 shadow-sm sm:p-6">
       <h2 className="text-lg font-bold text-foreground">Thành tích gần đây</h2>
 
       <div className="mt-4 grid gap-3">

@@ -22,7 +22,7 @@ export default function ProfilePage() {
           </Reveal>
 
           <Reveal delay={120}>
-            <section className="min-w-0 rounded-2xl border bg-card p-4 shadow-sm sm:p-6">
+            <section className="min-w-0 rounded-xl border bg-card p-4 shadow-sm sm:p-6">
               <ProfileForm />
             </section>
           </Reveal>

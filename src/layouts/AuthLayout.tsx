@@ -66,7 +66,7 @@ export default function AuthLayout() {
               Trang chủ
             </Link>
           </div>
-          <div className="rounded-[1.75rem] border border-border bg-card/96 p-6 shadow-lg backdrop-blur-md sm:p-8">
+          <div className="rounded-xl border border-border bg-card/96 p-6 shadow-lg backdrop-blur-md sm:p-8">
             <Outlet />
           </div>
         </PageMotion>

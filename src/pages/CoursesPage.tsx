@@ -33,7 +33,7 @@ function CoursesSkeleton() {
       {Array.from({ length: 6 }).map((_, index) => (
         <div
           key={index}
-          className="overflow-hidden rounded-2xl border bg-card shadow-sm"
+          className="overflow-hidden rounded-xl border bg-card shadow-sm"
         >
           <div className="aspect-[16/10] w-full animate-pulse bg-secondary" />
           <div className="space-y-3 p-5">
@@ -85,7 +85,7 @@ export default function CoursesPage() {
     (totalPages ? filters.page < totalPages : courses.length > 0);
   const hasPreviousPage = filters.page > 1;
   const frostedPanelClassName =
-    "rounded-[1.75rem] border border-border/80 bg-card/95 shadow-lg";
+    "rounded-xl border border-border/80 bg-card/95 shadow-lg";
 
   return (
     <Container className="py-8 sm:py-10 lg:py-12">
@@ -140,7 +140,7 @@ export default function CoursesPage() {
 
               <SheetContent
                 side="bottom"
-                className="max-h-[85dvh] overflow-y-auto rounded-t-3xl px-4 pb-[max(1rem,env(safe-area-inset-bottom))]"
+                className="max-h-[85dvh] overflow-y-auto rounded-t-xl px-4 pb-[max(1rem,env(safe-area-inset-bottom))]"
               >
                 <SheetHeader>
                   <SheetTitle>Lọc khóa học</SheetTitle>

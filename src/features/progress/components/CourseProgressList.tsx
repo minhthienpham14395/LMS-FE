@@ -8,7 +8,7 @@ interface CourseProgressListProps {
 
 export function CourseProgressList({ courses }: CourseProgressListProps) {
   return (
-    <section className="min-w-0 rounded-2xl border bg-card p-4 shadow-sm sm:p-6">
+    <section className="min-w-0 rounded-xl border bg-card p-4 shadow-sm sm:p-6">
       <h2 className="text-lg font-bold text-foreground">Tiến độ khóa học</h2>
 
       <div className="mt-5 grid gap-4">

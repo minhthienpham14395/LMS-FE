@@ -16,7 +16,7 @@ export function QueryError({
   return (
     <div
       role="alert"
-      className="rounded-2xl border border-red-200 bg-red-50 p-5 text-red-900"
+      className="rounded-xl border border-red-200 bg-red-50 p-5 text-red-900"
     >
       <div className="flex gap-3">
         <AlertCircle className="mt-0.5 size-5 shrink-0" aria-hidden="true" />

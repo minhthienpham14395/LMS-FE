@@ -31,7 +31,7 @@ export default function LandingSkillsSection() {
   return (
     <Section className="bg-background-soft/90">
       <Container>
-        <div className="rounded-[2rem] border border-border/80 bg-card px-5 py-8 shadow-lg sm:px-8 sm:py-10 lg:px-10">
+        <div className="rounded-xl border border-border/80 bg-card px-5 py-8 shadow-lg sm:px-8 sm:py-10 lg:px-10">
           <SectionHeading
             eyebrow="Kỹ năng cốt lõi"
             title="Cải thiện toàn diện năng lực tiếng Anh"
@@ -42,7 +42,7 @@ export default function LandingSkillsSection() {
             {skills.map(({ icon: Icon, title, text }) => (
               <article
                 key={title}
-                className="rounded-2xl border border-border/80 bg-card p-5 shadow-md ring-1 ring-border/80"
+                className="rounded-xl border border-border/80 bg-card p-5 shadow-md ring-1 ring-border/80"
               >
                 <span className="grid size-11 place-items-center rounded-xl bg-primary-soft">
                   <Icon className="size-5 text-primary" />

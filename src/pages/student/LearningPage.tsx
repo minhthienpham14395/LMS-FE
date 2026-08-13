@@ -39,7 +39,7 @@ export default function LearningPage() {
     return (
       <PageMotion>
         <div className="min-h-dvh px-4 py-10">
-          <div className="mx-auto max-w-xl rounded-[1.75rem] border border-border/70 bg-card/95 p-6 shadow-lg backdrop-blur-md">
+          <div className="mx-auto max-w-xl rounded-xl border border-border/70 bg-card/95 p-6 shadow-lg backdrop-blur-md">
             <h1 className="text-2xl font-bold text-foreground">
               Không thể mở khóa học
             </h1>

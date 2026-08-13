@@ -23,9 +23,9 @@ function CourseDetailSkeleton() {
             <div className="h-4 w-32 animate-pulse rounded bg-secondary" />
             <div className="h-12 w-4/5 animate-pulse rounded bg-secondary" />
             <div className="h-24 w-full max-w-3xl animate-pulse rounded bg-secondary" />
-            <div className="aspect-video w-full animate-pulse rounded-2xl bg-secondary" />
+            <div className="aspect-video w-full animate-pulse rounded-xl bg-secondary" />
           </main>
-          <aside className="h-52 animate-pulse rounded-2xl border bg-secondary" />
+          <aside className="h-52 animate-pulse rounded-xl border bg-secondary" />
         </div>
       </Container>
   );
@@ -38,7 +38,7 @@ interface CourseDetailErrorProps {
 function CourseDetailError({ onRetry }: CourseDetailErrorProps) {
   return (
     <Container className="py-8 sm:py-10 lg:py-12">
-        <div className="rounded-2xl border border-destructive/30 bg-destructive/5 px-5 py-10 text-center">
+        <div className="rounded-xl border border-destructive/30 bg-destructive/5 px-5 py-10 text-center">
           <AlertCircle className="mx-auto size-8 text-destructive" />
           <h1 className="mt-3 text-xl font-bold text-foreground">
             Không thể tải khóa học này
@@ -150,7 +150,7 @@ export default function CourseDetailPage() {
             </Reveal>
 
             <Reveal delay={200}>
-              <div className="mt-8 aspect-video overflow-hidden rounded-2xl bg-secondary">
+              <div className="mt-8 aspect-video overflow-hidden rounded-xl bg-secondary">
                 <img
                   src={course.thumbnail}
                   alt=""
@@ -184,7 +184,7 @@ export default function CourseDetailPage() {
 
           <aside className="lg:sticky lg:top-24">
             <Reveal delay={120}>
-              <div className="rounded-2xl border bg-card p-5 shadow-sm">
+              <div className="rounded-xl border bg-card p-5 shadow-sm">
                 <div className="flex items-center justify-between gap-3">
                   <span className="font-bold text-foreground">Truy cập khóa học</span>
                   <span className="text-sm text-muted-foreground">{course.duration}</span>

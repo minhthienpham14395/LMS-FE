@@ -13,7 +13,7 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ testimonial }: TestimonialCardProps) {
   return (
-    <figure className="h-full rounded-2xl border border-border/80 bg-card p-5 shadow-md ring-1 ring-border/80 sm:p-6">
+    <figure className="h-full rounded-xl border border-border/80 bg-card p-5 shadow-md ring-1 ring-border/80 sm:p-6">
       <Quote className="size-7 text-primary" aria-hidden="true" />
 
       <blockquote className="mt-4 text-sm leading-7 text-muted-foreground sm:text-base">

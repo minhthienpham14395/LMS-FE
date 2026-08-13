@@ -8,7 +8,7 @@ export default function LandingCTASection() {
   return (
     <Section>
       <Container>
-        <div className="overflow-hidden rounded-3xl border border-border/80 bg-card/95 px-5 py-8 text-foreground shadow-lg ring-1 ring-border/70 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
+        <div className="overflow-hidden rounded-xl border border-border/80 bg-card/95 px-5 py-8 text-foreground shadow-lg ring-1 ring-border/70 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">
               <h2 className="text-2xl font-bold sm:text-3xl">

@@ -10,7 +10,7 @@ export function ProgressPageSkeleton() {
         {Array.from({ length: 4 }).map((_, index) => (
           <div
             key={index}
-            className="rounded-2xl border bg-card p-4 shadow-sm sm:p-5"
+            className="rounded-xl border bg-card p-4 shadow-sm sm:p-5"
           >
             <div className="h-4 w-28 animate-pulse rounded bg-secondary" />
             <div className="mt-4 h-8 w-20 animate-pulse rounded bg-secondary" />
@@ -19,7 +19,7 @@ export function ProgressPageSkeleton() {
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
-        <div className="rounded-2xl border bg-card p-4 shadow-sm sm:p-6">
+        <div className="rounded-xl border bg-card p-4 shadow-sm sm:p-6">
           <div className="h-5 w-40 animate-pulse rounded bg-secondary" />
           <div className="mt-5 grid gap-4">
             {Array.from({ length: 3 }).map((_, index) => (
@@ -31,7 +31,7 @@ export function ProgressPageSkeleton() {
           </div>
         </div>
 
-        <div className="rounded-2xl border bg-card p-4 shadow-sm sm:p-6">
+        <div className="rounded-xl border bg-card p-4 shadow-sm sm:p-6">
           <div className="h-5 w-20 animate-pulse rounded bg-secondary" />
           <div className="mt-5 space-y-5">
             {Array.from({ length: 4 }).map((_, index) => (

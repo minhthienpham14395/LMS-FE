@@ -31,7 +31,7 @@ export default function LandingFAQSection() {
   return (
     <Section id="faq" className="bg-background-soft/90">
       <Container>
-        <div className="mx-auto max-w-3xl rounded-[2rem] border border-border/80 bg-card px-5 py-8 shadow-lg sm:px-8 sm:py-10 lg:px-10">
+        <div className="mx-auto max-w-3xl rounded-xl border border-border/80 bg-card px-5 py-8 shadow-lg sm:px-8 sm:py-10 lg:px-10">
           <SectionHeading title="Câu hỏi thường gặp" align="left" />
 
           <Accordion type="single" collapsible className="mt-8">

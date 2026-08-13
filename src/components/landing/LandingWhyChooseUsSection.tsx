@@ -11,9 +11,9 @@ export default function LandingWhyChooseUsSection() {
   return (
     <Section className="bg-background-soft/90">
       <Container>
-        <div className="rounded-[2rem] border border-border/80 bg-card px-5 py-8 shadow-lg sm:px-8 sm:py-10 lg:px-10">
+        <div className="rounded-xl border border-border/80 bg-card px-5 py-8 shadow-lg sm:px-8 sm:py-10 lg:px-10">
           <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
-            <div className="aspect-[4/3] overflow-hidden rounded-3xl border border-border/80 bg-card shadow-md">
+            <div className="aspect-[4/3] overflow-hidden rounded-xl border border-border/80 bg-card shadow-md">
               <img
                 src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
                 alt=""
@@ -34,7 +34,7 @@ export default function LandingWhyChooseUsSection() {
                 {points.map(([title, text], index) => (
                   <div
                     key={title}
-                    className="flex gap-4 rounded-2xl border border-border/80 bg-card p-4 shadow-md ring-1 ring-border/80"
+                    className="flex gap-4 rounded-xl border border-border/80 bg-card p-4 shadow-md ring-1 ring-border/80"
                   >
                     <span className="grid size-9 shrink-0 place-items-center rounded-full bg-primary-soft font-bold text-primary shadow-sm">
                       {index + 1}

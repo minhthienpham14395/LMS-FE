@@ -11,7 +11,7 @@ export function VocabularyBlock({ title = "Từ vựng", items }: VocabularyBloc
   }
 
   return (
-    <section className="rounded-2xl border bg-background-soft p-4 sm:p-5">
+    <section className="rounded-xl border bg-background-soft p-4 sm:p-5">
       <h2 className="font-bold text-foreground">{title}</h2>
 
       <div className="mt-4 grid gap-3">

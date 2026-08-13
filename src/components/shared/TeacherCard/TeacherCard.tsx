@@ -11,7 +11,7 @@ interface TeacherCardProps {
 
 export function TeacherCard({ teacher }: TeacherCardProps) {
   return (
-    <article className="min-w-0 rounded-2xl border border-border/80 bg-card p-4 shadow-md ring-1 ring-border/80 sm:p-5">
+    <article className="min-w-0 rounded-xl border border-border/80 bg-card p-4 shadow-md ring-1 ring-border/80 sm:p-5">
       <div className="flex items-center gap-4">
         <img
           src={teacher.avatar}

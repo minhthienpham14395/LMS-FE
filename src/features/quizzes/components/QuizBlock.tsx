@@ -49,7 +49,7 @@ export function QuizBlock({ quizId }: QuizBlockProps) {
   );
 
   return (
-    <section className="rounded-2xl border bg-card p-4 sm:p-6">
+    <section className="rounded-xl border bg-card p-4 sm:p-6">
       <h2 className="break-words text-xl font-bold text-foreground">
         {quiz.data.title}
       </h2>
@@ -117,7 +117,7 @@ export function QuizBlock({ quizId }: QuizBlockProps) {
 
 function QuizSkeleton() {
   return (
-    <section className="rounded-2xl border bg-card p-4 sm:p-6">
+    <section className="rounded-xl border bg-card p-4 sm:p-6">
       <div className="h-6 w-44 animate-pulse rounded bg-secondary" />
       <div className="mt-6 space-y-5">
         {Array.from({ length: 3 }).map((_, index) => (
@@ -134,7 +134,7 @@ function QuizSkeleton() {
 
 function QuizError({ onRetry }: { onRetry: () => void }) {
   return (
-    <section className="rounded-2xl border bg-card p-4 sm:p-6">
+    <section className="rounded-xl border bg-card p-4 sm:p-6">
       <h2 className="text-xl font-bold text-foreground">Không thể tải quiz</h2>
       <p className="mt-2 text-sm leading-6 text-muted-foreground">
         Hiện không thể tải quiz này.

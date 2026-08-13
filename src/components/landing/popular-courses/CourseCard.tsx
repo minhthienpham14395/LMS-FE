@@ -11,7 +11,7 @@ type CourseCardProps = {
 
 export function CourseCard({ course }: CourseCardProps) {
   return (
-    <article className="group min-w-0 overflow-hidden rounded-2xl border border-border bg-card transition-all duration-200 hover:-translate-y-0.5 hover:border-primary-light hover:shadow-md">
+    <article className="group min-w-0 overflow-hidden rounded-xl border border-border bg-card transition-all duration-200 hover:-translate-y-0.5 hover:border-primary-light hover:shadow-md">
       <Link
         to={`/courses/${course.slug}`}
         className="flex h-full min-w-0 flex-col focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"

@@ -53,7 +53,7 @@ export default function LandingHeroSection() {
           </div>
 
           <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-secondary shadow-2xl shadow-primary/10">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-secondary shadow-2xl shadow-primary/10">
               <img
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
                 alt="Học viên đang học tiếng Anh trực tuyến"
@@ -61,7 +61,7 @@ export default function LandingHeroSection() {
               />
             </div>
 
-            <div className="absolute -bottom-4 left-3 right-3 rounded-2xl border border-border bg-card/95 p-4 shadow-lg backdrop-blur sm:left-auto sm:right-5 sm:w-64">
+            <div className="absolute -bottom-4 left-3 right-3 rounded-xl border border-border bg-card/95 p-4 shadow-lg backdrop-blur sm:left-auto sm:right-5 sm:w-64">
               <p className="text-xs font-semibold text-muted-foreground">Tiến độ tuần này</p>
               <p className="mt-1 text-xl font-bold text-foreground">+18% hoàn thành</p>
               <div className="mt-3 h-2 overflow-hidden rounded-full bg-secondary">

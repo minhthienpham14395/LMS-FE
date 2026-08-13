@@ -60,7 +60,7 @@ export default function MyCoursesPage() {
             {Array.from({ length: 3 }).map((_, index) => (
               <div
                 key={index}
-                className="overflow-hidden rounded-2xl border bg-card shadow-sm"
+                className="overflow-hidden rounded-xl border bg-card shadow-sm"
               >
                 <div className="aspect-video animate-pulse bg-secondary" />
                 <div className="space-y-3 p-5">

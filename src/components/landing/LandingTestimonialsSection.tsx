@@ -34,7 +34,7 @@ export default function LandingTestimonialsSection() {
   return (
     <Section id="testimonials" className="bg-background-soft/90">
       <Container>
-        <div className="rounded-[2rem] border border-border/80 bg-card px-5 py-8 shadow-lg sm:px-8 sm:py-10 lg:px-10">
+        <div className="rounded-xl border border-border/80 bg-card px-5 py-8 shadow-lg sm:px-8 sm:py-10 lg:px-10">
           <SectionHeading
             eyebrow="Câu chuyện học viên"
             title="Tiến bộ có thể cảm nhận qua từng tuần"

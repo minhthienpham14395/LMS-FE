@@ -12,14 +12,14 @@ export default function LandingHowItWorksSection() {
   return (
     <Section id="how-it-works" className="bg-background-soft/90">
       <Container>
-        <div className="rounded-[2rem] border border-border/80 bg-card px-5 py-8 shadow-lg sm:px-8 sm:py-10 lg:px-10">
+        <div className="rounded-xl border border-border/80 bg-card px-5 py-8 shadow-lg sm:px-8 sm:py-10 lg:px-10">
           <SectionHeading title="Cách hoạt động" align="left" />
 
           <ol className="mt-8 grid gap-4 md:grid-cols-3">
             {steps.map(([title, text], index) => (
               <li
                 key={title}
-                className="rounded-2xl border border-border/80 bg-card p-5 shadow-md ring-1 ring-border/80 sm:p-6"
+                className="rounded-xl border border-border/80 bg-card p-5 shadow-md ring-1 ring-border/80 sm:p-6"
               >
                 <span className="text-3xl font-bold text-primary">
                   {String(index + 1).padStart(2, "0")}

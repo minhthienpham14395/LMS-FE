@@ -34,7 +34,7 @@ export function AvatarEditor() {
   const avatarUrl = previewUrl || profile.data?.avatarUrl;
 
   return (
-    <section className="rounded-2xl border bg-card p-4 text-center shadow-sm sm:p-6">
+    <section className="rounded-xl border bg-card p-4 text-center shadow-sm sm:p-6">
       <div className="mx-auto grid size-24 place-items-center overflow-hidden rounded-full bg-primary-soft text-2xl font-bold text-primary-active">
         {avatarUrl ? (
           <img
